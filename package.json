@@ -13,7 +13,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "db:seed-topics": "tsx scripts/seed-topics.ts"
+    "db:seed-topics": "tsx scripts/seed-topics.ts",
+    "db:seed-demo": "tsx scripts/seed-demo-content.ts"
   },
   "dependencies": {
     "next": "^15.1.6",

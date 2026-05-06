@@ -106,6 +106,17 @@ Resumo: native não traz benefício suficiente para o custo no MVP.
 - [QConcursos](https://www.qconcursos.com/)
 - Protótipo atual: `https://cpa10.abacusai.app/`
 
+## Decisão: pivô para Nova CPA (2026-05-06)
+
+Após confirmação da descontinuação da CPA-10 (ver seção abaixo), o time decidiu pivotar o vertical ANBIMA do MVP para a **Nova CPA** — substituta direta no portfólio ANBIMA Edu, mesmo perfil de comprador (varejo de investimentos), maior overlap de candidatos.
+
+- `tracks.slug='cpa-10'` marcada com `active=false` (preserva histórico, mas sumiu do onboarding)
+- `tracks.slug='nova-cpa'` adicionada como `active=true`
+- Conteúdo programático da Nova CPA precisa ser validado contra material oficial ANBIMA Edu antes de geração — `content/syllabi/nova-cpa.yaml` ainda não existe; criação bloqueada até alguém do time levantar o programa detalhado oficial
+- Geração de conteúdo Nova CPA fica em backlog até a yaml existir; OAB segue como vertical primário do MVP
+
+C-Pro I considerada mas descartada para MVP por ter pool menor de candidatos e conteúdo mais técnico (operadora). Pode entrar em V2.
+
 ## ⚠️ ALERTA — CPA-10 descontinuada (descoberto 2026-05-05)
 
 Pesquisa via WebFetch no site oficial ANBIMA confirmou:

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Flame, Zap, Heart } from "lucide-react";
+import { ArrowRight, Flame, Zap, Heart, Trophy, ClipboardList } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { SignOutButton } from "./sign-out-button";
 
@@ -19,8 +19,6 @@ export default async function AppHomePage() {
 
   if (!profile?.onboarded_at) redirect("/onboarding");
 
-  // Primeira lição publicada — começamos pela trilha primária do usuário,
-  // mas o MVP só tem demo OAB seedado, então pegamos qualquer published.
   const { data: nextLesson } = await supabase
     .from("lessons")
     .select("id, title, intro, level, position")
@@ -78,13 +76,23 @@ export default async function AppHomePage() {
           </div>
         )}
 
-        <div className="mt-8 rounded-2xl bg-surface p-5">
-          <p className="text-sm font-medium">Próximos passos</p>
-          <ul className="mt-3 space-y-2 text-sm text-text-muted">
-            <li>• Teste de nível inicial (em breve)</li>
-            <li>• Modo simulado (em breve)</li>
-            <li>• Ligas semanais (em breve)</li>
-          </ul>
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <Link
+            href="/app/liga"
+            className="flex flex-col gap-1 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-text-muted"
+          >
+            <Trophy className="size-5 text-brand-yellow" />
+            <span className="mt-1 font-display text-sm font-semibold">Liga</span>
+            <span className="text-xs text-text-muted">Ranking semanal</span>
+          </Link>
+          <Link
+            href="/app/simulado"
+            className="flex flex-col gap-1 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-text-muted"
+          >
+            <ClipboardList className="size-5 text-brand-green" />
+            <span className="mt-1 font-display text-sm font-semibold">Simulado</span>
+            <span className="text-xs text-text-muted">Modo prova</span>
+          </Link>
         </div>
       </section>
 

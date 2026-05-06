@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Check, X, Zap, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { playCorrect, playWrong } from "@/lib/sounds";
 import { submitAttempt, completeLesson } from "./actions";
 
 type ClientChoice = { key: string; text: string };
@@ -70,7 +71,12 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
         return;
       }
       setFeedback(res);
-      if (!res.isCorrect) setErrorAttempts((n) => n + 1);
+      if (res.isCorrect) {
+        playCorrect();
+      } else {
+        playWrong();
+        setErrorAttempts((n) => n + 1);
+      }
     });
   }
 
@@ -241,8 +247,10 @@ function ExplanationDrawer({
   return (
     <div
       className={cn(
-        "sticky bottom-0 -mx-6 mt-6 rounded-t-3xl border-t-2 px-6 pt-5 pb-8 shadow-[0_-8px_30px_rgba(0,0,0,0.08)]",
-        feedback.isCorrect ? "border-success bg-success/10" : "border-error bg-error/10",
+        "sticky bottom-0 -mx-6 mt-6 rounded-t-3xl border-t-2 px-6 pt-5 pb-8 shadow-[0_-12px_30px_rgba(0,0,0,0.18)]",
+        feedback.isCorrect
+          ? "border-success bg-[#f0fdf4] dark:bg-[#06281a]"
+          : "border-error bg-[#fef2f2] dark:bg-[#2a0c0c]",
       )}
     >
       <div className="flex items-center gap-2">

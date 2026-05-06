@@ -12,6 +12,8 @@ export default async function AppHomePage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/entrar");
 
+  await supabase.rpc("claim_lives");
+
   const { data: profile } = await supabase
     .from("profiles")
     .select("display_name, xp_total, lives, streak_days, onboarded_at, primary_track_id")

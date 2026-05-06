@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { LessonPlayer } from "./lesson-player";
+import { OutOfLives } from "./out-of-lives";
 
 export const metadata = { title: "Lição" };
 
@@ -15,6 +16,18 @@ export default async function LicaoPage({
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/entrar");
+
+  await supabase.rpc("claim_lives");
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("lives, lives_regen_at")
+    .eq("id", user.id)
+    .single();
+
+  if (profile && profile.lives <= 0) {
+    return <OutOfLives livesRegenAt={profile.lives_regen_at as string | null} />;
+  }
 
   const { data: lesson } = await supabase
     .from("lessons")

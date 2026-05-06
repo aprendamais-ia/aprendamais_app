@@ -1,13 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#009C3B"/>
-  <circle cx="14" cy="22" r="9" fill="#BCC9D6"/>
-  <circle cx="50" cy="22" r="9" fill="#BCC9D6"/>
-  <ellipse cx="14" cy="24" rx="5" ry="6" fill="#F5C5C8"/>
-  <ellipse cx="50" cy="24" rx="5" ry="6" fill="#F5C5C8"/>
-  <ellipse cx="32" cy="36" rx="20" ry="18" fill="#BCC9D6"/>
-  <circle cx="25" cy="33" r="2.6" fill="#1F2937"/>
-  <circle cx="39" cy="33" r="2.6" fill="#1F2937"/>
-  <circle cx="26" cy="32" r="0.9" fill="#FFFFFF"/>
-  <circle cx="40" cy="32" r="0.9" fill="#FFFFFF"/>
-  <ellipse cx="32" cy="42" rx="6.5" ry="5" fill="#1F2937"/>
+  <circle cx="14" cy="20" r="12" fill="#A5B3C2"/>
+  <circle cx="50" cy="20" r="12" fill="#A5B3C2"/>
+  <ellipse cx="14" cy="22" rx="7" ry="8.5" fill="#F5C5C8"/>
+  <ellipse cx="50" cy="22" rx="7" ry="8.5" fill="#F5C5C8"/>
+  <ellipse cx="15" cy="24" rx="3.5" ry="5" fill="#E8A7AB"/>
+  <ellipse cx="49" cy="24" rx="3.5" ry="5" fill="#E8A7AB"/>
+  <ellipse cx="32" cy="37" rx="23" ry="22" fill="#BCC9D6"/>
+  <ellipse cx="16" cy="46" rx="4" ry="2.5" fill="#F4B5B5" opacity="0.55"/>
+  <ellipse cx="48" cy="46" rx="4" ry="2.5" fill="#F4B5B5" opacity="0.55"/>
+  <circle cx="22" cy="33" r="3.5" fill="#1F2937"/>
+  <circle cx="42" cy="33" r="3.5" fill="#1F2937"/>
+  <circle cx="23" cy="31" r="1.2" fill="#FFFFFF"/>
+  <circle cx="43" cy="31" r="1.2" fill="#FFFFFF"/>
+  <ellipse cx="32" cy="46" rx="8.5" ry="7" fill="#1F2937"/>
+  <ellipse cx="28" cy="42" rx="2.2" ry="1.5" fill="#3D4855"/>
 </svg>

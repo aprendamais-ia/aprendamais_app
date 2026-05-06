@@ -70,6 +70,11 @@
   --premium: #c084fc;
 }
 
+@keyframes caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
 @layer base {
   * {
     @apply border-border;

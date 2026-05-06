@@ -195,7 +195,7 @@ function OtpInput({
             <div
               key={i}
               className={cn(
-                "flex h-14 flex-1 items-center justify-center rounded-xl border text-center font-display text-2xl font-bold transition-colors",
+                "relative flex h-14 flex-1 items-center justify-center rounded-xl border text-center font-display text-2xl font-bold transition-colors",
                 char
                   ? "border-brand-green bg-brand-green/5"
                   : isActive
@@ -204,6 +204,13 @@ function OtpInput({
               )}
             >
               {char}
+              {isActive && !char && (
+                <span
+                  aria-hidden="true"
+                  className="block h-7 w-0.5 bg-text"
+                  style={{ animation: "caret-blink 1s step-end infinite" }}
+                />
+              )}
             </div>
           );
         })}

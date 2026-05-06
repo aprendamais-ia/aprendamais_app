@@ -20,9 +20,13 @@ export default async function AppHomePage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, xp_total, lives, streak_days")
+    .select("display_name, xp_total, lives, streak_days, onboarded_at")
     .eq("id", user.id)
     .single();
+
+  if (!profile?.onboarded_at) {
+    redirect("/onboarding");
+  }
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">

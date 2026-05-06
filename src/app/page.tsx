@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Flame, Zap, Trophy } from "lucide-react";
+import { Wordmark } from "@/components/logo";
+import { Mascot } from "@/components/mascot";
 
 export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-10">
       <header className="flex items-center justify-between">
-        <span className="font-display text-xl font-bold">Aprendez</span>
+        <Wordmark />
         <Link
           href="/entrar"
           className="text-sm font-medium text-text-muted hover:text-text"
@@ -14,7 +16,8 @@ export default function Home() {
         </Link>
       </header>
 
-      <section className="mt-16 flex flex-1 flex-col justify-center">
+      <section className="mt-12 flex flex-1 flex-col justify-center">
+        <Mascot size={140} className="mx-auto mb-6" />
         <h1 className="font-display text-4xl leading-tight font-bold tracking-tight">
           O jeito mais leve
           <br />

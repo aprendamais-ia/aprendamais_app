@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { Wordmark } from "@/components/logo";
 import { OnboardingForm } from "./onboarding-form";
 
 export const metadata = {
@@ -31,7 +32,7 @@ export default async function OnboardingPage() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
       <header>
-        <span className="font-display text-xl font-bold">Aprendez</span>
+        <Wordmark />
       </header>
       <OnboardingForm tracks={tracks ?? []} />
     </main>

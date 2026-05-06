@@ -1,5 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import { Wordmark } from "@/components/logo";
+import { Mascot } from "@/components/mascot";
 import { LoginForm } from "./login-form";
 
 export const metadata = {
@@ -10,12 +12,13 @@ export default function EntrarPage() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-10">
       <header className="flex items-center justify-between">
-        <Link href="/" className="font-display text-xl font-bold">
-          Aprendez
+        <Link href="/">
+          <Wordmark />
         </Link>
       </header>
 
-      <section className="mt-16 flex flex-1 flex-col justify-center">
+      <section className="mt-10 flex flex-1 flex-col justify-center">
+        <Mascot size={88} className="mb-4" />
         <h1 className="font-display text-3xl leading-tight font-bold tracking-tight">
           Entra ou cria conta.
         </h1>

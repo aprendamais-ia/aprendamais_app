@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Flame, Zap, Heart, Trophy, ClipboardList } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { Wordmark } from "@/components/logo";
 import { SignOutButton } from "./sign-out-button";
 
 export const metadata = { title: "Início" };
@@ -31,7 +32,7 @@ export default async function AppHomePage() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
       <header className="flex items-center justify-between">
-        <span className="font-display text-xl font-bold">Aprendez</span>
+        <Wordmark />
         <div className="flex items-center gap-3 text-sm">
           <span className="flex items-center gap-1">
             <Heart className="size-4 text-error" />

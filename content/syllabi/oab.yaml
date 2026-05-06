@@ -1,0 +1,212 @@
+# OAB — Edital Unificado da Primeira Fase
+# IMPORTANTE: Esqueleto inicial. Validar contra o edital atual antes de gerar conteúdo.
+# Pesos aproximados conforme distribuição histórica.
+
+track: oab
+issuer: OAB Federal / FGV (banca)
+version: "XLIII"
+url: https://www.oab.org.br/exameunificado
+
+exam_format:
+  questions: 80
+  duration_min: 300
+  passing_score: 0.50
+
+modules:
+  - slug: etica
+    name: "Ética Profissional"
+    weight: 0.10
+    topics:
+      - slug: estatuto-oab
+        name: "Estatuto da Advocacia (Lei 8.906/94) e Regulamento Geral"
+        keywords: ["EOAB", "8.906", "advocacia", "honorários"]
+        official_reference: "Edital OAB Primeira Fase, item Ética 1"
+      - slug: codigo-etica
+        name: "Código de Ética e Disciplina da OAB"
+        keywords: ["sigilo", "publicidade", "captação"]
+        official_reference: "Edital OAB Primeira Fase, item Ética 2"
+
+  - slug: filosofia-direito
+    name: "Filosofia do Direito"
+    weight: 0.03
+    topics:
+      - slug: positivismo-naturalismo
+        name: "Jusnaturalismo, juspositivismo, pós-positivismo"
+        keywords: ["Kelsen", "Hart", "Dworkin"]
+        official_reference: "Edital OAB Primeira Fase, item Filosofia"
+
+  - slug: direito-constitucional
+    name: "Direito Constitucional"
+    weight: 0.10
+    topics:
+      - slug: direitos-fundamentais
+        name: "Direitos e garantias fundamentais"
+        keywords: ["art. 5º", "remédios constitucionais", "habeas corpus"]
+        official_reference: "Edital OAB Primeira Fase, item Constitucional 1"
+      - slug: organizacao-estado
+        name: "Organização do Estado e dos Poderes"
+        keywords: ["União", "Estados", "competências"]
+        official_reference: "Edital OAB Primeira Fase, item Constitucional 2"
+      - slug: controle-constitucionalidade
+        name: "Controle de constitucionalidade"
+        keywords: ["ADI", "ADC", "ADPF", "recurso extraordinário"]
+        official_reference: "Edital OAB Primeira Fase, item Constitucional 3"
+
+  - slug: direito-administrativo
+    name: "Direito Administrativo"
+    weight: 0.06
+    topics:
+      - slug: atos-administrativos
+        name: "Atos administrativos"
+        keywords: ["ato", "discricionário", "vinculado", "anulação", "revogação"]
+        official_reference: "Edital OAB Primeira Fase, item Administrativo 1"
+      - slug: licitacoes-contratos
+        name: "Licitações e contratos (Lei 14.133)"
+        keywords: ["licitação", "14.133", "pregão", "concorrência"]
+        official_reference: "Edital OAB Primeira Fase, item Administrativo 2"
+      - slug: servidores-publicos
+        name: "Servidores públicos"
+        keywords: ["estatutário", "celetista", "estabilidade"]
+        official_reference: "Edital OAB Primeira Fase, item Administrativo 3"
+
+  - slug: direito-tributario
+    name: "Direito Tributário"
+    weight: 0.06
+    topics:
+      - slug: principios-tributarios
+        name: "Princípios constitucionais tributários e limitações ao poder de tributar"
+        keywords: ["legalidade", "anterioridade", "isonomia", "capacidade contributiva"]
+        official_reference: "Edital OAB Primeira Fase, item Tributário 1"
+      - slug: especies-tributarias
+        name: "Espécies tributárias e fato gerador"
+        keywords: ["imposto", "taxa", "contribuição de melhoria", "fato gerador"]
+        official_reference: "Edital OAB Primeira Fase, item Tributário 2"
+
+  - slug: direito-civil
+    name: "Direito Civil"
+    weight: 0.10
+    topics:
+      - slug: lindb
+        name: "Lei de Introdução às Normas do Direito Brasileiro"
+        keywords: ["LINDB", "vacatio legis", "vigência"]
+        official_reference: "Edital OAB Primeira Fase, item Civil 1"
+      - slug: pessoas
+        name: "Pessoas naturais e jurídicas, capacidade"
+        keywords: ["personalidade", "capacidade", "incapazes"]
+        official_reference: "Edital OAB Primeira Fase, item Civil 2"
+      - slug: contratos
+        name: "Teoria geral dos contratos"
+        keywords: ["contrato", "boa-fé objetiva", "função social"]
+        official_reference: "Edital OAB Primeira Fase, item Civil 3"
+      - slug: responsabilidade-civil
+        name: "Responsabilidade civil"
+        keywords: ["responsabilidade", "dano", "nexo causal", "culpa"]
+        official_reference: "Edital OAB Primeira Fase, item Civil 4"
+      - slug: familia
+        name: "Direito de família e sucessões"
+        keywords: ["casamento", "união estável", "alimentos", "sucessão"]
+        official_reference: "Edital OAB Primeira Fase, item Civil 5"
+
+  - slug: processo-civil
+    name: "Direito Processual Civil"
+    weight: 0.09
+    topics:
+      - slug: principios-processuais
+        name: "Princípios processuais e jurisdição"
+        keywords: ["devido processo", "contraditório", "duração razoável"]
+        official_reference: "Edital OAB Primeira Fase, item Processo Civil 1"
+      - slug: peticao-inicial
+        name: "Petição inicial e resposta"
+        keywords: ["petição inicial", "contestação", "reconvenção"]
+        official_reference: "Edital OAB Primeira Fase, item Processo Civil 2"
+      - slug: recursos
+        name: "Recursos no CPC"
+        keywords: ["apelação", "agravo", "embargos", "recurso especial"]
+        official_reference: "Edital OAB Primeira Fase, item Processo Civil 3"
+
+  - slug: direito-penal
+    name: "Direito Penal"
+    weight: 0.08
+    topics:
+      - slug: teoria-do-crime
+        name: "Teoria geral do crime"
+        keywords: ["tipicidade", "ilicitude", "culpabilidade"]
+        official_reference: "Edital OAB Primeira Fase, item Penal 1"
+      - slug: crimes-em-especie
+        name: "Crimes em espécie no Código Penal"
+        keywords: ["homicídio", "furto", "roubo", "estelionato"]
+        official_reference: "Edital OAB Primeira Fase, item Penal 2"
+
+  - slug: processo-penal
+    name: "Direito Processual Penal"
+    weight: 0.07
+    topics:
+      - slug: inquerito-policial
+        name: "Inquérito policial e ação penal"
+        keywords: ["inquérito", "ação penal", "denúncia", "queixa"]
+        official_reference: "Edital OAB Primeira Fase, item Processo Penal 1"
+      - slug: provas
+        name: "Provas no processo penal"
+        keywords: ["prova", "interceptação", "busca e apreensão"]
+        official_reference: "Edital OAB Primeira Fase, item Processo Penal 2"
+
+  - slug: direito-trabalho
+    name: "Direito do Trabalho"
+    weight: 0.07
+    topics:
+      - slug: relacao-de-emprego
+        name: "Relação de emprego e contrato de trabalho"
+        keywords: ["CLT", "vínculo", "subordinação", "onerosidade"]
+        official_reference: "Edital OAB Primeira Fase, item Trabalho 1"
+      - slug: direitos-trabalhistas
+        name: "Jornada, férias, FGTS, rescisão"
+        keywords: ["jornada", "horas extras", "FGTS", "aviso prévio"]
+        official_reference: "Edital OAB Primeira Fase, item Trabalho 2"
+
+  - slug: processo-trabalho
+    name: "Direito Processual do Trabalho"
+    weight: 0.04
+    topics:
+      - slug: peculiaridades-processo-trabalho
+        name: "Peculiaridades do processo trabalhista"
+        keywords: ["jus postulandi", "audiência una", "TST"]
+        official_reference: "Edital OAB Primeira Fase, item Processo Trabalho 1"
+
+  - slug: empresarial
+    name: "Direito Empresarial"
+    weight: 0.06
+    topics:
+      - slug: sociedades
+        name: "Sociedades empresárias"
+        keywords: ["LTDA", "S/A", "EIRELI", "sociedade simples"]
+        official_reference: "Edital OAB Primeira Fase, item Empresarial 1"
+      - slug: titulos-credito
+        name: "Títulos de crédito e recuperação judicial"
+        keywords: ["nota promissória", "cheque", "duplicata", "recuperação judicial"]
+        official_reference: "Edital OAB Primeira Fase, item Empresarial 2"
+
+  - slug: consumidor
+    name: "Direito do Consumidor"
+    weight: 0.04
+    topics:
+      - slug: cdc
+        name: "CDC: relação de consumo, fornecedor, vícios e defeitos"
+        keywords: ["CDC", "consumidor", "vício", "fato do produto"]
+        official_reference: "Edital OAB Primeira Fase, item Consumidor"
+
+  - slug: dh-internacional-eca
+    name: "DH, Internacional, ECA, Estatuto do Idoso, Ambiental"
+    weight: 0.10
+    topics:
+      - slug: direitos-humanos
+        name: "Direitos humanos e tratados internacionais"
+        keywords: ["pacto", "convenção", "CIDH"]
+        official_reference: "Edital OAB Primeira Fase, item DH"
+      - slug: eca
+        name: "Estatuto da Criança e do Adolescente"
+        keywords: ["ECA", "menor", "ato infracional"]
+        official_reference: "Edital OAB Primeira Fase, item ECA"
+      - slug: ambiental
+        name: "Direito ambiental"
+        keywords: ["meio ambiente", "responsabilidade ambiental", "licenciamento"]
+        official_reference: "Edital OAB Primeira Fase, item Ambiental"

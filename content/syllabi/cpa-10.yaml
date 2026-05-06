@@ -1,0 +1,126 @@
+# CPA-10 — ementa ANBIMA
+# IMPORTANTE: Este é um esqueleto inicial. Validar contra o edital atual da ANBIMA antes de gerar conteúdo.
+# Pesos são aproximados conforme distribuição histórica das provas.
+
+track: cpa-10
+issuer: ANBIMA
+version: "2024.1"
+url: https://www.anbima.com.br/pt_br/educar/certificacoes/cpa-10.htm
+
+exam_format:
+  questions: 50
+  duration_min: 120
+  passing_score: 0.70
+
+modules:
+  - slug: sistema-financeiro
+    name: "Sistema Financeiro Nacional e Participantes do Mercado"
+    weight: 0.10
+    topics:
+      - slug: orgaos-reguladores
+        name: "Órgãos de regulação, autorregulação, fiscalização e participantes"
+        keywords: [CMN, BACEN, CVM, SUSEP, ANBIMA]
+        official_reference: "Edital ANBIMA CPA-10, módulo 1, item 1.1"
+      - slug: bancos-e-investimentos
+        name: "Bancos múltiplos, comerciais, de investimento, B3"
+        keywords: ["banco múltiplo", "B3", "corretora", "distribuidora"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 1, item 1.2"
+
+  - slug: etica-suitability
+    name: "Ética, Regulamentação e Análise do Perfil do Investidor"
+    weight: 0.15
+    topics:
+      - slug: codigos-anbima
+        name: "Códigos ANBIMA de Regulação e Melhores Práticas"
+        keywords: ["código ANBIMA", "distribuição", "selo"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 2, item 2.1"
+      - slug: prevencao-lavagem
+        name: "Prevenção e Combate à Lavagem de Dinheiro (Lei 9.613)"
+        keywords: ["PLD", "Lei 9.613", "COAF"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 2, item 2.2"
+      - slug: suitability
+        name: "Análise do Perfil do Investidor (Suitability)"
+        keywords: ["suitability", "perfil de investidor", "API"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 2, item 2.3"
+
+  - slug: economia-financas
+    name: "Noções de Economia e Finanças"
+    weight: 0.05
+    topics:
+      - slug: indicadores-economicos
+        name: "Indicadores econômicos: PIB, IPCA, Selic, CDI, taxa de câmbio"
+        keywords: ["PIB", "IPCA", "Selic", "CDI", "câmbio"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 3, item 3.1"
+      - slug: matematica-financeira
+        name: "Conceitos de matemática financeira: capitalização, taxas, fluxo de caixa"
+        keywords: ["juros simples", "juros compostos", "VPL", "TIR"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 3, item 3.2"
+
+  - slug: mercado-financeiro
+    name: "Princípios de Investimento"
+    weight: 0.10
+    topics:
+      - slug: rentabilidade-risco-liquidez
+        name: "Rentabilidade, risco e liquidez"
+        keywords: ["rentabilidade", "risco", "liquidez", "trinômio"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 4, item 4.1"
+      - slug: diversificacao
+        name: "Diversificação e gestão de carteira"
+        keywords: ["diversificação", "carteira", "Markowitz"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 4, item 4.2"
+
+  - slug: fundos-investimento
+    name: "Fundos de Investimento"
+    weight: 0.20
+    topics:
+      - slug: estrutura-fundos
+        name: "Estrutura, participantes e classificação de fundos"
+        keywords: ["fundo", "administrador", "gestor", "custodiante", "cotista"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 5, item 5.1"
+      - slug: tipos-fundos
+        name: "Renda fixa, ações, multimercado, cambial, previdência"
+        keywords: ["fundo de renda fixa", "fundo de ações", "multimercado"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 5, item 5.2"
+      - slug: tributacao-fundos
+        name: "Tributação de fundos de investimento (come-cotas, IOF)"
+        keywords: ["come-cotas", "IOF", "imposto de renda"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 5, item 5.3"
+
+  - slug: produtos-renda-variavel
+    name: "Renda Variável e Renda Fixa"
+    weight: 0.20
+    topics:
+      - slug: titulos-publicos
+        name: "Tesouro Direto: Selic, Prefixado, IPCA+"
+        keywords: ["Tesouro Selic", "Tesouro Prefixado", "Tesouro IPCA"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 6, item 6.1"
+      - slug: titulos-privados
+        name: "CDB, LCI, LCA, debêntures, CRI, CRA"
+        keywords: ["CDB", "LCI", "LCA", "debênture", "CRI", "CRA", "FGC"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 6, item 6.2"
+      - slug: acoes
+        name: "Ações: tipos, dividendos, IPOs, governança"
+        keywords: ["ação", "ON", "PN", "IPO", "dividendo", "JCP"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 6, item 6.3"
+
+  - slug: previdencia-seguros
+    name: "Previdência Complementar Aberta: PGBL e VGBL"
+    weight: 0.10
+    topics:
+      - slug: pgbl-vgbl
+        name: "Diferenças entre PGBL e VGBL, regime tributário"
+        keywords: ["PGBL", "VGBL", "tabela progressiva", "tabela regressiva"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 7, item 7.1"
+
+  - slug: tributacao
+    name: "Tributação"
+    weight: 0.10
+    topics:
+      - slug: ir-renda-fixa
+        name: "Imposto de renda em renda fixa"
+        keywords: ["IR", "tabela regressiva", "fonte"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 8, item 8.1"
+      - slug: ir-renda-variavel
+        name: "Imposto de renda em renda variável (DARF, isenção 20k)"
+        keywords: ["DARF", "isenção", "swing trade", "day trade"]
+        official_reference: "Edital ANBIMA CPA-10, módulo 8, item 8.2"

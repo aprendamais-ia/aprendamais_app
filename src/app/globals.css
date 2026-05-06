@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Brand — verde-bandeira BR + amarelo-ouro (uso suave, não clichê) */
+  --color-brand-green: #009c3b;
+  --color-brand-green-fg: #ffffff;
+  --color-brand-yellow: #ffdf00;
+  --color-brand-yellow-fg: #1a1400;
+
+  /* Semantic */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-streak: var(--streak);
+  --color-premium: var(--premium);
+
+  /* Type */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Radius (shadcn-compatible) */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --bg: #ffffff;
+  --surface: #f7f8fa;
+  --surface-elevated: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #009c3b;
+
+  --success: #16a34a;
+  --error: #dc2626;
+  --streak: #f97316;
+  --premium: #a855f7;
+}
+
+.dark {
+  --bg: #0a0e14;
+  --surface: #141921;
+  --surface-elevated: #1c2230;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #22c55e;
+
+  --success: #22c55e;
+  --error: #ef4444;
+  --streak: #fb923c;
+  --premium: #c084fc;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>Teu código do Aprenda Mais</title>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        body, .bg { background: #0A0E14 !important; }
+        .card { background: #141921 !important; border-color: #1f2937 !important; }
+        .text { color: #E2E8F0 !important; }
+        .muted { color: #94A3B8 !important; }
+        .code-box { background: #0A0E14 !important; border-color: #009C3B !important; }
+        .footer { color: #64748B !important; }
+      }
+      @media only screen and (max-width: 480px) {
+        .container { width: 100% !important; padding: 16px !important; }
+        .code { font-size: 36px !important; letter-spacing: 8px !important; }
+      }
+    </style>
+  </head>
+  <body class="bg text" style="margin:0;padding:0;background:#F7F8FA;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0F172A;-webkit-font-smoothing:antialiased;">
+    <!-- Preheader (preview escondido na inbox) -->
+    <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#F7F8FA;">
+      Teu código de acesso: {{ .Token }}. Expira em 1 hora.
+    </div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bg" style="background:#F7F8FA;">
+      <tr>
+        <td align="center" style="padding:32px 16px;">
+          <table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" class="container" style="width:480px;max-width:100%;">
+
+            <!-- Logo -->
+            <tr>
+              <td align="left" style="padding:0 4px 24px;">
+                <span style="display:inline-block;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:#0F172A;" class="text">
+                  Aprenda <span style="color:#009C3B;">Mais</span>
+                </span>
+              </td>
+            </tr>
+
+            <!-- Card -->
+            <tr>
+              <td class="card" style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:20px;padding:32px;">
+
+                <h1 class="text" style="margin:0 0 8px;font-size:24px;line-height:1.25;font-weight:800;letter-spacing:-0.02em;color:#0F172A;">
+                  Teu código chegou.
+                </h1>
+                <p class="muted" style="margin:0 0 24px;font-size:15px;line-height:1.5;color:#64748B;">
+                  Cola ele no app pra entrar. Expira em 1 hora.
+                </p>
+
+                <!-- Código -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td class="code-box" align="center" style="background:#F7F8FA;border:2px solid #009C3B;border-radius:16px;padding:24px 16px;">
+                      <div class="code text" style="font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace;font-size:40px;line-height:1;font-weight:700;letter-spacing:12px;color:#0F172A;font-feature-settings:'tnum';">
+                        {{ .Token }}
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Aviso de segurança -->
+                <p class="muted" style="margin:24px 0 0;font-size:13px;line-height:1.5;color:#64748B;">
+                  Não foi você que pediu? Pode ignorar este e-mail — sem o código, ninguém entra na tua conta.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Encorajamento -->
+            <tr>
+              <td align="center" style="padding:24px 8px 0;">
+                <p class="muted" style="margin:0;font-size:14px;line-height:1.5;color:#64748B;">
+                  Bora estudar.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td align="center" style="padding:24px 8px 0;">
+                <p class="footer" style="margin:0;font-size:12px;line-height:1.5;color:#94A3B8;">
+                  Aprenda Mais · CPA-10 · OAB<br />
+                  Este e-mail foi enviado pra <span style="color:#64748B;">{{ .Email }}</span>.
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

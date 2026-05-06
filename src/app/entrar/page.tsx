@@ -20,7 +20,7 @@ export default function EntrarPage() {
           Entra ou cria conta.
         </h1>
         <p className="mt-2 text-text-muted">
-          A gente manda um link no teu e-mail. Sem senha pra esquecer.
+          A gente manda um código no teu e-mail. Sem senha pra esquecer.
         </p>
 
         <Suspense fallback={null}>

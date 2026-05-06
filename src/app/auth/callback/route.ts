@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
-// Magic link callback: exchange auth code for session, then redirect.
+// Fallback para sessões antigas com magic link. Fluxo principal usa OTP em /entrar.
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");

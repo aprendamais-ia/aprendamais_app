@@ -11,7 +11,7 @@ export default function EntrarPage() {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-10">
       <header className="flex items-center justify-between">
         <Link href="/" className="font-display text-xl font-bold">
-          Aprenda Mais
+          Aprendez
         </Link>
       </header>
 

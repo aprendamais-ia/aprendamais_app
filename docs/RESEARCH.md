@@ -11,7 +11,7 @@ Notas da pesquisa de mercado, comportamento do usuário, e fontes que embasam as
 - Concurseiros adultos usam combo: celular para sessões curtas (deslocamento, intervalo) + desktop/tablet para sessões longas (simulado, leitura profunda)
 - 70%+ das transações digitais no BR são Pix — implicação: pagamento mobile-first é obrigatório
 
-**Implicação para Aprenda Mais:**
+**Implicação para Aprendez:**
 - PWA mobile-first
 - Toda decisão de UX defaulta pro portrait mobile
 - Modo simulado precisa funcionar bem em tablet também (consideração de Fase 2)
@@ -53,7 +53,7 @@ Fontes:
 - Apps com gamificação: free + premium R$ 15-30/mês (referência: Duolingo Super R$ 39,90/mês BR)
 - QConcursos premium: R$ 30-50/mês
 
-**Pricing alvo Aprenda Mais:**
+**Pricing alvo Aprendez:**
 - Free: limitado (5 vidas/dia, 1 simulado/semana)
 - Premium: **R$ 19,90/mês** ou **R$ 119/ano** (50% desconto anual)
 - Pix anual com desconto adicional de 10% (R$ 107)

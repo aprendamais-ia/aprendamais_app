@@ -34,7 +34,7 @@ Monta uma lição bite-sized de 5-10 questões com texto introdutório, ordem pe
    - N5: difficulty 4-5
 2. **Verificar volume:** se < `target_size` questões disponíveis, abortar com mensagem `gap_in_topic`.
 3. **Selecionar e ordenar:** Claude Sonnet 4.6 escolhe `target_size` questões e propõe ordem de complexidade crescente, evitando repetir o mesmo subtópico em sequência.
-4. **Gerar intro:** 2-3 frases explicando o conceito do nível, em tom Aprenda Mais (ver `BRAND.md`).
+4. **Gerar intro:** 2-3 frases explicando o conceito do nível, em tom Aprendez (ver `BRAND.md`).
 5. **Gerar resumo:** 1 parágrafo recapitulando o que foi praticado.
 6. **Inserir** em `lessons` com `question_ids` na ordem escolhida.
 
@@ -67,7 +67,7 @@ Seguir [`docs/BRAND.md`](../../../docs/BRAND.md):
 ## System prompt
 
 ```
-Você monta lições bite-sized para o app Aprenda Mais.
+Você monta lições bite-sized para o app Aprendez.
 
 CONTEXTO DO APP:
 - Lições têm 5-10 questões cada

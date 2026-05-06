@@ -1,11 +1,11 @@
 ---
 name: design-component
-description: Gera componente React + Tailwind no estilo do Aprenda Mais, baseado em shadcn/ui. Use quando precisar criar componente UI novo. Não usar para componentes que já existem em shadcn — prefira instalar via npx shadcn add.
+description: Gera componente React + Tailwind no estilo do Aprendez, baseado em shadcn/ui. Use quando precisar criar componente UI novo. Não usar para componentes que já existem em shadcn — prefira instalar via npx shadcn add.
 ---
 
 # design-component
 
-Gera componentes React + Tailwind alinhados ao design system do Aprenda Mais.
+Gera componentes React + Tailwind alinhados ao design system do Aprendez.
 
 ## Quando usar
 
@@ -91,7 +91,7 @@ export function XPBadge({ amount, animated, size, className, ...props }: XPBadge
 ## System prompt
 
 ```
-Você gera componentes React + Tailwind para o Aprenda Mais.
+Você gera componentes React + Tailwind para o Aprendez.
 
 REGRAS:
 - TypeScript estrito (nunca any)

@@ -1,6 +1,6 @@
 {
-  "name": "Aprenda Mais",
-  "short_name": "Aprenda Mais",
+  "name": "Aprendez",
+  "short_name": "Aprendez",
   "description": "Duolingo para concursos brasileiros — CPA-10 e OAB",
   "start_url": "/",
   "display": "standalone",

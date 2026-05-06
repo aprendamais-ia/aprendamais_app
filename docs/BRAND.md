@@ -4,7 +4,7 @@ Identidade visual, mascote, tom de voz. Aplicar em UI, marketing, push notificat
 
 ## Nome
 
-**Aprenda Mais.** Decidido. Domínios alvo: `aprendamais.com.br` (primário), `aprendamais.app` (fallback).
+**Aprendez.** Decidido. Domínios alvo: `aprendez.com.br` (primário), `aprendez.app` (fallback).
 
 ## Posicionamento em 1 frase
 
@@ -111,7 +111,7 @@ Self-host via `next/font` para LCP < 2s no 4G brasileiro.
 ## Logos
 
 A criar (semana 1):
-- `logo-full.svg` — nome "Aprenda Mais" + mascote
+- `logo-full.svg` — nome "Aprendez" + mascote
 - `logo-mark.svg` — só mascote
 - `logo-mono.svg` — versão preto/branco para impressão
 - `favicon.ico`, `apple-touch-icon.png`, `manifest-icon-*.png`

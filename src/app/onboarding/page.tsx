@@ -31,7 +31,7 @@ export default async function OnboardingPage() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
       <header>
-        <span className="font-display text-xl font-bold">Aprenda Mais</span>
+        <span className="font-display text-xl font-bold">Aprendez</span>
       </header>
       <OnboardingForm tracks={tracks ?? []} />
     </main>

@@ -31,7 +31,7 @@ export default async function AppHomePage() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
       <header className="flex items-center justify-between">
-        <span className="font-display text-xl font-bold">Aprenda Mais</span>
+        <span className="font-display text-xl font-bold">Aprendez</span>
         <div className="flex items-center gap-3 text-sm">
           <span className="flex items-center gap-1">
             <Heart className="size-4 text-error" />

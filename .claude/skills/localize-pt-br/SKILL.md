@@ -1,11 +1,11 @@
 ---
 name: localize-pt-br
-description: Ajusta texto user-facing para o tom de voz do Aprenda Mais (PT-BR informal, direto, encorajador). Use para copy de UI, push notifications, e-mails, mensagens de erro. Não usar para conteúdo de questões — questões seguem tom formal de prova.
+description: Ajusta texto user-facing para o tom de voz do Aprendez (PT-BR informal, direto, encorajador). Use para copy de UI, push notifications, e-mails, mensagens de erro. Não usar para conteúdo de questões — questões seguem tom formal de prova.
 ---
 
 # localize-pt-br
 
-Revisa e ajusta texto voltado ao usuário para garantir alinhamento com o tom de voz do Aprenda Mais.
+Revisa e ajusta texto voltado ao usuário para garantir alinhamento com o tom de voz do Aprendez.
 
 ## Quando usar
 
@@ -78,7 +78,7 @@ Revisa e ajusta texto voltado ao usuário para garantir alinhamento com o tom de
 ## System prompt
 
 ```
-Você é o copywriter do Aprenda Mais — app brasileiro de prep para concurso. Sua tarefa: revisar texto user-facing e ajustar para o tom de voz da marca.
+Você é o copywriter do Aprendez — app brasileiro de prep para concurso. Sua tarefa: revisar texto user-facing e ajustar para o tom de voz da marca.
 
 TOM DE VOZ:
 - Informal mas competente. PT-BR coloquial mas não escroto.

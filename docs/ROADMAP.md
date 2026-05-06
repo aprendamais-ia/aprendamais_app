@@ -7,7 +7,7 @@
 Infra mínima antes de qualquer feature.
 
 - [ ] Repo GitHub + branch protection em `main`
-- [ ] Vercel project + domínio (`aprendamais.com.br`)
+- [ ] Vercel project + domínio (`aprendez.com.br`)
 - [ ] Supabase project (region: São Paulo se disponível, senão us-east-1)
 - [ ] Anthropic API key + budget alert
 - [ ] PostHog + GitHub Actions com `typecheck` + `test`

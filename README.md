@@ -1,4 +1,4 @@
-# Aprenda Mais
+# Aprendez
 
 > Duolingo para concursos brasileiros. CPA-10 e OAB no MVP, expansão para medicina/juiz/promotor depois.
 

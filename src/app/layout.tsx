@@ -23,15 +23,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Aprenda Mais — Duolingo para concursos",
-    template: "%s · Aprenda Mais",
+    default: "Aprendez — Duolingo para concursos",
+    template: "%s · Aprendez",
   },
   description:
     "O jeito mais leve de passar no concurso. Estude CPA-10 e OAB em sessões curtas, com gamificação e métricas reais de progresso.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
-    title: "Aprenda Mais",
+    title: "Aprendez",
     statusBarStyle: "black-translucent",
   },
 };

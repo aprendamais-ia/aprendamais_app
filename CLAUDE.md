@@ -1,4 +1,4 @@
-# CLAUDE.md — Aprenda Mais
+# CLAUDE.md — Aprendez
 
 Guia para qualquer dev (humano ou IA) usando Claude Code neste repositório.
 
@@ -55,7 +55,7 @@ Cada `modules/<nome>/` tem dono claro (ver [`docs/TASKS.md`](docs/TASKS.md)). Mu
 - `generate-question` — gera questão de múltipla escolha do tópico X
 - `review-question` — fact-check de uma questão contra a citação
 - `create-lesson` — gera lição bite-sized de um tópico
-- `localize-pt-br` — ajusta tom de texto para PT-BR informal Aprenda Mais
+- `localize-pt-br` — ajusta tom de texto para PT-BR informal Aprendez
 - `design-component` — gera componente shadcn/Tailwind no estilo do app
 - `exam-coverage` — audita gaps na cobertura da ementa
 

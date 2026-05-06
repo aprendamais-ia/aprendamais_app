@@ -1,11 +1,11 @@
 ---
 name: generate-question
-description: Gera questões de múltipla escolha estilo CPA-10/OAB para o banco de questões do Aprenda Mais. Use quando precisar criar questões novas para um tópico específico da ementa. Não usar para revisar — use review-question. Não usar para escrever lições — use create-lesson.
+description: Gera questões de múltipla escolha estilo CPA-10/OAB para o banco de questões do Aprendez. Use quando precisar criar questões novas para um tópico específico da ementa. Não usar para revisar — use review-question. Não usar para escrever lições — use create-lesson.
 ---
 
 # generate-question
 
-Gera questões de múltipla escolha de qualidade pronta para revisão (status `draft`) no banco do Aprenda Mais.
+Gera questões de múltipla escolha de qualidade pronta para revisão (status `draft`) no banco do Aprendez.
 
 ## Quando usar
 
@@ -65,7 +65,7 @@ Gera questões de múltipla escolha de qualidade pronta para revisão (status `d
 ## System prompt template (cacheado)
 
 ```
-Você gera questões de múltipla escolha para o app Aprenda Mais — preparação para o concurso {track}.
+Você gera questões de múltipla escolha para o app Aprendez — preparação para o concurso {track}.
 
 EMENTA OFICIAL ({issuer}, versão {version}):
 {full_syllabus_yaml}

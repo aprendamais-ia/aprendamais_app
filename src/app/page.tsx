@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-10">
       <header className="flex items-center justify-between">
-        <span className="font-display text-xl font-bold">Aprenda Mais</span>
+        <span className="font-display text-xl font-bold">Aprendez</span>
         <Link
           href="/entrar"
           className="text-sm font-medium text-text-muted hover:text-text"

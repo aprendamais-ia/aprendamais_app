@@ -42,7 +42,7 @@ Fontes:
 - **160 mil+ vagas** em concursos públicos previstos para 2026 ([Estratégia](https://www.estrategiaconcursos.com.br/blog/concursos-2026/))
 - Salários iniciais até R$ 30 mil — incentivo financeiro forte
 - Estimativa de candidatos por vaga em concursos federais: 20-200x → milhões de concurseiros ativos
-- CPA-10 especificamente: ~50 mil candidatos/ano (ANBIMA)
+- CPA-10 especificamente: descontinuada em dez/2025; público em transição até dez/2026 (ver seção "ALERTA — CPA-10 descontinuada" abaixo)
 - OAB: ~150 mil candidatos por exame, 3 exames/ano = ~450 mil/ano (parte são repescagens)
 
 **TAM bruto (BR):** algo entre 3M-10M concurseiros ativos a qualquer momento. Mercado fragmentado, ninguém domina sozinho.
@@ -105,6 +105,52 @@ Resumo: native não traz benefício suficiente para o custo no MVP.
 - [Estratégia Concursos — Concursos 2026](https://www.estrategiaconcursos.com.br/blog/concursos-2026/)
 - [QConcursos](https://www.qconcursos.com/)
 - Protótipo atual: `https://cpa10.abacusai.app/`
+
+## ⚠️ ALERTA — CPA-10 descontinuada (descoberto 2026-05-05)
+
+Pesquisa via WebFetch no site oficial ANBIMA confirmou:
+
+> "A CPA-10 está sendo descontinuada. Transição das certificações CPA-10, CPA-20 e CEA vai começar com prazo até dezembro de 2026."
+
+**Fatos:**
+- CPA-10 saiu de catálogo em 12/2025
+- Substitutas: nova **CPA**, **C-Pro I** (Profissional de Investimento - Operadora), e **microcertificações** no ANBIMA Edu
+- Profissionais com CPA-10 válida precisam, até dez/2026:
+  - Concluir microcertificações obrigatórias na ANBIMA Edu
+  - Pagar taxa de atualização anual
+
+**Implicações para o produto:**
+
+1. **Track CPA-10 vira legado.** Continua útil para quem está revisando para microcertificações de transição, mas mercado encolhe até zerar em dez/2026.
+2. **Track novo precisa ser definido.** Avaliar:
+   - **Nova CPA** (substituta direta) — provável escolha
+   - **C-Pro I** (perfil mais amplo de investimentos) — mais novo, menos competidores
+   - **Microcertificações** específicas (granular, mais SKUs)
+3. **Não desperdiçar geração de conteúdo CPA-10** antes de validar se queremos o legado. Sugestão: priorizar OAB nas primeiras 500 questões e definir o segundo vertical ANBIMA até semana 4.
+
+**Fontes:**
+- [ANBIMA — CPA-10](https://www.anbima.com.br/pt_br/educar/certificacoes/cpa-10.htm)
+- [ANBIMA Edu](https://anbimaedu.com.br/certificacao/cpa)
+- [PD CPA-10 v6.8 (vigente até 03/2025)](https://www.anbima.com.br/data/files/32/94/93/09/BCCA49108056A849EA2BA2A8/PD%20CPA-10_versao%206.8%20_vigencia%2003.03.2025_%20Limpo.pdf)
+
+## OAB — pesos confirmados (2026-05-05)
+
+Distribuição confirmada de questões na 1ª Fase via análise de provas FGV:
+
+| Disciplina | Questões | Peso |
+|---|---|---|
+| Direito Civil | 9 | 11.25% |
+| Ética Profissional | 8 | 10.00% |
+| Direito Penal | 7 | 8.75% |
+| Direito Constitucional | ~6 | ~7.50% |
+| Direito Processual Civil | ~6 | ~7.50% |
+| Tributário, Administrativo, Trabalho, Processo Trabalho, Processo Penal, Empresarial | 5 cada | 6.25% cada |
+| Filosofia, DH, Internacional, ECA, Ambiental, Consumidor, Financeiro, Eleitoral, Previdenciário | 2 cada | 2.50% cada |
+| **Total** | **80** | **100%** |
+
+Aplicação prática: `oab.yaml` foi atualizado com `weight` proporcional e `questions_in_exam` exato por módulo. Geração de conteúdo deve respeitar esses pesos para não desperdiçar esforço em disciplina de baixo retorno.
+
+Fonte: [Estratégia OAB — assuntos mais cobrados FGV](https://oab.estrategia.com/portal/oab-1-fase-assuntos-mais-cobrados-fgv/) cruzado com [calendário 46º Exame](https://blog.bizu.com.br/calendario-oab-2026-veja-as-datas-previstas-para-o-46o-47o-e-48o-exame/) e [edital](https://s.oab.org.br/arquivos/2026/01/695d6c9c-e9d3-4054-ae89-2aa5101eb5e6.pdf).
 
 ## Pendente para validar com beta
 

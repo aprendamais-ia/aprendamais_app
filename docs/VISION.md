@@ -4,10 +4,13 @@
 
 Concurseiros brasileiros estudam errado. As plataformas dominantes (Estratégia Concursos, Gran Cursos, QConcursos) vendem **horas de videoaula** e **bancos passivos de questões**. O usuário assiste, resolve, esquece — sem feedback adaptativo, sem hábito diário, sem mecânica que prenda. Taxas de desistência são absurdas: a maioria não chega ao dia da prova.
 
-CPA-10 (~50 mil candidatos/ano) e OAB (~150 mil candidatos/exame, 3x ao ano) são os dois mercados com:
-- Ementa estável e pública
-- Prova padronizada (fácil de modelar)
+CPA-10 e OAB foram inicialmente escolhidos como verticais do MVP. **Atualização de 2026-05-05:** a CPA-10 foi **descontinuada em dez/2025** pela ANBIMA. Novas certificações entraram em vigor em jan/2026 (CPA, C-Pro I/R + microcertificações no ANBIMA Edu). Profissionais em transição têm até dez/2026 para concluir microcertificações. Implicação: o track CPA-10 vira **legado** (mercado de transição até dez/2026), e o vertical primário ANBIMA precisa pivotar para a **nova CPA** ou **C-Pro I**.
+
+OAB segue inalterada e continua sendo um mercado com:
+- Ementa estável e pública (Edital Unificado FGV)
+- Prova padronizada (80q, 5h, 50% para passar)
 - Público motivado pagando (R$ 200-2000 em cursinhos hoje)
+- ~150 mil candidatos/exame, 3 exames/ano
 
 ## A oportunidade
 

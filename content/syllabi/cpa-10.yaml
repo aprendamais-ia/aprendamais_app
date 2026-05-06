@@ -1,10 +1,26 @@
 # CPA-10 — ementa ANBIMA
-# IMPORTANTE: Este é um esqueleto inicial. Validar contra o edital atual da ANBIMA antes de gerar conteúdo.
-# Pesos são aproximados conforme distribuição histórica das provas.
+#
+# ⚠️  STATUS DE TRANSIÇÃO (descoberta em 2026-05-05)
+# A CPA-10 foi DESCONTINUADA em dezembro/2025. A partir de janeiro/2026, novas
+# certificações ANBIMA estão em vigor (CPA, C-Pro I/R, microcertificações no
+# ANBIMA Edu). Profissionais com CPA-10 válida têm até dezembro/2026 para
+# concluir a transição (microcertificações + taxa anual).
+#
+# Implicação para Aprenda Mais:
+# - Público-alvo desta ementa em 2026: pessoas em transição revisando o conteúdo
+#   antigo + curiosos. NÃO mais novos candidatos.
+# - Decisão de produto pendente: pivotar para a nova CPA / C-Pro I como track
+#   primária, manter CPA-10 só como track legado, ou descontinuar.
+#
+# Programa Detalhado (PD) v6.8 vigente até 03/03/2025 — esta ementa reflete essa versão.
+# Pesos aproximados conforme distribuição histórica das provas.
 
 track: cpa-10
 issuer: ANBIMA
-version: "2024.1"
+version: "PD-6.8 (legado)"
+status: "discontinued-in-transition"
+discontinued_at: "2025-12-31"
+transition_until: "2026-12-31"
 url: https://www.anbima.com.br/pt_br/educar/certificacoes/cpa-10.htm
 
 exam_format:

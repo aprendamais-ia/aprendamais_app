@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Flame, Zap, Trophy } from "lucide-react";
 
 export default function Home() {
@@ -5,7 +6,12 @@ export default function Home() {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-10">
       <header className="flex items-center justify-between">
         <span className="font-display text-xl font-bold">Aprenda Mais</span>
-        <span className="text-sm font-medium text-text-muted">Em breve</span>
+        <Link
+          href="/entrar"
+          className="text-sm font-medium text-text-muted hover:text-text"
+        >
+          Entrar
+        </Link>
       </header>
 
       <section className="mt-16 flex flex-1 flex-col justify-center">
@@ -25,13 +31,12 @@ export default function Home() {
           <Stat icon={<Trophy className="size-5 text-premium" />} label="Liga" value="Ouro" />
         </div>
 
-        <button
-          type="button"
-          disabled
-          className="mt-12 flex h-14 items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98] disabled:cursor-not-allowed"
+        <Link
+          href="/entrar"
+          className="mt-12 flex h-14 items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
         >
           Bora começar
-        </button>
+        </Link>
         <p className="mt-3 text-center text-xs text-text-muted">
           Grátis pra começar · Pix ou cartão · Cancela quando quiser
         </p>

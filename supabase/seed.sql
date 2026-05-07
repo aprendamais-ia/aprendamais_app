@@ -21,14 +21,12 @@ on conflict (slug) do update set
   active = excluded.active,
   exam_format = excluded.exam_format;
 
--- Achievements iniciais (5 — expandir conforme telemetria)
+-- Achievements iniciais (3 — expandir conforme telemetria)
 insert into public.achievements (code, name, description, icon)
 values
   ('first_lesson',    'Primeira Lição',     'Completou sua primeira lição',                    'sparkles'),
   ('streak_7',        'Semana de Fogo',     'Streak de 7 dias',                                'flame'),
-  ('streak_30',       'Mês de Disciplina',  'Streak de 30 dias',                               'flame'),
-  ('first_simulado',  'Primeira Prova',     'Completou seu primeiro simulado',                 'clipboard-check'),
-  ('simulado_70',     'Aprovação',          'Tirou 70% ou mais num simulado oficial',          'trophy')
+  ('streak_30',       'Mês de Disciplina',  'Streak de 30 dias',                               'flame')
 on conflict (code) do update set
   name = excluded.name,
   description = excluded.description,

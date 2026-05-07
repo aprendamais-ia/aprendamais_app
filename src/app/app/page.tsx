@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Flame, Zap, Heart, Trophy, ClipboardList } from "lucide-react";
+import { Flame, Zap, Heart, Trophy } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/logo";
+import { LearningPath, type Phase } from "@/components/learning-path";
 import { SignOutButton } from "./sign-out-button";
 
 export const metadata = { title: "Início" };
@@ -22,17 +23,7 @@ export default async function AppHomePage() {
 
   if (!profile?.onboarded_at) redirect("/onboarding");
 
-  const { data: nextLesson } = profile?.primary_track_id
-    ? await supabase
-        .from("lessons")
-        .select("id, title, intro, level, position, topics!inner(track_id)")
-        .eq("published", true)
-        .eq("topics.track_id", profile.primary_track_id)
-        .order("level")
-        .order("position")
-        .limit(1)
-        .maybeSingle()
-    : { data: null };
+  const phases = await loadPhases(supabase, user.id, profile.primary_track_id);
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
@@ -54,55 +45,80 @@ export default async function AppHomePage() {
         </div>
       </header>
 
-      <section className="mt-10 flex flex-1 flex-col">
+      <section className="mt-8 flex flex-1 flex-col">
         <h1 className="font-display text-2xl font-bold">
           Oi, {profile?.display_name ?? user.email}.
         </h1>
+        <p className="mt-1 text-sm text-text-muted">Tua trilha tá te esperando.</p>
 
-        {nextLesson ? (
-          <Link
-            href={`/app/licao/${nextLesson.id}`}
-            className="mt-6 flex items-center justify-between rounded-2xl bg-brand-green p-5 text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
-          >
-            <div>
-              <div className="text-xs font-medium opacity-80">Próxima lição</div>
-              <div className="mt-1 font-display text-lg font-semibold">{nextLesson.title}</div>
-              {nextLesson.intro && (
-                <div className="mt-1 text-xs opacity-80 line-clamp-2">{nextLesson.intro}</div>
-              )}
-            </div>
-            <ArrowRight className="size-6 shrink-0" />
-          </Link>
-        ) : (
-          <div className="mt-6 rounded-2xl border border-dashed border-border p-5 text-center">
-            <p className="text-sm text-text-muted">
-              Nenhuma lição publicada ainda. Roda{" "}
-              <code className="font-mono text-xs">pnpm db:seed-demo</code> pra liberar a primeira.
-            </p>
-          </div>
-        )}
+        <LearningPath phases={phases} />
 
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          <Link
-            href="/app/liga"
-            className="flex flex-col gap-1 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-text-muted"
-          >
+        <Link
+          href="/app/liga"
+          className="mt-10 flex items-center justify-between rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-text-muted"
+        >
+          <div className="flex items-center gap-3">
             <Trophy className="size-5 text-brand-yellow" />
-            <span className="mt-1 font-display text-sm font-semibold">Liga</span>
-            <span className="text-xs text-text-muted">Ranking semanal</span>
-          </Link>
-          <Link
-            href="/app/simulado"
-            className="flex flex-col gap-1 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-text-muted"
-          >
-            <ClipboardList className="size-5 text-brand-green" />
-            <span className="mt-1 font-display text-sm font-semibold">Simulado</span>
-            <span className="text-xs text-text-muted">Modo prova</span>
-          </Link>
-        </div>
+            <div>
+              <div className="font-display text-sm font-semibold">Liga</div>
+              <div className="text-xs text-text-muted">Bate seus amigos no ranking</div>
+            </div>
+          </div>
+        </Link>
       </section>
 
       <SignOutButton />
     </main>
   );
+}
+
+async function loadPhases(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  trackId: string | null,
+): Promise<Phase[]> {
+  if (!trackId) return [];
+
+  const { data: lessons } = await supabase
+    .from("lessons")
+    .select("id, title, level, position, question_ids, topics!inner(track_id)")
+    .eq("published", true)
+    .eq("topics.track_id", trackId)
+    .order("level")
+    .order("position");
+
+  if (!lessons?.length) return [];
+
+  const lessonIds = lessons.map((l) => l.id as string);
+  const { data: attempts } = await supabase
+    .from("attempts")
+    .select("lesson_id, question_id")
+    .eq("user_id", userId)
+    .eq("is_correct", true)
+    .in("lesson_id", lessonIds);
+
+  const correctByLesson = new Map<string, Set<string>>();
+  for (const a of attempts ?? []) {
+    if (!a.lesson_id) continue;
+    const set = correctByLesson.get(a.lesson_id) ?? new Set<string>();
+    set.add(a.question_id as string);
+    correctByLesson.set(a.lesson_id, set);
+  }
+
+  let foundActive = false;
+  return lessons.map((lesson) => {
+    const total = (lesson.question_ids as string[]).length;
+    const correctSet = correctByLesson.get(lesson.id as string) ?? new Set();
+    const completed = total > 0 && correctSet.size >= total;
+    let state: Phase["state"];
+    if (completed) {
+      state = "completed";
+    } else if (!foundActive) {
+      state = "active";
+      foundActive = true;
+    } else {
+      state = "locked";
+    }
+    return { id: lesson.id as string, title: lesson.title as string, state };
+  });
 }

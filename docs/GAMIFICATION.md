@@ -7,7 +7,7 @@ Especificação completa das mecânicas. Toda regra com número definido aqui é
 Inspiração direta no Duolingo, com 3 ajustes para o público concurseiro:
 
 1. **North star = probabilidade de aprovação**, não XP. XP é meio.
-2. **Modo simulado oficial** sem mecânicas de jogo, espelhando dia da prova.
+2. **Trilha sequencial.** Usuário avança por fases desbloqueadas, não por menus. Foco em loop diário curto.
 3. **Sem dark patterns.** Streak freeze grátis (1/semana). Cancelar premium em 1 clique. Não vendemos "salvar streak por R$ X".
 
 ## XP
@@ -20,16 +20,16 @@ Inspiração direta no Duolingo, com 3 ajustes para o público concurseiro:
 | Questão errada | 0 |
 | Lição completa (todas corretas) | +20 bônus |
 | Streak de 5 acertos seguidos na sessão | +10 bônus |
-| Simulado completo | +50 + 1XP por % acerto |
+| Fase desbloqueada (ao concluir 1ª vez) | +30 bônus |
 
 XP nunca diminui. Acumula em `profiles.xp_total` e em `league_members.weekly_xp` (zera segunda).
 
 ## Vidas (corações)
 
 - Máximo: **5**
-- Perde 1 ao errar uma questão (modo `lesson`, não `revisao`/`simulado`)
+- Perde 1 ao errar uma questão (modo `lesson`, não `revisao`)
 - Regen: **+1 a cada 30 minutos**
-- Vidas zeradas: bloqueia novas lições por até 30min, mas permite modo `revisao` (sem perder vida) e `simulado`
+- Vidas zeradas: bloqueia novas lições por até 30min, mas permite modo `revisao` (sem perder vida)
 - **Premium:** vidas infinitas
 
 Implementação: `profiles.lives` + `lives_regen_at`. Cliente calcula vidas atuais com `min(5, lives + floor((now - lives_regen_at) / 30min))`.
@@ -67,19 +67,9 @@ Lista inicial (expandir conforme telemetria):
 | `100_questions` | Centena | 100 questões respondidas |
 | `1000_questions` | Milhar | 1000 questões respondidas |
 | `100_<topic>` | Especialista em \<tópico\> | 100 questões corretas em um tópico específico |
-| `first_simulado` | Primeira Prova | Completou 1º simulado |
-| `simulado_70` | Aprovação | Tirou ≥70% num simulado oficial |
+| `module_complete` | Módulo dominado | Concluiu todas as fases de um módulo da ementa |
 | `top_3_league` | Pódio | Top 3 em qualquer liga |
 | `lendas` | Liga das Lendas | Chegou em Lendas |
-
-## Modo Simulado Oficial
-
-Sem gamificação durante a prova:
-- Sem timer visível por questão (só timer geral)
-- Sem feedback de acerto/erro até o fim
-- Sem XP/vidas durante
-- Layout idêntico à prova oficial (CPA-10: 50q em 2h; OAB: 80q em 5h, primeiro fase)
-- Ao final: relatório completo + XP retroativo + análise de gaps por tópico
 
 ## Probabilidade de aprovação (north star)
 
@@ -101,7 +91,7 @@ onde skill_level[T] vem de média móvel de acertos recentes em T,
 confidence cresce com número de questões já feitas em T.
 ```
 
-Calibração: backtesting com nossos próprios simulados como ground truth. Refinar depois com dados de aprovação real auto-reportada.
+Calibração: backtesting com lições e modo revisão como proxy de prova. Refinar depois com dados de aprovação real auto-reportada.
 
 ## Notificações push
 

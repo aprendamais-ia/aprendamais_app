@@ -232,8 +232,90 @@ async function main() {
   }
 
   await seedJsonTracks();
+  await seedNovaCpaDemoLesson();
 
   console.log("\n✓ seed demo concluído");
+}
+
+const NOVA_CPA_DEMO_LESSON = {
+  trackSlug: "nova-cpa",
+  topicSlug: "sistema-financeiro.orgaos-reguladores",
+  level: 1,
+  position: 0,
+  title: "Bora começar — fundamentos da Nova CPA",
+  intro:
+    "Cinco questões cobrindo os quatro módulos da prova — SFN, produtos, cliente e inovação. Boa pra ver de onde tu começa.",
+  outro:
+    "Boa! Tu varreu **as quatro grandes áreas** da Nova CPA num lance só. Próximas lições aprofundam módulo por módulo.",
+  questionStems: [
+    "Qual das alternativas a seguir descreve corretamente uma atribuição do Conselho Monetário Nacional (CMN)?",
+    "Os principais instrumentos clássicos de política monetária utilizados pelo Banco Central do Brasil são:",
+    "O Tesouro Selic (LFT) é um título público federal que se caracteriza por:",
+    "A reserva de emergência é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
+    "A sigla ESG, aplicada a investimentos, refere-se a critérios:",
+  ],
+};
+
+async function seedNovaCpaDemoLesson() {
+  const cfg = NOVA_CPA_DEMO_LESSON;
+
+  const { data: track } = await supabase
+    .from("tracks").select("id").eq("slug", cfg.trackSlug).single();
+  if (!track) {
+    console.error(`\n✖ track '${cfg.trackSlug}' não encontrada — pulando lição demo`);
+    return;
+  }
+
+  const { data: topic } = await supabase
+    .from("topics").select("id").eq("track_id", track.id).eq("slug", cfg.topicSlug).single();
+  if (!topic) {
+    console.error(`\n✖ topic '${cfg.topicSlug}' não encontrado — pulando lição demo`);
+    return;
+  }
+
+  const { data: questions } = await supabase
+    .from("questions").select("id, stem").in("stem", cfg.questionStems);
+  const byStem = new Map((questions ?? []).map((q) => [q.stem, q.id as string]));
+  const orderedIds = cfg.questionStems
+    .map((s) => byStem.get(s))
+    .filter((id): id is string => Boolean(id));
+
+  if (orderedIds.length !== cfg.questionStems.length) {
+    const missing = cfg.questionStems.filter((s) => !byStem.has(s));
+    console.error(`\n✖ ${missing.length} questões da lição demo nova-cpa não foram encontradas — pulando`);
+    missing.forEach((s) => console.error(`    ↳ ${s.slice(0, 80)}…`));
+    return;
+  }
+
+  const { data: existing } = await supabase
+    .from("lessons").select("id").eq("title", cfg.title).maybeSingle();
+
+  if (existing) {
+    const { error } = await supabase.from("lessons").update({
+      topic_id: topic.id,
+      level: cfg.level,
+      position: cfg.position,
+      intro: cfg.intro,
+      outro: cfg.outro,
+      question_ids: orderedIds,
+      published: true,
+    }).eq("id", existing.id);
+    if (error) throw error;
+    console.log(`\n✓ lição demo nova-cpa atualizada: ${existing.id}`);
+  } else {
+    const { data: row, error } = await supabase.from("lessons").insert({
+      topic_id: topic.id,
+      level: cfg.level,
+      position: cfg.position,
+      title: cfg.title,
+      intro: cfg.intro,
+      outro: cfg.outro,
+      question_ids: orderedIds,
+      published: true,
+    }).select("id").single();
+    if (error || !row) throw error;
+    console.log(`\n✓ lição demo nova-cpa criada: ${row.id}`);
+  }
 }
 
 async function seedJsonTracks() {

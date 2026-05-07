@@ -22,14 +22,17 @@ export default async function AppHomePage() {
 
   if (!profile?.onboarded_at) redirect("/onboarding");
 
-  const { data: nextLesson } = await supabase
-    .from("lessons")
-    .select("id, title, intro, level, position")
-    .eq("published", true)
-    .order("level")
-    .order("position")
-    .limit(1)
-    .maybeSingle();
+  const { data: nextLesson } = profile?.primary_track_id
+    ? await supabase
+        .from("lessons")
+        .select("id, title, intro, level, position, topics!inner(track_id)")
+        .eq("published", true)
+        .eq("topics.track_id", profile.primary_track_id)
+        .order("level")
+        .order("position")
+        .limit(1)
+        .maybeSingle()
+    : { data: null };
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">

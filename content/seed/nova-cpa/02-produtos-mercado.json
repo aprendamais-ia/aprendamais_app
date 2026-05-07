@@ -1,0 +1,210 @@
+[
+  {
+    "topic_slug": "produtos-mercado.renda-fixa-publica",
+    "difficulty": 2,
+    "stem": "O Tesouro Selic (LFT) é um título público federal que se caracteriza por:",
+    "choices": [
+      { "key": "A", "text": "Pagar uma taxa prefixada definida no momento da compra, com cupom semestral.", "correct": false },
+      { "key": "B", "text": "Ter sua rentabilidade atrelada à variação da taxa Selic divulgada diariamente, sem cupom.", "correct": true },
+      { "key": "C", "text": "Pagar a variação do IPCA mais uma taxa real prefixada, com cupom semestral.", "correct": false },
+      { "key": "D", "text": "Ter rentabilidade vinculada à variação cambial dólar-real.", "correct": false }
+    ],
+    "explanation": "A LFT (Tesouro Selic) é um título pós-fixado cuja remuneração acompanha a Selic divulgada pelo BC, sem pagamento de cupom — o resgate é feito no vencimento ou pela venda no mercado secundário. O título prefixado é a LTN/Tesouro Prefixado; o atrelado ao IPCA é a NTN-B/Tesouro IPCA+.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 2.1.1.1.1.2 (LFT) e 2.1.1.1.2 (Tesouro Selic)"
+  },
+  {
+    "topic_slug": "produtos-mercado.renda-fixa-publica",
+    "difficulty": 4,
+    "stem": "Um investidor adquire um Tesouro IPCA+ 2035 a uma taxa real contratada de 6% ao ano. Decorrido um ano, decide vender o título no mercado secundário e a taxa de mercado para esse vencimento está em 5% a.a. Em relação à rentabilidade efetiva nesse 1 ano, é correto afirmar que o investidor:",
+    "choices": [
+      { "key": "A", "text": "Receberá exatamente IPCA + 6% no período, pois a taxa contratada é fixa.", "correct": false },
+      { "key": "B", "text": "Receberá menos do que IPCA + 6%, devido à marcação a mercado desfavorável.", "correct": false },
+      { "key": "C", "text": "Receberá mais do que IPCA + 6%, devido à marcação a mercado favorável.", "correct": true },
+      { "key": "D", "text": "Receberá apenas a variação do IPCA, perdendo o cupom.", "correct": false }
+    ],
+    "explanation": "Em títulos prefixados ou atrelados a IPCA com taxa real, queda das taxas de mercado eleva o preço do título (relação inversa preço × taxa). Como a taxa caiu de 6% para 5%, o preço de venda é maior que o esperado pela curva contratada, gerando rentabilidade superior a IPCA + 6% no período (efeito da marcação a mercado). A rentabilidade contratada só seria exata se o título fosse levado ao vencimento.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 2.1.1.1.1.1 (NTN-B) e 1.3.3 (efeito juros vs. tempo)"
+  },
+  {
+    "topic_slug": "produtos-mercado.renda-fixa-privada",
+    "difficulty": 3,
+    "stem": "Sobre a Letra de Crédito Imobiliário (LCI) emitida por banco brasileiro a uma pessoa física, é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "É tributada pelo IR conforme tabela regressiva e não conta com cobertura do FGC.", "correct": false },
+      { "key": "B", "text": "É isenta de IR para pessoas físicas e conta com cobertura do FGC até R$ 250 mil por CPF/instituição.", "correct": true },
+      { "key": "C", "text": "É isenta de IR para pessoas físicas e tem garantia direta do Tesouro Nacional.", "correct": false },
+      { "key": "D", "text": "É tributada pelo IR conforme tabela regressiva e tem rendimento sempre superior ao Tesouro Selic.", "correct": false }
+    ],
+    "explanation": "A LCI tem isenção de IR para pessoa física sobre os rendimentos e é coberta pelo FGC até R$ 250 mil por CPF e instituição (limite global de R$ 1 milhão a cada 4 anos). Não tem garantia do Tesouro Nacional — quem garante é o FGC.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.1.1.3.3 — Letra de Crédito Imobiliário (LCI)"
+  },
+  {
+    "topic_slug": "produtos-mercado.renda-fixa-privada",
+    "difficulty": 3,
+    "stem": "Um investidor pessoa física resgata, após 200 dias de aplicação, R$ 5.000,00 brutos de rendimentos em um CDB. Qual a alíquota de IR aplicável e o imposto retido na fonte?",
+    "choices": [
+      { "key": "A", "text": "15% — R$ 750,00", "correct": false },
+      { "key": "B", "text": "17,5% — R$ 875,00", "correct": false },
+      { "key": "C", "text": "20% — R$ 1.000,00", "correct": true },
+      { "key": "D", "text": "22,5% — R$ 1.125,00", "correct": false }
+    ],
+    "explanation": "Tabela regressiva de IR em renda fixa: até 180 dias = 22,5%; de 181 a 360 dias = 20%; de 361 a 720 dias = 17,5%; acima de 720 dias = 15%. Como 200 dias está na segunda faixa, a alíquota é 20% e o imposto retido é R$ 1.000,00.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.1.1.11 — Tributação de aplicações de renda fixa"
+  },
+  {
+    "topic_slug": "produtos-mercado.renda-variavel",
+    "difficulty": 3,
+    "stem": "Em relação à tributação de proventos pagos por empresas brasileiras a acionistas pessoas físicas (legislação vigente), é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "Tanto dividendos quanto Juros sobre Capital Próprio (JCP) são isentos de IR.", "correct": false },
+      { "key": "B", "text": "Dividendos são isentos de IR e JCP é tributado a 15% retidos na fonte.", "correct": true },
+      { "key": "C", "text": "Dividendos são tributados a 15% na fonte e JCP é isento.", "correct": false },
+      { "key": "D", "text": "Ambos são tributados conforme a tabela progressiva mensal do IR.", "correct": false }
+    ],
+    "explanation": "Pela legislação vigente, dividendos pagos por empresas brasileiras a acionistas pessoas físicas são isentos de IR. Já o JCP (Juros sobre Capital Próprio) é tributado em 15% retidos na fonte de forma exclusiva, sendo dedutível para a empresa pagadora — daí ser uma forma de remuneração tributariamente atrativa para a empresa.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 2.1.1.2.2.2.3 (dividendos), 2.1.1.2.2.2.4 (JCP) e 2.1.1.3 (tributação RV)"
+  },
+  {
+    "topic_slug": "produtos-mercado.renda-variavel",
+    "difficulty": 3,
+    "stem": "Um investidor pessoa física vende, em determinado mês, R$ 18.000,00 em ações no mercado à vista (operação normal, não day trade), apurando ganho líquido de R$ 2.000,00. Qual o tratamento tributário aplicável?",
+    "choices": [
+      { "key": "A", "text": "Tributação de 15% sobre o ganho líquido, recolhida via DARF.", "correct": false },
+      { "key": "B", "text": "Tributação de 20% sobre o ganho líquido, retida na fonte pela corretora.", "correct": false },
+      { "key": "C", "text": "Isenção, pois o total vendido no mês ficou abaixo de R$ 20.000,00.", "correct": true },
+      { "key": "D", "text": "Tributação de 22,5% retida na fonte pela B3.", "correct": false }
+    ],
+    "explanation": "Pessoa física tem isenção de IR sobre o ganho de capital em vendas de ações no mercado à vista quando o total vendido no mês não ultrapassa R$ 20.000,00. A isenção NÃO se aplica a operações de day trade, que são sempre tributadas a 20% (com retenção 'dedo-duro' de 1% na fonte).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.1.3.2 — Isenções de tributação em renda variável"
+  },
+  {
+    "topic_slug": "produtos-mercado.coe",
+    "difficulty": 3,
+    "stem": "O Certificado de Operações Estruturadas (COE) com cláusula de 'valor nominal protegido':",
+    "choices": [
+      { "key": "A", "text": "Permite recompra a valor de mercado a qualquer momento sem perdas.", "correct": false },
+      { "key": "B", "text": "Garante o retorno do capital investido no vencimento, mesmo no pior cenário do ativo subjacente.", "correct": true },
+      { "key": "C", "text": "Garante uma rentabilidade mínima de 100% do CDI no vencimento.", "correct": false },
+      { "key": "D", "text": "Não envolve uso de derivativos em sua estrutura.", "correct": false }
+    ],
+    "explanation": "COE com 'valor nominal protegido' (capital protegido) devolve no mínimo o principal investido no vencimento, ainda que o ativo subjacente tenha desempenho negativo. Não há garantia de rentabilidade mínima — apenas do principal. A estrutura é montada via derivativos. Capital protegido é diferente de 'capital em risco', em que o investidor pode perder parte ou todo o principal.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.1.4.2 — Diferentes níveis de risco e garantias do COE"
+  },
+  {
+    "topic_slug": "produtos-mercado.coe",
+    "difficulty": 4,
+    "stem": "Um investidor compra um COE de R$ 50.000,00, prazo de 3 anos, com 'capital nominal protegido', referenciado ao Ibovespa, com participação de 80% na alta. Caso o Ibovespa suba 50% no período, e desconsiderando tributação, o investidor receberá no vencimento:",
+    "choices": [
+      { "key": "A", "text": "R$ 75.000,00 (50% do principal + capital).", "correct": false },
+      { "key": "B", "text": "R$ 70.000,00 (80% × 50% sobre o principal + capital).", "correct": true },
+      { "key": "C", "text": "R$ 100.000,00 (100% do retorno do índice + capital).", "correct": false },
+      { "key": "D", "text": "R$ 50.000,00 (apenas o capital protegido).", "correct": false }
+    ],
+    "explanation": "A taxa de participação aplica-se ao retorno do ativo subjacente. 80% × 50% = 40% sobre o principal de R$ 50.000 = R$ 20.000 de ganho. Total recebido = R$ 50.000 + R$ 20.000 = R$ 70.000,00. O capital protegido garante o piso (R$ 50.000), mesmo em queda do Ibovespa.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.1.4 — Estrutura e regras do COE"
+  },
+  {
+    "topic_slug": "produtos-mercado.fundos-investimento",
+    "difficulty": 2,
+    "stem": "Em um fundo de investimento regulado pela Resolução CVM nº 175, o profissional responsável pela tomada das decisões de investimento da carteira é o(a):",
+    "choices": [
+      { "key": "A", "text": "Administrador.", "correct": false },
+      { "key": "B", "text": "Custodiante.", "correct": false },
+      { "key": "C", "text": "Gestor.", "correct": true },
+      { "key": "D", "text": "Distribuidor.", "correct": false }
+    ],
+    "explanation": "O gestor é o responsável pelas decisões de compra e venda dos ativos da carteira. O administrador responde pela constituição, funcionamento e cumprimento normativo do fundo. O custodiante guarda os ativos e processa eventos. O distribuidor é responsável pela oferta e aplicação junto ao cotista.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.2.2.19 — Prestação de serviços (CVM 175)"
+  },
+  {
+    "topic_slug": "produtos-mercado.fundos-investimento",
+    "difficulty": 3,
+    "stem": "O 'come-cotas', mecanismo tributário aplicável a fundos abertos de renda fixa de longo prazo, consiste em:",
+    "choices": [
+      { "key": "A", "text": "Antecipação semestral do IR sobre rendimentos, à alíquota de 15%, em maio e novembro.", "correct": true },
+      { "key": "B", "text": "Antecipação mensal do IOF sobre o patrimônio do fundo.", "correct": false },
+      { "key": "C", "text": "Cobrança anual de 22,5% sobre os rendimentos, sem complementação no resgate.", "correct": false },
+      { "key": "D", "text": "Mecanismo aplicável também a fundos de ações e FIIs.", "correct": false }
+    ],
+    "explanation": "Come-cotas é a antecipação semestral do IR sobre o rendimento dos fundos, no último dia útil de maio e novembro. Em fundos de longo prazo a alíquota é 15%; em fundos de curto prazo, 20%. No resgate, complementa-se a alíquota até o nível da tabela regressiva. Não se aplica a fundos de ações, FIIs nem aos planos de previdência (PGBL/VGBL).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.3.2.2 — Imposto de Renda em fundos de investimento"
+  },
+  {
+    "topic_slug": "produtos-mercado.fundos-imobiliarios",
+    "difficulty": 4,
+    "stem": "Para que os rendimentos mensais distribuídos por um Fundo de Investimento Imobiliário (FII) sejam ISENTOS de IR para a pessoa física, são exigidos cumulativamente quais requisitos?",
+    "choices": [
+      { "key": "A", "text": "Cotas negociadas em bolsa, fundo com mais de 50 cotistas e cotista PF detendo menos de 10% das cotas (e recebendo menos de 10% dos rendimentos).", "correct": true },
+      { "key": "B", "text": "Fundo constituído há pelo menos 5 anos e cotista mantendo as cotas por mais de 720 dias.", "correct": false },
+      { "key": "C", "text": "Fundo investindo exclusivamente em imóveis residenciais e em território nacional.", "correct": false },
+      { "key": "D", "text": "Fundo registrado na CVM e cotista declarante pelo modelo simplificado de IR.", "correct": false }
+    ],
+    "explanation": "A isenção (Lei 11.033/2004) exige cumulativamente: (i) cotas negociadas exclusivamente em bolsa ou mercado de balcão organizado, (ii) fundo com no mínimo 50 cotistas, (iii) cotista pessoa física que não detenha mais de 10% das cotas e que não receba mais de 10% dos rendimentos distribuídos. Ganho de capital na venda das cotas continua tributado em 20% (não há isenção como em ações).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.4.6 — Tributação dos FIIs"
+  },
+  {
+    "topic_slug": "produtos-mercado.fundos-imobiliarios",
+    "difficulty": 2,
+    "stem": "Sobre as principais categorias de Fundos Imobiliários (FIIs), é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "Fundos de tijolo investem em títulos imobiliários (CRI, LCI); fundos de papel investem em imóveis físicos.", "correct": false },
+      { "key": "B", "text": "Fundos de tijolo investem em imóveis físicos; fundos de papel investem em títulos imobiliários (como CRI).", "correct": true },
+      { "key": "C", "text": "Fundos de tijolo são abertos e fundos de papel são fechados, sempre.", "correct": false },
+      { "key": "D", "text": "Fundos de tijolo investem apenas em imóveis residenciais e fundos de papel apenas em comerciais.", "correct": false }
+    ],
+    "explanation": "Fundos de tijolo: investem majoritariamente em imóveis físicos (galpões logísticos, lajes corporativas, shoppings). Fundos de papel: investem em recebíveis imobiliários, como CRIs e LCIs. Fundos híbridos combinam as duas estratégias. Os FIIs no Brasil são, em regra, fundos fechados, com cotas negociadas em bolsa.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.1.4.5 — Fundos de tijolo, papel e híbridos"
+  },
+  {
+    "topic_slug": "produtos-mercado.previdencia",
+    "difficulty": 3,
+    "stem": "Um cliente em fase de acumulação para a aposentadoria possui alta renda tributável, contribui regularmente para o INSS e faz declaração de IR no MODELO COMPLETO. Qual modalidade de previdência é mais indicada do ponto de vista tributário?",
+    "choices": [
+      { "key": "A", "text": "PGBL, com possibilidade de deduzir as contribuições até 12% da renda bruta tributável anual.", "correct": true },
+      { "key": "B", "text": "VGBL, com possibilidade de deduzir as contribuições até 12% da renda bruta tributável anual.", "correct": false },
+      { "key": "C", "text": "PGBL, sem qualquer benefício fiscal na fase de contribuição.", "correct": false },
+      { "key": "D", "text": "VGBL, com isenção total de IR no resgate.", "correct": false }
+    ],
+    "explanation": "O PGBL permite deduzir as contribuições da base de cálculo do IR, limitado a 12% da renda bruta tributável anual — vantajoso para quem (i) faz declaração completa, (ii) contribui ao INSS ou regime próprio e (iii) tem renda tributável. No VGBL não há essa dedução, mas o IR no resgate incide apenas sobre os rendimentos (e não sobre o total resgatado, como no PGBL).",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 2.2.1.1 (PGBL) e 2.2.1.2 (VGBL)"
+  },
+  {
+    "topic_slug": "produtos-mercado.previdencia",
+    "difficulty": 3,
+    "stem": "No regime de tributação regressivo definitivo aplicável a planos de previdência (PGBL/VGBL), a alíquota MÍNIMA de IR aplicável a recursos resgatados é:",
+    "choices": [
+      { "key": "A", "text": "35%, atingida após 2 anos de aplicação.", "correct": false },
+      { "key": "B", "text": "27,5%, atingida após 4 anos de aplicação.", "correct": false },
+      { "key": "C", "text": "10%, atingida após 10 anos de aplicação dos recursos.", "correct": true },
+      { "key": "D", "text": "0%, atingida após 6 anos de aplicação.", "correct": false }
+    ],
+    "explanation": "Tabela regressiva da previdência (regime exclusivo na fonte): 35% até 2 anos, 30% de 2-4, 25% de 4-6, 20% de 6-8, 15% de 8-10 e 10% acima de 10 anos. A alíquota de 10% é o piso e só é atingida após 10 anos de aplicação de cada aporte (PEPS por aporte).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.2.2.2 — Regime regressivo, definitivo ou exclusivo"
+  },
+  {
+    "topic_slug": "produtos-mercado.credito-servicos-bancarios",
+    "difficulty": 2,
+    "stem": "Sobre o Pix, sistema de pagamentos instantâneos do Banco Central do Brasil, é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "Está limitado a R$ 1.000,00 por transferência entre pessoas físicas.", "correct": false },
+      { "key": "B", "text": "Funciona apenas em horário comercial e em dias úteis.", "correct": false },
+      { "key": "C", "text": "Permite transferências e pagamentos 24 horas por dia, 7 dias por semana, com liquidação em segundos.", "correct": true },
+      { "key": "D", "text": "É administrado pela ANBIMA por meio de seu autorregulação.", "correct": false }
+    ],
+    "explanation": "O Pix funciona em regime 24×7×365, com liquidação em poucos segundos via SPI (Sistema de Pagamentos Instantâneos), administrado pelo Banco Central. Não há limite normativo único — as instituições podem definir limites por canal e horário, conforme regras de segurança do BC. Pessoas físicas e jurídicas podem usar o Pix.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.4.1.5 — Pagamento Instantâneo Brasileiro (PIX)"
+  },
+  {
+    "topic_slug": "produtos-mercado.credito-servicos-bancarios",
+    "difficulty": 3,
+    "stem": "Comparando duas modalidades de crédito ao consumidor — (i) crédito pessoal sem garantia e (ii) crédito consignado em folha — e mantidas as demais condições constantes, espera-se que:",
+    "choices": [
+      { "key": "A", "text": "O consignado tenha taxa de juros mais alta, pois envolve mais partes na operação.", "correct": false },
+      { "key": "B", "text": "O consignado tenha taxa de juros mais baixa, pois o desconto em folha reduz o risco de inadimplência.", "correct": true },
+      { "key": "C", "text": "Ambos pratiquem a mesma taxa, fixada uniformemente pelo CMN.", "correct": false },
+      { "key": "D", "text": "O crédito pessoal sem garantia tenha taxa mais baixa, por ser desburocratizado.", "correct": false }
+    ],
+    "explanation": "O consignado tem retenção direta da parcela na folha de pagamento (servidores públicos, aposentados/pensionistas do INSS e CLTs com convênio), o que reduz substancialmente o risco de inadimplência para o credor. Risco menor → taxa de juros menor. Por isso o consignado costuma ser uma das modalidades de crédito mais baratas para pessoa física.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 2.3.4 — Crédito consignado"
+  }
+]

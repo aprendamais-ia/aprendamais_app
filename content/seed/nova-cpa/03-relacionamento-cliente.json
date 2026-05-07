@@ -1,0 +1,158 @@
+[
+  {
+    "topic_slug": "relacionamento-cliente.financas-pessoais",
+    "difficulty": 2,
+    "stem": "A reserva de emergência é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
+    "choices": [
+      { "key": "A", "text": "Equivalente a 12 meses de salário bruto, integralmente em ações de baixa volatilidade.", "correct": false },
+      { "key": "B", "text": "Equivalente a 6 meses de gastos fixos, em ativos de baixo risco e alta liquidez.", "correct": true },
+      { "key": "C", "text": "Equivalente a 1 mês de salário bruto, exclusivamente em poupança.", "correct": false },
+      { "key": "D", "text": "Equivalente a 24 meses de gastos, em fundos imobiliários.", "correct": false }
+    ],
+    "explanation": "A recomendação consagrada de planejamento financeiro é manter uma reserva de emergência equivalente a 3-6 meses de gastos fixos (não receita), em ativos de alta liquidez e baixíssimo risco — como Tesouro Selic, CDBs com liquidez diária ou fundos DI. Ações e FIIs são incompatíveis pela volatilidade; a poupança é aceitável, mas não a única alternativa.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.1.3.4 — Reserva de emergência"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.financas-pessoais",
+    "difficulty": 3,
+    "stem": "A 'fase de acumulação de capital' no ciclo de vida do investidor caracteriza-se tipicamente por:",
+    "choices": [
+      { "key": "A", "text": "Investidor próximo da aposentadoria, focado em preservar patrimônio em renda fixa.", "correct": false },
+      { "key": "B", "text": "Investidor jovem ou em meio de carreira, com capacidade de poupança em formação, maior tolerância a risco e horizonte longo de investimento.", "correct": true },
+      { "key": "C", "text": "Investidor consumindo o patrimônio acumulado para custear a aposentadoria.", "correct": false },
+      { "key": "D", "text": "Investidor exclusivamente em fase de distribuição de renda via dividendos.", "correct": false }
+    ],
+    "explanation": "Na fase de acumulação, o investidor está construindo patrimônio: tem renda em formação, capacidade de poupança crescente, horizonte longo (décadas até a aposentadoria) e maior tolerância a risco — favorecendo classes de ativos mais voláteis e potencial de retorno superior. As outras fases são preservação (próximo à aposentadoria) e distribuição/consumo (durante a aposentadoria).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.1.2 — Ciclo de vida da pessoa investidora"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.suitability-perfil-investidor",
+    "difficulty": 2,
+    "stem": "A análise de suitability tem como objetivo principal:",
+    "choices": [
+      { "key": "A", "text": "Maximizar a rentabilidade da carteira do cliente.", "correct": false },
+      { "key": "B", "text": "Verificar a adequação do produto recomendado ao perfil, objetivos e situação financeira do cliente.", "correct": true },
+      { "key": "C", "text": "Cumprir exigência interna do banco para liberação de comissões.", "correct": false },
+      { "key": "D", "text": "Substituir a tomada de decisão do cliente pela recomendação do gerente.", "correct": false }
+    ],
+    "explanation": "Suitability é o processo de avaliar se um produto, serviço ou operação é adequado ao perfil de risco, objetivos de investimento e situação financeira do cliente. Não substitui a decisão do cliente — apenas garante que a oferta esteja alinhada às características dele. Não é uma rotina meramente burocrática, é princípio regulatório (Resolução CVM 30 e Código Anbima de Distribuição).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.2 — Suitability e código de distribuição da Anbima"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.suitability-perfil-investidor",
+    "difficulty": 3,
+    "stem": "Um cliente classificado como 'conservador' no API insiste em aplicar parte significativa do patrimônio em ações de alta volatilidade. Diante disso, o profissional certificado deve:",
+    "choices": [
+      { "key": "A", "text": "Recusar terminantemente a operação e encerrar o relacionamento com o cliente.", "correct": false },
+      { "key": "B", "text": "Realizar a operação imediatamente, sem qualquer formalidade adicional.", "correct": false },
+      { "key": "C", "text": "Alertar formalmente sobre a inadequação ao perfil, registrar a manifestação do cliente e, mantida a decisão, executar a operação com a documentação devida.", "correct": true },
+      { "key": "D", "text": "Atualizar automaticamente o perfil do cliente para 'agressivo' a fim de legitimar a operação.", "correct": false }
+    ],
+    "explanation": "A regulação permite a operação fora do perfil desde que (i) o cliente seja formalmente alertado da inadequação, (ii) declare ciência por escrito ou meio equivalente e (iii) a instituição registre o procedimento. Não se atualiza o perfil sem reaplicação do API. Encerrar relacionamento ou atualizar perfil unilateralmente são condutas inadequadas.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.2.4 — Adequação dos produtos ao perfil da clientela"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.etica-conduta-anbima",
+    "difficulty": 3,
+    "stem": "O Código de Conduta Ética da ANBIMA estabelece princípios que devem orientar pessoas candidatas e profissionais certificados. Entre os 'nove princípios éticos' está:",
+    "choices": [
+      { "key": "A", "text": "Confidencialidade absoluta dos dados do cliente, mesmo perante autoridades competentes com requisição legal.", "correct": false },
+      { "key": "B", "text": "Integridade, probidade, profissionalismo e cumprimento da regulação aplicável.", "correct": true },
+      { "key": "C", "text": "Maximização da remuneração do profissional, ainda que em prejuízo do cliente.", "correct": false },
+      { "key": "D", "text": "Lealdade exclusiva à instituição empregadora, mesmo em conflito com os interesses do cliente.", "correct": false }
+    ],
+    "explanation": "Os princípios éticos da ANBIMA incluem integridade, probidade, profissionalismo, cumprimento da regulação, transparência, prevenção de conflitos, entre outros. Confidencialidade não é absoluta — cede a requisições legais legítimas (autoridades, COAF, decisão judicial). E o profissional não pode privilegiar a remuneração própria ou da instituição em detrimento do interesse do cliente.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.1.1 — Os nove princípios éticos"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.etica-conduta-anbima",
+    "difficulty": 3,
+    "stem": "Um gerente de relacionamento recebe uma campanha interna que paga comissão extra por aplicações em determinado fundo. Diante disso, a conduta ética e regulatoriamente adequada é:",
+    "choices": [
+      { "key": "A", "text": "Direcionar TODOS os clientes para esse fundo, independentemente do perfil.", "correct": false },
+      { "key": "B", "text": "Omitir a existência da campanha do cliente para não influenciar a decisão.", "correct": false },
+      { "key": "C", "text": "Atuar com transparência, oferecer o produto apenas a clientes para os quais ele seja adequado e divulgar os incentivos quando exigido.", "correct": true },
+      { "key": "D", "text": "Recusar-se a participar de qualquer campanha de incentivo.", "correct": false }
+    ],
+    "explanation": "Campanhas de incentivo não são proibidas, mas geram potencial conflito de interesses. A conduta correta combina suitability (oferecer apenas para perfis adequados), transparência sobre a remuneração quando aplicável (Código Anbima de Distribuição prevê transparência da remuneração do canal) e ausência de pressão sobre o cliente. Recusar tudo ou direcionar todos são extremos inadequados.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 3.4.3.3 (conflitos de interesse) e 1.4.12.1.3.4 (transparência na remuneração)"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.pldft-kyc-lgpd",
+    "difficulty": 3,
+    "stem": "Em relação à Política de Prevenção à Lavagem de Dinheiro e ao Financiamento do Terrorismo (PLDFT), é INCORRETO afirmar que:",
+    "choices": [
+      { "key": "A", "text": "A abordagem baseada em risco exige que a instituição classifique clientes e operações por nível de risco.", "correct": false },
+      { "key": "B", "text": "Operações suspeitas devem ser comunicadas ao COAF, sem cientificar o cliente do reporte.", "correct": false },
+      { "key": "C", "text": "O princípio 'Conheça seu Cliente' (KYC) é base para a prevenção e exige cadastro atualizado.", "correct": false },
+      { "key": "D", "text": "Toda operação em espécie acima de R$ 50,00 deve ser obrigatoriamente comunicada ao COAF.", "correct": true }
+    ],
+    "explanation": "A alternativa D é a INCORRETA (e portanto a resposta da questão): não há comunicação obrigatória ao COAF a partir de R$ 50,00 em espécie. As normas estabelecem critérios objetivos (ex: depósitos/saques em espécie iguais ou superiores a R$ 50.000) e critérios subjetivos (operações atípicas, sem propósito econômico aparente). As demais alternativas estão corretas.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 3.4.5.3 (abordagem baseada em risco) e 3.4.5 (PLDFT)"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.pldft-kyc-lgpd",
+    "difficulty": 3,
+    "stem": "A Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018) aplicada ao mercado financeiro:",
+    "choices": [
+      { "key": "A", "text": "Permite o livre compartilhamento de dados pessoais entre todas as instituições financeiras, sem necessidade de base legal.", "correct": false },
+      { "key": "B", "text": "Exige base legal para o tratamento de dados pessoais e prevê direitos do titular, como acesso, correção e eliminação.", "correct": true },
+      { "key": "C", "text": "Sobrepõe-se ao sigilo bancário previsto em lei complementar específica.", "correct": false },
+      { "key": "D", "text": "Aplica-se exclusivamente a dados de pessoas jurídicas.", "correct": false }
+    ],
+    "explanation": "A LGPD aplica-se a dados pessoais de pessoas naturais e exige base legal para o tratamento (consentimento, execução de contrato, obrigação legal etc.). Garante direitos como acesso, correção, portabilidade e eliminação. Não substitui o sigilo bancário (Lei Complementar 105) — convive com ele. Compartilhamento entre instituições requer base legal e/ou consentimento, conforme o caso.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.6 — Lei Geral de Proteção de Dados (LGPD)"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.pldft-kyc-lgpd",
+    "difficulty": 3,
+    "stem": "Um profissional certificado identifica que um cliente realizou diversos depósitos em espécie fracionados, em curto intervalo, sem justificativa econômica aparente. Qual a conduta adequada?",
+    "choices": [
+      { "key": "A", "text": "Bloquear imediatamente a conta do cliente sem qualquer aviso ou comunicação.", "correct": false },
+      { "key": "B", "text": "Comunicar a operação atípica ao setor de compliance/PLD da instituição, mantendo sigilo perante o cliente.", "correct": true },
+      { "key": "C", "text": "Encerrar o atendimento e devolver os recursos depositados ao cliente.", "correct": false },
+      { "key": "D", "text": "Solicitar autorização do cliente antes de qualquer comunicação interna sobre a operação.", "correct": false }
+    ],
+    "explanation": "Operação atípica deve ser reportada internamente ao compliance/PLD, que avaliará a comunicação ao COAF. É vedado dar ciência ao cliente sobre o reporte (princípio do 'tipping off'). Bloquear conta unilateralmente, encerrar atendimento ou pedir autorização ao cliente são condutas inadequadas e potencialmente em violação à norma.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 3.4.5 (PLDFT) e 3.4.6.7 (operações suspeitas)"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.crimes-mercado-capitais",
+    "difficulty": 3,
+    "stem": "A prática conhecida como 'insider trading', tipificada como crime contra o mercado de capitais, consiste em:",
+    "choices": [
+      { "key": "A", "text": "Operar valores mobiliários com base em informação relevante ainda não divulgada publicamente.", "correct": true },
+      { "key": "B", "text": "Realizar operações de day trade em alta frequência, com algoritmos.", "correct": false },
+      { "key": "C", "text": "Comprar e vender ações repetidamente para gerar comissões.", "correct": false },
+      { "key": "D", "text": "Difundir boatos para manipular o preço de uma ação.", "correct": false }
+    ],
+    "explanation": "Insider trading (art. 27-D da Lei 6.385/76): uso indevido de informação privilegiada relevante, ainda não divulgada ao mercado, em proveito próprio ou de terceiros. As demais alternativas descrevem outras condutas: alta frequência é prática lícita (HFT); 'churning' é a multiplicação injustificada de operações para gerar comissões; difundir boatos para mover preço configura manipulação de mercado.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.7.1.2 — Uso indevido de informação privilegiada (art. 27-D)"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.crimes-mercado-capitais",
+    "difficulty": 4,
+    "stem": "A prática conhecida como 'churning', listada entre os ilícitos de mercado pela Resolução CVM nº 62, consiste em:",
+    "choices": [
+      { "key": "A", "text": "Operações fictícias entre contas para criar aparência de liquidez ('money pass').", "correct": false },
+      { "key": "B", "text": "Inserção e cancelamento rápido de ofertas para induzir outros agentes ao erro ('spoofing').", "correct": false },
+      { "key": "C", "text": "Multiplicação injustificada de operações na conta do cliente, gerando comissões em prejuízo dele.", "correct": true },
+      { "key": "D", "text": "Antecipar-se às ordens do cliente em proveito próprio ('front running').", "correct": false }
+    ],
+    "explanation": "Churning é uma prática não equitativa: o agente realiza um giro excessivo da carteira do cliente, sem justificativa econômica, com o único objetivo de gerar comissões — em prejuízo do investidor. Money pass, spoofing e front running são outras modalidades de ilícito previstas na CVM 62, com naturezas distintas (operações fictícias, manipulação de preços e práticas não equitativas, respectivamente).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.7.2.2.3.2 — Churning (Resolução CVM 62)"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.crimes-mercado-capitais",
+    "difficulty": 3,
+    "stem": "A prática de 'front running', tipificada como ilícito de mercado, caracteriza-se por:",
+    "choices": [
+      { "key": "A", "text": "Divulgar previsões otimistas sobre uma empresa para inflar o preço de suas ações.", "correct": false },
+      { "key": "B", "text": "Antecipar-se a uma ordem de cliente, executando operação própria antes para se beneficiar do impacto da ordem do cliente no preço.", "correct": true },
+      { "key": "C", "text": "Comprar ações na abertura do pregão e vendê-las no fechamento do mesmo dia.", "correct": false },
+      { "key": "D", "text": "Aplicar em fundos de investimento antes de eles serem fechados para captação.", "correct": false }
+    ],
+    "explanation": "Front running: o intermediário, conhecendo uma ordem de cliente capaz de afetar o preço (ordem grande, operação institucional), executa antes uma operação em proveito próprio para se beneficiar do movimento gerado pela ordem do cliente. É prática não equitativa, ilícita pelo dever de lealdade ao cliente.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.7.2.2.4.3 — Front running"
+  }
+]

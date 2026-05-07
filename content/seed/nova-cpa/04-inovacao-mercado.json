@@ -1,0 +1,54 @@
+[
+  {
+    "topic_slug": "inovacao-mercado.esg",
+    "difficulty": 2,
+    "stem": "A sigla ESG, aplicada a investimentos, refere-se a critérios:",
+    "choices": [
+      { "key": "A", "text": "Ambientais (Environment), sociais (Social) e de governança corporativa (Governance).", "correct": true },
+      { "key": "B", "text": "Econômicos, sociais e governamentais.", "correct": false },
+      { "key": "C", "text": "Estatísticos, sociais e geográficos.", "correct": false },
+      { "key": "D", "text": "Estruturais, salariais e de gestão.", "correct": false }
+    ],
+    "explanation": "ESG é o acrônimo em inglês para Environment (ambiental), Social e Governance (governança corporativa). É um conjunto de critérios não-financeiros usados na avaliação de empresas e fundos quanto ao impacto ambiental, social e práticas de governança — base para os investimentos sustentáveis.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.1.1 — Conceitos de ESG"
+  },
+  {
+    "topic_slug": "inovacao-mercado.defi-blockchain",
+    "difficulty": 3,
+    "stem": "Sobre os 'smart contracts' no contexto das finanças descentralizadas (DeFi), é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "São contratos físicos assinados em cartório que regulam operações em blockchain.", "correct": false },
+      { "key": "B", "text": "São programas autoexecutáveis registrados em blockchain, que executam automaticamente cláusulas quando determinadas condições são atingidas.", "correct": true },
+      { "key": "C", "text": "São contratos firmados exclusivamente entre instituições financeiras reguladas pelo Banco Central.", "correct": false },
+      { "key": "D", "text": "Substituem totalmente a regulação da CVM em operações com ativos digitais.", "correct": false }
+    ],
+    "explanation": "Smart contracts são códigos autoexecutáveis registrados em blockchain (como Ethereum) que executam automaticamente cláusulas quando condições pré-definidas são atendidas — sem necessidade de intermediário. São base de aplicações DeFi (empréstimos, exchanges descentralizadas, seguros automatizados). Não substituem a regulação aplicável: emissões e ofertas de ativos digitais que sejam valores mobiliários permanecem sob competência da CVM.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.4.3 — Smart contracts"
+  },
+  {
+    "topic_slug": "inovacao-mercado.defi-blockchain",
+    "difficulty": 3,
+    "stem": "O DREX é:",
+    "choices": [
+      { "key": "A", "text": "Um ETF de bitcoin negociado na B3.", "correct": false },
+      { "key": "B", "text": "A versão tokenizada da moeda fiduciária brasileira emitida pelo Banco Central (CBDC).", "correct": true },
+      { "key": "C", "text": "Uma stablecoin privada emitida por fintechs lastreada em reais.", "correct": false },
+      { "key": "D", "text": "Um produto de renda fixa digital emitido por bancos privados.", "correct": false }
+    ],
+    "explanation": "DREX é a Moeda Digital do Banco Central do Brasil — uma CBDC (Central Bank Digital Currency), versão tokenizada do real, emitida pela autoridade monetária. Diferencia-se de stablecoins privadas (lastreadas em ativos por emissores não estatais) e de criptoativos descentralizados (como Bitcoin, sem emissor central).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.4.5.6 — Moeda Digital do Banco Central (CBDC) — DREX"
+  },
+  {
+    "topic_slug": "inovacao-mercado.openfinance-fintechs-ia",
+    "difficulty": 3,
+    "stem": "O Open Finance no Brasil tem como principal objetivo:",
+    "choices": [
+      { "key": "A", "text": "Substituir o sistema bancário tradicional por fintechs e plataformas descentralizadas.", "correct": false },
+      { "key": "B", "text": "Permitir o compartilhamento padronizado e seguro de dados financeiros entre instituições, mediante consentimento do cliente, ampliando concorrência e personalização de serviços.", "correct": true },
+      { "key": "C", "text": "Centralizar todos os dados bancários da população em uma plataforma do Governo Federal.", "correct": false },
+      { "key": "D", "text": "Eliminar a necessidade do CPF na identificação das operações financeiras.", "correct": false }
+    ],
+    "explanation": "O Open Finance é uma iniciativa coordenada pelo Banco Central que estabelece padrões e APIs para o compartilhamento, com consentimento do cliente, de dados cadastrais, transacionais e de produtos entre instituições. Os objetivos são: aumentar a concorrência, dar ao cliente controle sobre seus próprios dados e habilitar serviços personalizados. Não substitui instituições nem centraliza dados em órgão público.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 4.5.1.1 (conceitos) e 4.5.1.1.3 (marco regulatório — Resolução Conjunta nº 1/2020)"
+  }
+]

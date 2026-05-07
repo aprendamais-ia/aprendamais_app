@@ -1,8 +1,11 @@
 /**
- * Seed de demonstração: 5 questões OAB + 1 lição publicada.
+ * Seed de conteúdo:
+ *   1) 5 questões OAB hardcoded + 1 lição publicada (demo end-to-end do lesson player)
+ *   2) Auto-discovery de tracks adicionais em content/seed/<track-slug>/*.json
+ *      (cada arquivo = array de DemoQuestion). Sem lessons — só questões
+ *      publicadas.
  *
- * Cobre tópicos com peso alto (Civil, Ética, Penal) para o lesson player ter
- * algo jogável end-to-end. Idempotente.
+ * Idempotente em ambos os caminhos.
  *
  * Pré-requisitos:
  *   - tracks seeded (supabase/seed.sql)
@@ -14,6 +17,8 @@
 
 import "dotenv/config";
 import { config as loadEnv } from "dotenv";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 
 loadEnv({ path: ".env.local" });
@@ -226,7 +231,93 @@ async function main() {
     console.log(`  ✓ lição criada: ${lessonRow.id}`);
   }
 
+  await seedJsonTracks();
+
   console.log("\n✓ seed demo concluído");
+}
+
+async function seedJsonTracks() {
+  const seedDir = join(process.cwd(), "content", "seed");
+  let trackDirs: string[];
+  try {
+    trackDirs = readdirSync(seedDir, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name);
+  } catch {
+    return;
+  }
+  if (trackDirs.length === 0) return;
+
+  for (const trackSlug of trackDirs) {
+    await seedTrackFromJson(trackSlug);
+  }
+}
+
+async function seedTrackFromJson(trackSlug: string) {
+  const dir = join(process.cwd(), "content", "seed", trackSlug);
+  const files = readdirSync(dir).filter((f) => f.endsWith(".json")).sort();
+  if (files.length === 0) return;
+
+  const all: DemoQuestion[] = [];
+  for (const f of files) {
+    const arr = JSON.parse(readFileSync(join(dir, f), "utf-8")) as DemoQuestion[];
+    all.push(...arr);
+  }
+
+  console.log(`\n→ track '${trackSlug}': ${all.length} questões em ${files.length} arquivo(s)`);
+
+  const { data: track, error: tErr } = await supabase
+    .from("tracks").select("id").eq("slug", trackSlug).single();
+  if (tErr || !track) {
+    console.error(`  ✖ track '${trackSlug}' não encontrada — pulando (rode supabase/seed.sql)`);
+    return;
+  }
+
+  const slugs = Array.from(new Set(all.map((q) => q.topic_slug)));
+  const { data: topics } = await supabase
+    .from("topics").select("id, slug").eq("track_id", track.id).in("slug", slugs);
+  const topicIdBySlug = new Map((topics ?? []).map((t) => [t.slug, t.id]));
+  const missing = slugs.filter((s) => !topicIdBySlug.has(s));
+  if (missing.length) {
+    console.error(`  ✖ topics ausentes em '${trackSlug}':`, missing.join(", "));
+    console.error("    rode `pnpm db:seed-topics` antes");
+    return;
+  }
+
+  let inserted = 0;
+  let updated = 0;
+  for (const q of all) {
+    const topicId = topicIdBySlug.get(q.topic_slug)!;
+    const { data: existing } = await supabase
+      .from("questions").select("id").eq("topic_id", topicId).eq("stem", q.stem).maybeSingle();
+
+    if (existing) {
+      const { error } = await supabase.from("questions").update({
+        difficulty: q.difficulty,
+        choices: q.choices,
+        explanation: q.explanation,
+        source_citation: q.source_citation,
+        status: "published",
+        generated_by: "claude",
+      }).eq("id", existing.id);
+      if (error) throw error;
+      updated++;
+    } else {
+      const { error } = await supabase.from("questions").insert({
+        topic_id: topicId,
+        difficulty: q.difficulty,
+        stem: q.stem,
+        choices: q.choices,
+        explanation: q.explanation,
+        source_citation: q.source_citation,
+        status: "published",
+        generated_by: "claude",
+      });
+      if (error) throw error;
+      inserted++;
+    }
+  }
+  console.log(`  ✓ ${inserted} inseridas, ${updated} atualizadas`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

@@ -1,0 +1,106 @@
+[
+  {
+    "topic_slug": "sistema-financeiro.orgaos-reguladores",
+    "difficulty": 2,
+    "stem": "Qual das alternativas a seguir descreve corretamente uma atribuição do Conselho Monetário Nacional (CMN)?",
+    "choices": [
+      { "key": "A", "text": "Executar a política monetária por meio de operações de open market.", "correct": false },
+      { "key": "B", "text": "Fixar as diretrizes e normas das políticas monetária, creditícia e cambial do país.", "correct": true },
+      { "key": "C", "text": "Fiscalizar diretamente as instituições financeiras autorizadas a funcionar no Brasil.", "correct": false },
+      { "key": "D", "text": "Regulamentar e supervisionar o mercado de capitais e as ofertas públicas de valores mobiliários.", "correct": false }
+    ],
+    "explanation": "O CMN é o órgão máximo do Sistema Financeiro Nacional, com função normativa: fixa diretrizes da política monetária, creditícia e cambial. A execução da política monetária e a fiscalização de instituições financeiras cabem ao Banco Central (alternativas A e C). A regulação do mercado de capitais é atribuição da CVM (alternativa D).",
+    "source_citation": "PD CPA-ANBIMA v1.2 (vigência 01/01/2026), item 1.1.1.1.1.1 — Conselho Monetário Nacional"
+  },
+  {
+    "topic_slug": "sistema-financeiro.orgaos-reguladores",
+    "difficulty": 3,
+    "stem": "Uma corretora de valores deseja distribuir um Fundo de Investimento em Direitos Creditórios (FIDC) e, simultaneamente, oferecer planos de previdência aberta (VGBL) aos seus clientes. Quanto à supervisão, a empresa estará submetida:",
+    "choices": [
+      { "key": "A", "text": "À CVM em ambas as operações, por se tratarem de produtos de investimento.", "correct": false },
+      { "key": "B", "text": "Apenas ao Banco Central, por ser intermediária financeira.", "correct": false },
+      { "key": "C", "text": "À CVM no FIDC e à SUSEP no VGBL.", "correct": true },
+      { "key": "D", "text": "À CVM no FIDC e à PREVIC no VGBL.", "correct": false }
+    ],
+    "explanation": "FIDC é valor mobiliário e está sob supervisão da CVM. Previdência complementar aberta (PGBL/VGBL) é supervisionada pela SUSEP. A PREVIC supervisiona apenas as Entidades Fechadas de Previdência Complementar (EFPCs), os chamados fundos de pensão.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 1.1.2.1.2 (CVM), 1.1.2.1.3 (SUSEP) e 1.1.2.1.4 (PREVIC)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.operadores-mercado",
+    "difficulty": 2,
+    "stem": "O Fundo Garantidor de Créditos (FGC) garante o ressarcimento de até R$ 250.000,00 por CPF e por instituição (limite global de R$ 1 milhão a cada 4 anos) em qual conjunto de produtos?",
+    "choices": [
+      { "key": "A", "text": "CDB, LCI, LCA e poupança.", "correct": true },
+      { "key": "B", "text": "CDB, debêntures e CRI.", "correct": false },
+      { "key": "C", "text": "Tesouro Direto, CDB e LCI.", "correct": false },
+      { "key": "D", "text": "Cotas de fundos de investimento e LCA.", "correct": false }
+    ],
+    "explanation": "A cobertura do FGC abrange depósitos à vista, poupança, CDB, RDB, LCI, LCA, LCD, letras hipotecárias, letras de câmbio e letras financeiras. Não cobre: Tesouro Direto (garantido pelo Tesouro Nacional), debêntures, CRI/CRA (sem garantia FGC) e cotas de fundos de investimento (patrimônio segregado, sem garantia).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.1.4.3 — Fundo Garantidor de Créditos (FGC)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.politica-economica",
+    "difficulty": 2,
+    "stem": "Os principais instrumentos clássicos de política monetária utilizados pelo Banco Central do Brasil são:",
+    "choices": [
+      { "key": "A", "text": "Operações de open market, depósito compulsório e taxa de redesconto.", "correct": true },
+      { "key": "B", "text": "Política fiscal, política cambial e Lei de Responsabilidade Fiscal.", "correct": false },
+      { "key": "C", "text": "Tesouro Direto, FGC e taxa Selic.", "correct": false },
+      { "key": "D", "text": "IPCA, IGP-M e taxa de câmbio PTAX.", "correct": false }
+    ],
+    "explanation": "Os três instrumentos clássicos de política monetária são: (i) operações de open market (compra/venda de títulos públicos pelo BC), (ii) depósito compulsório (parcela dos depósitos que os bancos devem manter no BC) e (iii) taxa de redesconto (empréstimos do BC aos bancos). Política fiscal é da União, e IPCA/IGP-M são indicadores, não instrumentos.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.2.4.2 — Instrumentos de política monetária"
+  },
+  {
+    "topic_slug": "sistema-financeiro.politica-economica",
+    "difficulty": 3,
+    "stem": "O Comitê de Política Monetária (Copom) decide elevar a meta da taxa Selic em 100 bps. Em um cenário de regime de metas funcionando, qual o efeito esperado, no horizonte relevante de transmissão da política monetária?",
+    "choices": [
+      { "key": "A", "text": "Aumento da inflação e desvalorização do real frente ao dólar.", "correct": false },
+      { "key": "B", "text": "Redução da atividade econômica e tendência de queda da inflação.", "correct": true },
+      { "key": "C", "text": "Aumento do PIB e expansão imediata do crédito ao consumidor.", "correct": false },
+      { "key": "D", "text": "Apreciação do real exclusivamente em função da política fiscal contracionista.", "correct": false }
+    ],
+    "explanation": "Selic mais alta encarece o crédito, reduz o consumo e o investimento (queda da atividade) e tende a apreciar a moeda doméstica via diferencial de juros, levando à desinflação no horizonte de transmissão. Esse é o canal central do regime de metas para a inflação.",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 1.2.4.4 (canais de transmissão) e 1.2.4.6 (regime de metas)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.indicadores-economicos",
+    "difficulty": 3,
+    "stem": "Sobre a Taxa DI (CDI), é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "É definida diretamente pelo Copom em suas reuniões periódicas.", "correct": false },
+      { "key": "B", "text": "Reflete a média das taxas de empréstimos interbancários de um dia, lastreados em Certificados de Depósito Interbancário.", "correct": true },
+      { "key": "C", "text": "É sempre superior à taxa Selic over.", "correct": false },
+      { "key": "D", "text": "Aplica-se exclusivamente a operações entre bancos e pessoas físicas.", "correct": false }
+    ],
+    "explanation": "A Taxa DI/CDI é apurada e divulgada pela B3 a partir das operações de empréstimo interbancário de um dia útil, lastreadas em Certificados de Depósito Interbancário. Costuma situar-se ligeiramente abaixo da Selic over. Não é definida pelo Copom (que define a meta da Selic).",
+    "source_citation": "PD CPA-ANBIMA v1.2, itens 1.2.4.7 (Selic e CDI) e 1.2.6.4 (Taxa DI)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.matematica-financeira",
+    "difficulty": 4,
+    "stem": "Um investidor aplica R$ 10.000,00 em um título prefixado pelo prazo de 2 anos a uma taxa nominal de 10% ao ano (capitalização composta). Sabendo que a inflação acumulada nos dois anos foi de 12%, qual a taxa real aproximada do investimento, segundo a fórmula de Fisher?",
+    "choices": [
+      { "key": "A", "text": "Aproximadamente 7,5% no biênio.", "correct": false },
+      { "key": "B", "text": "Aproximadamente 8,04% no biênio.", "correct": true },
+      { "key": "C", "text": "Aproximadamente 9,0% no biênio.", "correct": false },
+      { "key": "D", "text": "Aproximadamente -2,0% no biênio (descontando inflação simples).", "correct": false }
+    ],
+    "explanation": "Pela fórmula de Fisher: (1 + taxa nominal) = (1 + taxa real) × (1 + inflação). A taxa nominal acumulada é (1,10)² - 1 = 21%. Logo, taxa real = 1,21 / 1,12 - 1 ≈ 8,04% no biênio. A subtração simples (21% - 12% = 9%) é uma aproximação grosseira que despreza o efeito composto.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.3.4.1 — Taxa nominal, efetiva e real (fórmula de Fisher)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.regulacao-infraestrutura",
+    "difficulty": 3,
+    "stem": "Segundo a Resolução CVM nº 30, considera-se INVESTIDOR PROFISSIONAL a pessoa natural que:",
+    "choices": [
+      { "key": "A", "text": "Possua aplicações financeiras em valor superior a R$ 1.000.000,00 e ateste por escrito sua condição.", "correct": false },
+      { "key": "B", "text": "Possua aplicações financeiras em valor superior a R$ 10.000.000,00 e ateste por escrito sua condição.", "correct": true },
+      { "key": "C", "text": "Tenha sido aprovada em qualquer exame de certificação reconhecido pela ANBIMA.", "correct": false },
+      { "key": "D", "text": "Possua diploma de bacharel em Ciências Econômicas, Administração ou Contábeis.", "correct": false }
+    ],
+    "explanation": "Resolução CVM 30: investidor profissional é aquele com aplicações financeiras superiores a R$ 10 milhões e que atesta a condição por escrito. Investidor qualificado tem o limite menor, de R$ 1 milhão (alternativa A). Profissionais certificados (CGA, CFP, etc.) são considerados qualificados em relação a recursos próprios, não automaticamente profissionais.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.4.10.1.2 — Resolução CVM 30: classificação de investidores"
+  }
+]

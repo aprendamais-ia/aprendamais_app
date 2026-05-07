@@ -1,0 +1,501 @@
+# Nova CPA — Certificado Profissional Anbima
+#
+# Substitui a CPA-10 (descontinuada em 12/2025) como certificação obrigatória
+# de entrada no mercado financeiro brasileiro. Direcionada a profissionais em
+# início de carreira; após a CPA, o caminho natural é C-Pro R (Relacionamento)
+# e C-Pro I (Investimento).
+#
+# Fonte: Programa Detalhado CPA-ANBIMA, versão 1.2 (revisada em 04/06/2025),
+#        elaborado em 02/09/2024, vigência a partir de 01/01/2026.
+# PDF oficial: Programa-Detalhado-CPA-ANBIMA.pdf (em raiz do repo)
+#
+# Estrutura: ementa oficial tem até 5 níveis de aninhamento. Aqui colapsamos
+# em 2 níveis (módulo → tópico) para servir de PK lógico das questões. Os
+# subtópicos detalhados ficam em `keywords` para contexto da geração e como
+# âncora do `source_citation` (item X.Y.Z do PD).
+
+track: nova-cpa
+issuer: ANBIMA
+version: "PD 1.2 (vigência 01/01/2026)"
+status: active
+effective_from: "2026-01-01"
+url: https://www.anbima.com.br/pt_br/educar/certificacoes/cpa.htm
+source_pdf: "Programa-Detalhado-CPA-ANBIMA.pdf"
+
+exam_format:
+  questions: 50
+  duration_min: 120
+  passing_score: 0.70
+
+modules:
+  - slug: sistema-financeiro
+    name: "Estrutura e dinâmica do sistema financeiro nacional"
+    weight: 0.20
+    topics:
+      - slug: orgaos-reguladores
+        name: "Órgãos normativos e de supervisão"
+        keywords:
+          [CMN, CNSP, CNPC, BACEN, CVM, SUSEP, PREVIC, "funções", "objetivos"]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 1.1.1 e 1.1.2"
+
+      - slug: operadores-mercado
+        name: "Operadores, participantes e autorreguladores"
+        keywords:
+          [
+            "bancos",
+            "cooperativas",
+            "instituições de pagamento",
+            "corretoras",
+            "distribuidoras",
+            "fintechs",
+            "B3",
+            "EAPC",
+            "EFPC",
+            "Anbima",
+            "Apimec",
+            "FGC",
+            "FGCCoop",
+            "SBP",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 1.1.3 a 1.1.5"
+
+      - slug: politica-economica
+        name: "Política econômica: fiscal, monetária e cambial"
+        keywords:
+          [
+            "fluxo circular da renda",
+            "política fiscal",
+            "Lei de Responsabilidade Fiscal",
+            "política monetária",
+            "open market",
+            "redesconto",
+            "depósito compulsório",
+            "Copom",
+            "regime de metas",
+            "política cambial",
+            "PTAX",
+            "swap cambial",
+            "cupom cambial",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 1.2.1 a 1.2.5"
+
+      - slug: indicadores-economicos
+        name: "Indicadores econômicos e de mercado"
+        keywords:
+          [
+            "PIB",
+            "IPCA",
+            "IGP-M",
+            "IPA",
+            "IPC-Fipe",
+            "Selic meta",
+            "Selic over",
+            "CDI",
+            "DI",
+            "TR",
+            "taxa de desemprego",
+            "risco de liquidez",
+            "risco de crédito",
+            "risco de mercado",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 1.2.6 e 1.2.7"
+
+      - slug: matematica-financeira
+        name: "Operações do mercado financeiro e matemática financeira"
+        keywords:
+          [
+            "taxa nominal",
+            "taxa real",
+            "Fisher",
+            "capitalização simples",
+            "capitalização composta",
+            "VPL",
+            "TIR",
+            "duration",
+            "CMPC",
+            "WACC",
+            "taxa livre de risco",
+            "custo de oportunidade",
+            "SAC",
+            "Price",
+            "payback",
+            "desconto bancário",
+            "amortização",
+            "prazo médio",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 1.3"
+
+      - slug: regulacao-infraestrutura
+        name: "Regulação, infraestrutura de mercado e classificação de investidores"
+        keywords:
+          [
+            "SPB",
+            "SPI",
+            "Selic",
+            "contrapartes centrais",
+            "depositários centrais",
+            "Comef",
+            "LLI",
+            "LLT",
+            "Basileia I II III",
+            "clearings",
+            "BSM",
+            "portabilidade de custódia",
+            "desintermediação",
+            "investidor qualificado",
+            "investidor profissional",
+            "Resolução CVM 30",
+            "Lei 13.874/19",
+            "Código Anbima de distribuição",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 1.4"
+
+  - slug: produtos-mercado
+    name: "Produtos do mercado financeiro"
+    weight: 0.40
+    topics:
+      - slug: renda-fixa-publica
+        name: "Renda fixa pública: Tesouro Direto"
+        keywords:
+          [
+            "NTN-B",
+            "NTN-B Principal",
+            "LFT",
+            "LTN",
+            "Tesouro Selic",
+            "Tesouro Prefixado",
+            "Tesouro IPCA+",
+            "Tesouro Educa+",
+            "Tesouro Renda+",
+            "plataforma do Tesouro Direto",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 2.1.1.1 (subitens 2.1.1.1.1 e 2.1.1.1.2)"
+
+      - slug: renda-fixa-privada
+        name: "Renda fixa privada: títulos bancários, debêntures e securitização"
+        keywords:
+          [
+            "CDB",
+            "RDB",
+            "RDC",
+            "LCI",
+            "LCA",
+            "LCD",
+            "debênture",
+            "debênture incentivada",
+            "debênture conversível",
+            "CRI",
+            "CRA",
+            "rating",
+            "poupança",
+            "TR",
+            "TLP",
+            "FGC",
+            "tributação renda fixa",
+            "IOF regressivo",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 2.1.1.1.3 a 2.1.1.1.12"
+
+      - slug: renda-variavel
+        name: "Renda variável: ações, eventos corporativos, índices e governança"
+        keywords:
+          [
+            "ações ordinárias",
+            "ações preferenciais",
+            "units",
+            "BDR",
+            "bônus de subscrição",
+            "IPO",
+            "OPA",
+            "follow on",
+            "AGO",
+            "AGE",
+            "dividendos",
+            "JCP",
+            "bonificação",
+            "subscrição",
+            "grupamento",
+            "desdobramento",
+            "Ibovespa",
+            "IBrX-100",
+            "IBrX-50",
+            "Novo Mercado",
+            "tag along",
+            "drag along",
+            "free float",
+            "tributação ações",
+            "isenção 20 mil",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 2.1.1.2 e 2.1.1.3"
+
+      - slug: coe
+        name: "Certificado de Operações Estruturadas (COE)"
+        keywords:
+          [
+            "COE",
+            "capital protegido",
+            "capital em risco",
+            "estrutura via derivativos",
+            "tributação COE",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 2.1.1.4"
+
+      - slug: fundos-investimento
+        name: "Fundos de investimento (Resolução CVM 175)"
+        keywords:
+          [
+            "Resolução CVM 175",
+            "FIF",
+            "classes",
+            "subclasses",
+            "segregação patrimonial",
+            "patrimônio líquido negativo",
+            "responsabilidade limitada",
+            "responsabilidade ilimitada",
+            "administrador",
+            "gestor",
+            "custodiante",
+            "cotista",
+            "taxa de administração",
+            "taxa de ingresso",
+            "taxa de saída",
+            "taxa máxima de distribuição",
+            "fundo aberto",
+            "fundo fechado",
+            "renda fixa",
+            "ações",
+            "multimercado",
+            "cambial",
+            "FI-Infra",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 2.1.2 e 2.1.3"
+
+      - slug: fundos-imobiliarios
+        name: "Fundos Imobiliários (FIIs)"
+        keywords:
+          [
+            "FII",
+            "fundos de tijolo",
+            "fundos de papel",
+            "fundos híbridos",
+            "isenção dividendos pessoa física",
+            "vacância",
+            "ganho de capital FII",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 2.1.4"
+
+      - slug: previdencia
+        name: "Previdência complementar: PGBL e VGBL"
+        keywords:
+          [
+            "PGBL",
+            "VGBL",
+            "regime progressivo",
+            "regime regressivo",
+            "tabela regressiva 10%",
+            "fase de contribuição",
+            "fase de benefícios",
+            "portabilidade",
+            "Renda Mensal Vitalícia",
+            "RMV",
+            "renda temporária",
+            "pagamento único",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 2.2"
+
+      - slug: credito-servicos-bancarios
+        name: "Produtos de crédito, serviços bancários e seguros"
+        keywords:
+          [
+            "empréstimo",
+            "financiamento",
+            "leasing",
+            "SCR",
+            "cartão de crédito",
+            "rotativo",
+            "cheque especial",
+            "consignado",
+            "CDC",
+            "crédito imobiliário",
+            "consórcio",
+            "PIX",
+            "chaves PIX",
+            "boleto",
+            "depósito compulsório",
+            "tarifas bancárias",
+            "conta internacional",
+            "câmbio comercial",
+            "câmbio turismo",
+            "seguro de vida",
+            "seguro residencial",
+            "seguro prestamista",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 2.3, 2.4 e 2.5"
+
+  - slug: relacionamento-cliente
+    name: "Relacionamento com o cliente: prospecção, atendimento e suporte"
+    weight: 0.30
+    topics:
+      - slug: financas-pessoais
+        name: "Finanças pessoais: orçamento, planejamento e ciclo de vida"
+        keywords:
+          [
+            "ciclo de vida",
+            "acumulação",
+            "preservação de capital",
+            "distribuição de renda",
+            "orçamento familiar",
+            "reserva de emergência",
+            "balanço patrimonial pessoal",
+            "ativos de uso",
+            "patrimônio líquido pessoal",
+            "planejamento financeiro",
+            "planejamento de aposentadoria",
+            "tributação pessoa física",
+            "modelo completo",
+            "desconto simplificado",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 3.1 e 3.2"
+
+      - slug: suitability-perfil-investidor
+        name: "Suitability e classificação de pessoas investidoras"
+        keywords:
+          [
+            "suitability",
+            "perfil conservador",
+            "perfil moderado",
+            "perfil agressivo",
+            "tolerância a risco",
+            "horizonte de investimento",
+            "diversificação de carteira",
+            "investidor profissional",
+            "investidor qualificado",
+            "monitoramento contínuo",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 3.3 e 3.4.2"
+
+      - slug: etica-conduta-anbima
+        name: "Código de conduta ética Anbima e ética profissional"
+        keywords:
+          [
+            "nove princípios éticos",
+            "código de conduta Anbima",
+            "deveres profissionais",
+            "escuta ativa",
+            "personalização do atendimento",
+            "conflitos de interesse",
+            "segregação de funções",
+            "comitê de ética",
+            "compliance",
+            "riscos operacionais",
+            "riscos regulatórios",
+            "riscos legais",
+            "riscos de imagem",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 3.4.1, 3.4.3 e 3.4.4"
+
+      - slug: pldft-kyc-lgpd
+        name: "PLDFT, KYC, sigilo bancário e LGPD"
+        keywords:
+          [
+            "PLDFT",
+            "Lei 9.613",
+            "COAF",
+            "abordagem baseada em risco",
+            "KYC",
+            "conheça seu cliente",
+            "conheça sua parceria",
+            "operações suspeitas",
+            "indisponibilidade de bens",
+            "LGPD",
+            "Lei 13.709",
+            "sigilo bancário",
+            "Lei Complementar 105",
+            "registro de operações",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 3.4.5 e 3.4.6"
+
+      - slug: crimes-mercado-capitais
+        name: "Crimes e ilícitos contra o mercado de capitais"
+        keywords:
+          [
+            "Lei 6.385/76",
+            "manipulação de mercado",
+            "art. 27-C",
+            "insider trading",
+            "art. 27-D",
+            "exercício irregular",
+            "art. 27-E",
+            "Resolução CVM 62",
+            "money pass",
+            "spoofing",
+            "layering",
+            "manipulação de benchmark",
+            "churning",
+            "front running",
+            "práticas não equitativas",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 3.4.7"
+
+  - slug: inovacao-mercado
+    name: "Inovação e desenvolvimento de mercado"
+    weight: 0.10
+    topics:
+      - slug: esg
+        name: "ESG e investimentos sustentáveis"
+        keywords:
+          [
+            "ESG",
+            "environment",
+            "social",
+            "governance",
+            "PRI",
+            "investimento sustentável",
+            "fundos IS",
+            "Resolução CVM 175 art. 49",
+            "greenwashing",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 4.1 a 4.3"
+
+      - slug: defi-blockchain
+        name: "Finanças descentralizadas: blockchain, tokens e ativos digitais"
+        keywords:
+          [
+            "DEFI",
+            "blockchain",
+            "smart contracts",
+            "DEXs",
+            "DAOs",
+            "tokenização",
+            "NFT",
+            "stable coins",
+            "renda fixa digital",
+            "ETF bitcoin",
+            "DREX",
+            "CBDC",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, item 4.4"
+
+      - slug: openfinance-fintechs-ia
+        name: "Open finance, fintechs, IA e meios de pagamento"
+        keywords:
+          [
+            "open finance",
+            "open investment",
+            "open insurance",
+            "Resolução Conjunta nº 1 de 2020",
+            "Resolução CVM 175",
+            "Resolução CVM 209",
+            "Resolução CVM 210",
+            "Resolução CVM 229",
+            "IA generativa",
+            "IA regenerativa",
+            "chatbots",
+            "assistentes virtuais",
+            "fintechs",
+            "sandbox regulatório",
+            "arranjo de pagamento",
+            "adquirente",
+            "sub-adquirente",
+          ]
+        official_reference: "PD CPA-ANBIMA v1.2, itens 4.5 a 4.7"

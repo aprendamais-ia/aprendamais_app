@@ -13,6 +13,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
+    "db:push": "npx -y supabase db push",
     "db:seed-topics": "tsx scripts/seed-topics.ts",
     "db:seed-demo": "tsx scripts/seed-demo-content.ts"
   },

@@ -1,0 +1,158 @@
+[
+  {
+    "topic_slug": "sistema-financeiro.matematica-financeira",
+    "difficulty": 2,
+    "stem": "Um investidor aplica R$ 1.000,00 a uma taxa de 1% ao mês em regime de capitalização SIMPLES, pelo prazo de 12 meses. Qual o montante final?",
+    "choices": [
+      { "key": "A", "text": "R$ 1.120,00.", "correct": true },
+      { "key": "B", "text": "R$ 1.126,83.", "correct": false },
+      { "key": "C", "text": "R$ 1.100,00.", "correct": false },
+      { "key": "D", "text": "R$ 1.012,00.", "correct": false }
+    ],
+    "explanation": "Em capitalização simples, juros = capital × taxa × prazo = 1.000 × 0,01 × 12 = R$ 120. Montante = 1.000 + 120 = R$ 1.120. A alternativa B (R$ 1.126,83) corresponde ao montante em capitalização composta — diferença que tende a crescer com o prazo.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.3.1 — Regimes de capitalização: simples e composta"
+  },
+  {
+    "topic_slug": "sistema-financeiro.matematica-financeira",
+    "difficulty": 3,
+    "stem": "Um título oferece taxa nominal de 12% ao ano com capitalização mensal. Qual a taxa efetiva anual aproximada?",
+    "choices": [
+      { "key": "A", "text": "12,00% ao ano.", "correct": false },
+      { "key": "B", "text": "12,68% ao ano.", "correct": true },
+      { "key": "C", "text": "12,36% ao ano.", "correct": false },
+      { "key": "D", "text": "13,00% ao ano.", "correct": false }
+    ],
+    "explanation": "Taxa nominal de 12% ao ano com capitalização mensal equivale a 1% ao mês. A taxa efetiva anual é (1,01)^12 - 1 ≈ 12,68%. Sempre que há capitalização em período menor que o da taxa nominal, a efetiva supera a nominal — esse é o efeito da composição intra-período.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.3.4 — Taxa nominal, efetiva e equivalente"
+  },
+  {
+    "topic_slug": "sistema-financeiro.matematica-financeira",
+    "difficulty": 4,
+    "stem": "Um projeto exige investimento inicial de R$ 1.000,00 e retornará R$ 600,00 ao fim do ano 1 e R$ 600,00 ao fim do ano 2. A taxa mínima de atratividade do investidor é de 10% ao ano. Qual o Valor Presente Líquido (VPL) aproximado e a decisão correta?",
+    "choices": [
+      { "key": "A", "text": "VPL ≈ R$ 41,32; aceitar o projeto.", "correct": true },
+      { "key": "B", "text": "VPL ≈ R$ 200,00; aceitar o projeto.", "correct": false },
+      { "key": "C", "text": "VPL ≈ -R$ 50,00; rejeitar o projeto.", "correct": false },
+      { "key": "D", "text": "VPL ≈ R$ 0,00; indiferente.", "correct": false }
+    ],
+    "explanation": "VPL = -1.000 + 600/(1,10) + 600/(1,10)² ≈ -1.000 + 545,45 + 495,87 ≈ R$ 41,32. Como VPL > 0 a uma taxa de desconto de 10%, o projeto cria valor — aceita-se. A alternativa B ignora o desconto e simplesmente soma fluxos.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.3.6.1 — Valor Presente Líquido (VPL)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.matematica-financeira",
+    "difficulty": 4,
+    "stem": "Sobre os sistemas de amortização SAC e Price aplicados a um financiamento de mesmo valor, prazo e taxa, é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "No Price, as parcelas são constantes; no SAC, as parcelas decrescem ao longo do tempo.", "correct": true },
+      { "key": "B", "text": "No SAC, o saldo devedor decresce mais lentamente que no Price.", "correct": false },
+      { "key": "C", "text": "No Price, o total de juros pagos é menor do que no SAC.", "correct": false },
+      { "key": "D", "text": "No SAC, a parcela inicial é menor do que no Price.", "correct": false }
+    ],
+    "explanation": "No Price (prestação constante), todas as parcelas têm o mesmo valor. No SAC (amortização constante), a parcela de amortização é fixa e os juros decrescem com o saldo devedor — resultado: parcelas decrescentes. O SAC tem parcela inicial maior, saldo devedor cai mais rápido e gera menor total de juros pagos.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.3.7 — Sistemas de amortização: SAC, Price"
+  },
+  {
+    "topic_slug": "sistema-financeiro.indicadores-economicos",
+    "difficulty": 2,
+    "stem": "O índice oficial usado pelo Banco Central do Brasil para acompanhar o cumprimento da meta de inflação é o:",
+    "choices": [
+      { "key": "A", "text": "IGP-M, calculado pela FGV.", "correct": false },
+      { "key": "B", "text": "IPCA, calculado pelo IBGE.", "correct": true },
+      { "key": "C", "text": "INPC, calculado pelo IBGE.", "correct": false },
+      { "key": "D", "text": "IPC-Fipe, calculado pela Fipe.", "correct": false }
+    ],
+    "explanation": "O IPCA (Índice Nacional de Preços ao Consumidor Amplo), calculado pelo IBGE, é o índice oficial do regime de metas para a inflação no Brasil desde 1999. IGP-M é usado tipicamente em reajustes de contratos (FGV), e INPC tem cobertura de renda mais restrita.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.2.6.1 — Índices de inflação (IPCA, IGP-M, INPC)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.indicadores-economicos",
+    "difficulty": 3,
+    "stem": "A taxa Selic over difere da taxa Selic meta porque:",
+    "choices": [
+      { "key": "A", "text": "A Selic over é definida pelo Copom; a Selic meta é apurada diariamente pelo Banco Central.", "correct": false },
+      { "key": "B", "text": "A Selic meta é definida pelo Copom; a Selic over é a taxa média efetiva das operações compromissadas com títulos públicos federais.", "correct": true },
+      { "key": "C", "text": "A Selic over corresponde à inflação esperada; a Selic meta é nominal.", "correct": false },
+      { "key": "D", "text": "São sinônimos, com nomes distintos por convenção de mercado.", "correct": false }
+    ],
+    "explanation": "A Selic meta é definida pelo Copom em suas reuniões e expressa o objetivo de política monetária. A Selic over é a taxa média ponderada efetivamente praticada nas operações de um dia útil entre instituições financeiras, lastreadas em títulos públicos federais (compromissadas). Costuma orbitar próxima da meta, com pequenos desvios.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.2.6.3 — Taxa Selic meta e Selic over"
+  },
+  {
+    "topic_slug": "sistema-financeiro.indicadores-economicos",
+    "difficulty": 3,
+    "stem": "O Produto Interno Bruto (PIB) a preços correntes mede:",
+    "choices": [
+      { "key": "A", "text": "Apenas o valor dos bens finais produzidos pelo setor industrial em determinado período.", "correct": false },
+      { "key": "B", "text": "O valor de mercado de todos os bens e serviços finais produzidos dentro do território nacional em um período, avaliado a preços do próprio período.", "correct": true },
+      { "key": "C", "text": "O valor da renda recebida por residentes do país, independentemente de onde a produção ocorra.", "correct": false },
+      { "key": "D", "text": "Apenas a soma das exportações líquidas e do consumo das famílias.", "correct": false }
+    ],
+    "explanation": "PIB a preços correntes (nominal) é o valor de mercado da produção final dentro do território nacional, avaliada aos preços do período. A alternativa C descreve o PNB (Produto Nacional Bruto), que considera renda de residentes onde quer que a produção ocorra. Bens intermediários não entram para evitar dupla contagem.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.2.6.6 — PIB (medidas e composição)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.regulacao-infraestrutura",
+    "difficulty": 3,
+    "stem": "Sobre a B3 — Brasil, Bolsa, Balcão, é correto afirmar que ela atua como:",
+    "choices": [
+      { "key": "A", "text": "Órgão normativo do Sistema Financeiro Nacional, equiparado ao CMN.", "correct": false },
+      { "key": "B", "text": "Bolsa de valores, mercadorias e futuros, depositária central, contraparte central e câmara de compensação.", "correct": true },
+      { "key": "C", "text": "Autarquia federal vinculada ao Ministério da Fazenda.", "correct": false },
+      { "key": "D", "text": "Entidade autorreguladora exclusiva do mercado de previdência complementar.", "correct": false }
+    ],
+    "explanation": "A B3 é uma empresa privada que reúne em uma única infraestrutura: bolsa de valores e de derivativos, depositária central de títulos, contraparte central (CCP) e câmara de compensação e liquidação. Não é órgão normativo (CMN) nem autarquia (CVM/BACEN). Sua atuação como CCP é central na mitigação do risco de contraparte.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.4.5 — Infraestrutura de mercado: clearings, CCPs e depositárias"
+  },
+  {
+    "topic_slug": "sistema-financeiro.regulacao-infraestrutura",
+    "difficulty": 4,
+    "stem": "O acordo de Basileia III estabelece, entre outros, requisitos mínimos de capital aos bancos. O 'capital principal' (Common Equity Tier 1, CET1) é composto principalmente por:",
+    "choices": [
+      { "key": "A", "text": "Dívidas subordinadas de longo prazo emitidas pelo banco.", "correct": false },
+      { "key": "B", "text": "Capital social integralizado, reservas de lucros e ajustes de avaliação patrimonial.", "correct": true },
+      { "key": "C", "text": "Ativos ponderados pelo risco (RWA).", "correct": false },
+      { "key": "D", "text": "Depósitos à vista e depósitos a prazo dos clientes.", "correct": false }
+    ],
+    "explanation": "CET1 (capital principal) é a forma de capital de mais alta qualidade: capital social integralizado, reservas de lucros e ajustes patrimoniais — capaz de absorver perdas em continuidade operacional. Dívidas subordinadas compõem o capital nível 2. RWA é o denominador do índice, não componente do capital. Depósitos são passivos, não capital.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.4.6 — Acordos de Basileia (I, II, III)"
+  },
+  {
+    "topic_slug": "sistema-financeiro.operadores-mercado",
+    "difficulty": 2,
+    "stem": "A Anbima — Associação Brasileira das Entidades dos Mercados Financeiro e de Capitais — atua predominantemente como:",
+    "choices": [
+      { "key": "A", "text": "Órgão regulador estatal com poder de polícia sobre as instituições financeiras.", "correct": false },
+      { "key": "B", "text": "Entidade autorreguladora privada, que edita códigos de melhores práticas e certifica profissionais.", "correct": true },
+      { "key": "C", "text": "Câmara de compensação e liquidação de operações em bolsa.", "correct": false },
+      { "key": "D", "text": "Autarquia federal vinculada à CVM.", "correct": false }
+    ],
+    "explanation": "A Anbima é uma associação privada de adesão voluntária que exerce autorregulação por meio de Códigos de melhores práticas (distribuição, gestão de fundos, ofertas, etc.) e responde pelas certificações CPA, CEA, CGA e CGE. Não tem natureza estatal — o regulador estatal é a CVM (mercado de capitais) e o BACEN (sistema bancário).",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.1.5.1 — Anbima e autorregulação"
+  },
+  {
+    "topic_slug": "sistema-financeiro.politica-economica",
+    "difficulty": 3,
+    "stem": "A política fiscal contracionista, ceteris paribus, tende a produzir, no curto prazo:",
+    "choices": [
+      { "key": "A", "text": "Aumento da demanda agregada e elevação da inflação.", "correct": false },
+      { "key": "B", "text": "Redução da demanda agregada, com pressão baixista sobre a inflação e impacto negativo sobre o nível de atividade.", "correct": true },
+      { "key": "C", "text": "Aumento simultâneo da inflação e do déficit público.", "correct": false },
+      { "key": "D", "text": "Não tem efeito sobre demanda nem inflação, apenas sobre o câmbio.", "correct": false }
+    ],
+    "explanation": "Política fiscal contracionista (corte de gastos públicos ou aumento de impostos) reduz a renda disponível e o gasto agregado da economia, derrubando a demanda. O efeito típico é desinflacionário e contracionista sobre a atividade no curto prazo. No longo prazo, pode reduzir a dívida pública e baixar o prêmio de risco.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.2.2 — Política fiscal: instrumentos e efeitos"
+  },
+  {
+    "topic_slug": "sistema-financeiro.politica-economica",
+    "difficulty": 4,
+    "stem": "O Banco Central do Brasil realiza um leilão de venda de dólares à vista no mercado de câmbio. Mantidas as demais condições, o efeito esperado dessa intervenção é:",
+    "choices": [
+      { "key": "A", "text": "Apreciação imediata do dólar frente ao real e aumento das reservas internacionais.", "correct": false },
+      { "key": "B", "text": "Apreciação do real frente ao dólar e redução das reservas internacionais.", "correct": true },
+      { "key": "C", "text": "Apreciação do real frente ao dólar e aumento das reservas internacionais.", "correct": false },
+      { "key": "D", "text": "Indiferença sobre o câmbio, pois a intervenção esterilizada não altera a taxa.", "correct": false }
+    ],
+    "explanation": "Vender dólares à vista aumenta a oferta de dólares no mercado e tende a apreciar o real (reduzir o preço do dólar em reais). Como o BC entrega dólares dos seus estoques, há redução das reservas internacionais. O contrário (compra de dólares) ocorreria em uma intervenção para conter apreciação excessiva do real.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 1.2.5 — Política cambial: instrumentos e efeitos"
+  }
+]

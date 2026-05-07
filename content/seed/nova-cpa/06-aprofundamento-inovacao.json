@@ -1,0 +1,158 @@
+[
+  {
+    "topic_slug": "inovacao-mercado.esg",
+    "difficulty": 2,
+    "stem": "Os Princípios para o Investimento Responsável (PRI), apoiados pela ONU, estabelecem que signatários se comprometem a:",
+    "choices": [
+      { "key": "A", "text": "Investir exclusivamente em empresas com nota máxima de governança ambiental.", "correct": false },
+      { "key": "B", "text": "Incorporar fatores ambientais, sociais e de governança (ESG) à análise e às decisões de investimento.", "correct": true },
+      { "key": "C", "text": "Excluir do portfólio qualquer empresa do setor de energia.", "correct": false },
+      { "key": "D", "text": "Reportar trimestralmente os retornos ao Banco Central do país de origem.", "correct": false }
+    ],
+    "explanation": "Os PRI são compromissos voluntários de integração de fatores ESG à análise, ao processo decisório e ao engajamento com investidas. Não impõem listas de exclusão setorial nem requisitos de reporte regulatório a bancos centrais. A integração ESG é distinta de exclusão setorial pura — pode coexistir com qualquer setor sob critérios mínimos.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.2 — Princípios para o Investimento Responsável (PRI)"
+  },
+  {
+    "topic_slug": "inovacao-mercado.esg",
+    "difficulty": 3,
+    "stem": "A prática de 'greenwashing' no contexto de investimentos sustentáveis caracteriza-se por:",
+    "choices": [
+      { "key": "A", "text": "Aplicação de critérios rigorosos de exclusão setorial em fundos.", "correct": false },
+      { "key": "B", "text": "Comunicação enganosa que faz um produto, fundo ou empresa parecer mais sustentável do que realmente é.", "correct": true },
+      { "key": "C", "text": "Conversão obrigatória de fundos tradicionais em fundos ESG.", "correct": false },
+      { "key": "D", "text": "Rotina de auditoria ambiental aplicada por entidades certificadoras independentes.", "correct": false }
+    ],
+    "explanation": "Greenwashing é a prática de marketing/divulgação que apresenta produtos, fundos ou empresas como mais sustentáveis (verdes, ESG) do que de fato são, induzindo investidores a erro. É uma preocupação central da regulação recente — a Resolução CVM 175 disciplina o uso de denominações ESG para fundos justamente para mitigar essa prática.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.3.2 — Riscos do mercado sustentável: greenwashing"
+  },
+  {
+    "topic_slug": "inovacao-mercado.esg",
+    "difficulty": 3,
+    "stem": "A Resolução CVM 175, em sua disciplina sobre fundos sustentáveis (FIS — Fundos de Investimento Sustentável), exige que:",
+    "choices": [
+      { "key": "A", "text": "O fundo invista apenas em empresas certificadas pelo selo verde da B3.", "correct": false },
+      { "key": "B", "text": "A política do fundo descreva critérios objetivos de sustentabilidade e a denominação só seja usada por fundos que efetivamente integrem fatores ESG.", "correct": true },
+      { "key": "C", "text": "Pelo menos 70% do patrimônio esteja alocado em projetos de energia renovável.", "correct": false },
+      { "key": "D", "text": "O fundo distribua dividendos mensais aos cotistas.", "correct": false }
+    ],
+    "explanation": "A Resolução CVM 175, em seu artigo sobre fundos sustentáveis, condiciona o uso da denominação 'sustentável' (e similares) à integração efetiva de fatores ESG, com critérios objetivos descritos no regulamento e divulgados aos cotistas. Não há exigência de selo da B3 nem de percentual mínimo em setores específicos. O objetivo regulatório é evitar greenwashing.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.3.1 — Resolução CVM 175 (FIS)"
+  },
+  {
+    "topic_slug": "inovacao-mercado.openfinance-fintechs-ia",
+    "difficulty": 2,
+    "stem": "Sobre o Open Finance no Brasil, é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "É uma plataforma estatal que centraliza todas as contas bancárias de pessoas físicas.", "correct": false },
+      { "key": "B", "text": "Permite, mediante consentimento expresso do cliente, o compartilhamento padronizado de dados e serviços entre instituições autorizadas.", "correct": true },
+      { "key": "C", "text": "Substitui a Lei Geral de Proteção de Dados nas relações entre bancos e clientes.", "correct": false },
+      { "key": "D", "text": "É de adesão obrigatória para qualquer pessoa física com conta corrente.", "correct": false }
+    ],
+    "explanation": "Open Finance é o ecossistema regulado em que o cliente é dono dos seus dados e pode autorizar, por consentimento expresso e revogável a qualquer tempo, o compartilhamento entre instituições financeiras autorizadas. Não é estatal nem centralizado; convive com a LGPD e respeita seus princípios; e a participação do cliente é facultativa.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.5.1 — Open Finance: conceito e princípios"
+  },
+  {
+    "topic_slug": "inovacao-mercado.openfinance-fintechs-ia",
+    "difficulty": 3,
+    "stem": "Em um arranjo de pagamento com cartão de crédito, o papel do 'adquirente' (credenciador) é:",
+    "choices": [
+      { "key": "A", "text": "Emitir o cartão e definir o limite de crédito do portador.", "correct": false },
+      { "key": "B", "text": "Habilitar o estabelecimento comercial a aceitar pagamentos com cartão e processar/repassar a transação.", "correct": true },
+      { "key": "C", "text": "Estabelecer as regras gerais do arranjo de pagamento.", "correct": false },
+      { "key": "D", "text": "Custodiar os recursos do portador até o vencimento da fatura.", "correct": false }
+    ],
+    "explanation": "O adquirente (também chamado credenciador) é o agente que credencia o estabelecimento, captura a transação e faz a liquidação financeira ao lojista. O emissor é quem fornece o cartão ao portador. O instituidor define as regras do arranjo (ex: bandeiras). A liquidação envolve câmaras autorizadas pelo BACEN.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.7.1 — Arranjos de pagamento: papéis (emissor, adquirente, sub-adquirente, instituidor)"
+  },
+  {
+    "topic_slug": "inovacao-mercado.openfinance-fintechs-ia",
+    "difficulty": 3,
+    "stem": "Sobre o uso de Inteligência Artificial generativa em assessoria financeira, segundo orientações regulatórias recentes da CVM, é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "Está vedado o uso de IA generativa em qualquer interação com clientes do mercado financeiro.", "correct": false },
+      { "key": "B", "text": "O uso é permitido, mas a instituição permanece responsável pela qualidade, supervisão e adequação das recomendações geradas.", "correct": true },
+      { "key": "C", "text": "Recomendações geradas por IA dispensam o teste de suitability.", "correct": false },
+      { "key": "D", "text": "A responsabilidade por eventual prejuízo recai exclusivamente sobre o fornecedor do modelo de IA.", "correct": false }
+    ],
+    "explanation": "A CVM admite o uso de IA, inclusive generativa, no atendimento e na recomendação, mas mantém íntegro o regime de responsabilidade da instituição: governança do modelo, controles, supervisão humana proporcional ao risco e cumprimento das regras de suitability e dos códigos Anbima. Não há dispensa de suitability nem transferência da responsabilidade para o fornecedor de tecnologia.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.6 — IA aplicada ao mercado financeiro: governança e responsabilidade"
+  },
+  {
+    "topic_slug": "inovacao-mercado.defi-blockchain",
+    "difficulty": 2,
+    "stem": "A 'tokenização' de um ativo real (ex: imóvel, recebível) consiste em:",
+    "choices": [
+      { "key": "A", "text": "Converter o ativo em uma criptomoeda livre de regulação.", "correct": false },
+      { "key": "B", "text": "Representar o ativo (ou frações dele) por meio de tokens registrados em uma rede distribuída, possibilitando transferência e fracionamento.", "correct": true },
+      { "key": "C", "text": "Substituir o registro do ativo nos cartórios pela rede pública de blockchain.", "correct": false },
+      { "key": "D", "text": "Eliminar a necessidade de qualquer intermediário regulado para a custódia.", "correct": false }
+    ],
+    "explanation": "Tokenizar é representar direitos sobre um ativo (ou fração dele) em forma de tokens em uma rede distribuída, ampliando liquidez e fracionamento. A relação com cartórios, custódia e regulação não é dispensada — em geral, o token convive com o registro tradicional do ativo. No Brasil, a CVM tem disciplinado a oferta de tokens com características de valor mobiliário.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.4.3 — Tokenização de ativos"
+  },
+  {
+    "topic_slug": "inovacao-mercado.defi-blockchain",
+    "difficulty": 3,
+    "stem": "Sobre as 'stablecoins' lastreadas em moeda fiduciária, é correto afirmar que:",
+    "choices": [
+      { "key": "A", "text": "Têm valor flutuante atrelado ao Ibovespa.", "correct": false },
+      { "key": "B", "text": "Buscam manter paridade com uma moeda fiduciária (ex: dólar) por meio de lastro em ativos equivalentes.", "correct": true },
+      { "key": "C", "text": "São emitidas exclusivamente pelo Banco Central do Brasil.", "correct": false },
+      { "key": "D", "text": "São equivalentes legais a moeda de curso forçado no território nacional.", "correct": false }
+    ],
+    "explanation": "Stablecoins lastreadas em fiat (ex: USDC, USDT) buscam paridade 1:1 com uma moeda fiduciária mantendo reservas equivalentes (caixa, títulos curtos). Não são emitidas pelo BACEN — o DREX é a moeda digital do BC, distinta de stablecoin privada. E não têm curso forçado, ou seja, não são meio de pagamento legalmente obrigatório no país.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 4.4.5 — Stablecoins e tipos de criptoativos"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.financas-pessoais",
+    "difficulty": 2,
+    "stem": "A 'reserva de emergência' é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
+    "choices": [
+      { "key": "A", "text": "12 a 24 meses de despesas fixas, aplicada em ações de empresas defensivas.", "correct": false },
+      { "key": "B", "text": "3 a 12 meses de despesas fixas, aplicada em produto de alta liquidez e baixo risco (ex: Tesouro Selic, fundo DI).", "correct": true },
+      { "key": "C", "text": "1 mês de despesas, aplicado em previdência privada PGBL.", "correct": false },
+      { "key": "D", "text": "Não há recomendação — depende exclusivamente do perfil de investimento.", "correct": false }
+    ],
+    "explanation": "A reserva de emergência cobre tipicamente de 3 a 12 meses de despesas fixas (faixa que varia com estabilidade de renda) e deve ficar em produto de alta liquidez e baixíssimo risco — Tesouro Selic, fundo DI ou CDB com liquidez diária de banco grande. Ações e previdência são inadequadas pelo risco de mercado e pela liquidez/tributação.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.1.4 — Reserva de emergência"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.suitability-perfil-investidor",
+    "difficulty": 3,
+    "stem": "A análise de suitability deve ser ATUALIZADA, segundo as normas vigentes:",
+    "choices": [
+      { "key": "A", "text": "Apenas quando o cliente solicitar por escrito.", "correct": false },
+      { "key": "B", "text": "Em prazo não superior a 24 meses, ou sempre que houver mudança relevante na situação do cliente.", "correct": true },
+      { "key": "C", "text": "Diariamente, em razão da volatilidade dos mercados.", "correct": false },
+      { "key": "D", "text": "Apenas no momento da abertura da conta, sem atualização posterior.", "correct": false }
+    ],
+    "explanation": "As regras de suitability (Resolução CVM 30 e códigos Anbima) preveem atualização periódica em prazo não superior a 24 meses, sem prejuízo da revisão sempre que houver mudanças relevantes (ex: alteração patrimonial significativa, mudança de objetivos, eventos de vida). A análise não é um ato único na abertura de conta.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.2 — Suitability: periodicidade da análise"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.etica-conduta-anbima",
+    "difficulty": 3,
+    "stem": "Um profissional certificado identifica um conflito de interesses entre uma campanha interna de incentivo e a recomendação adequada ao cliente. Pelo Código de Conduta da Anbima, a conduta esperada é:",
+    "choices": [
+      { "key": "A", "text": "Privilegiar a campanha interna, pois deriva da hierarquia da instituição.", "correct": false },
+      { "key": "B", "text": "Comunicar o conflito de interesses ao cliente e/ou à área de compliance e atuar de forma a proteger o melhor interesse do cliente.", "correct": true },
+      { "key": "C", "text": "Manter o conflito em sigilo absoluto para preservar a relação comercial.", "correct": false },
+      { "key": "D", "text": "Cancelar a relação com o cliente para evitar a discussão do tema.", "correct": false }
+    ],
+    "explanation": "O Código de Conduta da Anbima impõe transparência e prevalência do interesse do cliente. Diante de conflito de interesses, a conduta exigida é: identificar, comunicar (cliente e/ou compliance) e mitigar — atuando em favor do melhor interesse do cliente. Suprimir a informação ou romper a relação comercial não atende aos princípios éticos.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.3 — Código de Conduta Anbima: conflitos de interesse"
+  },
+  {
+    "topic_slug": "relacionamento-cliente.crimes-mercado-capitais",
+    "difficulty": 4,
+    "stem": "A prática conhecida como 'spoofing', listada como ilícito de mercado na Resolução CVM 62, consiste em:",
+    "choices": [
+      { "key": "A", "text": "Receber comissões por operações realizadas em conta de cliente sem o conhecimento dele.", "correct": false },
+      { "key": "B", "text": "Inserir ordens de compra ou venda sem a intenção real de executá-las, com o objetivo de induzir outros participantes do mercado a operar.", "correct": true },
+      { "key": "C", "text": "Negociar com base em informação relevante ainda não pública.", "correct": false },
+      { "key": "D", "text": "Comprar antes de uma ordem grande conhecida do cliente.", "correct": false }
+    ],
+    "explanation": "Spoofing é a inserção de ordens (geralmente grandes) sem intenção real de execução, com o objetivo de criar a falsa impressão de oferta/demanda e induzir outros agentes a operar — depois cancela-se a ordem manipulativa e captura-se ganho na ponta oposta. Insider é o uso de informação relevante não pública (alternativa C); front running é antecipar ordem do cliente (alternativa D); churning é a alternativa A.",
+    "source_citation": "PD CPA-ANBIMA v1.2, item 3.4.7 — Resolução CVM 62: spoofing, layering, churning, front running"
+  }
+]

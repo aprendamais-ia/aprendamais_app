@@ -61,12 +61,10 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
     <div className="mt-6 flex flex-1 flex-col">
       {step !== 4 && <Stepper current={step} />}
 
-      {step !== 4 && (
-        <MascotBubble fala={FALAS[step]} step={step} />
-      )}
+      {step !== 4 && <MascotBubble fala={FALAS[step]} />}
 
       {step === 1 && (
-        <section className="mt-4 flex flex-1 animate-pop-in flex-col">
+        <section className="mt-4 flex flex-1 flex-col">
           <h1 className="font-display text-2xl font-bold">Pra qual prova tu vai?</h1>
           <p className="mt-1 text-sm text-text-muted">Tu pode trocar depois.</p>
 
@@ -100,7 +98,7 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
       )}
 
       {step === 2 && (
-        <section className="mt-4 flex flex-1 animate-pop-in flex-col">
+        <section className="mt-4 flex flex-1 flex-col">
           <h1 className="font-display text-2xl font-bold">Quanto tu consegue por dia?</h1>
           <p className="mt-1 text-sm text-text-muted">A gente te lembra na hora certa.</p>
 
@@ -131,7 +129,7 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
       )}
 
       {step === 3 && (
-        <section className="mt-4 flex flex-1 animate-pop-in flex-col">
+        <section className="mt-4 flex flex-1 flex-col">
           <h1 className="font-display text-2xl font-bold">Quando é a prova?</h1>
           <p className="mt-1 text-sm text-text-muted">
             Pula se ainda não sabe. A gente avisa quando faltarem 30 dias.
@@ -188,9 +186,9 @@ function Stepper({ current }: { current: Step }) {
   );
 }
 
-function MascotBubble({ fala, step }: { fala: string; step: Step }) {
+function MascotBubble({ fala }: { fala: string }) {
   return (
-    <div key={step} className="mt-6 flex animate-pop-in items-end gap-3">
+    <div className="mt-6 flex items-end gap-3">
       <Mascot size={88} className="shrink-0" />
       <div className="relative mb-2 flex-1 rounded-2xl rounded-bl-none border border-border bg-surface p-3 text-sm leading-relaxed">
         {fala}
@@ -207,16 +205,11 @@ function CelebrationStep({ onContinue }: { onContinue: () => void }) {
   return (
     <section className="relative mt-4 flex flex-1 flex-col items-center text-center">
       <Confetti />
-      <div className="mt-8 animate-pop-in">
-        <Mascot size={200} />
+      <div className="mt-8">
+        <Mascot size={200} variant="happy" />
       </div>
-      <h1 className="mt-6 animate-count-up font-display text-3xl font-bold">
-        Tu tá pronto!
-      </h1>
-      <p
-        className="mt-2 max-w-xs animate-count-up text-sm text-text-muted"
-        style={{ animationDelay: "120ms", opacity: 0 }}
-      >
+      <h1 className="mt-6 font-display text-3xl font-bold">Tu tá pronto!</h1>
+      <p className="mt-2 max-w-xs text-sm text-text-muted">
         Tua trilha tá montada. Cinco minutos por dia já te levam longe.
       </p>
 

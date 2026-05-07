@@ -16,9 +16,10 @@ type Props = {
   leagueId: string;
   currentUserId: string;
   initialMembers: Member[];
+  canDemote: boolean;
 };
 
-export function Leaderboard({ leagueId, currentUserId, initialMembers }: Props) {
+export function Leaderboard({ leagueId, currentUserId, initialMembers, canDemote }: Props) {
   const [members, setMembers] = useState<Member[]>(initialMembers);
 
   useEffect(() => {
@@ -39,7 +40,6 @@ export function Leaderboard({ leagueId, currentUserId, initialMembers }: Props) 
             const next = curr.map((m) =>
               m.user_id === updated.user_id ? { ...m, weekly_xp: updated.weekly_xp } : m,
             );
-            // Reordena
             next.sort((a, b) => b.weekly_xp - a.weekly_xp);
             return next.map((m, i) => ({ ...m, rank: i + 1 }));
           });
@@ -52,27 +52,47 @@ export function Leaderboard({ leagueId, currentUserId, initialMembers }: Props) 
     };
   }, [leagueId]);
 
-  return (
-    <ol className="mt-6 flex flex-col gap-2">
-      {members.length === 0 ? (
+  if (members.length === 0) {
+    return (
+      <ol className="mt-6">
         <li className="rounded-2xl bg-surface p-5 text-center text-sm text-text-muted">
           Tu é o primeiro da liga. Manda lição pra subir XP.
         </li>
-      ) : (
-        members.map((m) => {
-          const isCurrent = m.user_id === currentUserId;
-          const isTop3 = m.rank <= 3;
-          const isTop10 = m.rank <= 10;
-          const isBottom5 = m.rank > members.length - 5 && members.length > 10;
+      </ol>
+    );
+  }
 
-          return (
+  // Zonas só fazem sentido se a liga tiver pelo menos 11 membros — caso
+  // contrário não tem rebaixamento (vide migration 5)
+  const showDemoteZone = canDemote && members.length >= 11;
+
+  return (
+    <ol className="mt-6 flex flex-col gap-2">
+      {members.map((m, idx) => {
+        const isCurrent = m.user_id === currentUserId;
+        const isTop3 = m.rank <= 3;
+        const isTop10 = m.rank <= 10;
+        const isBottom5 = showDemoteZone && m.rank > members.length - 5;
+
+        const showPromoDivider = m.rank === 11;
+        const showDemoDivider =
+          showDemoteZone && m.rank === members.length - 4;
+
+        return (
+          <div key={m.user_id}>
+            {showPromoDivider && (
+              <ZoneDivider tone="promo" label="Linha de promoção" />
+            )}
+            {showDemoDivider && (
+              <ZoneDivider tone="demote" label="Linha de rebaixamento" />
+            )}
             <li
-              key={m.user_id}
               className={cn(
                 "flex items-center gap-3 rounded-2xl border p-3 transition-colors",
                 isCurrent
                   ? "border-brand-green bg-brand-green/10"
                   : "border-border bg-surface",
+                idx > 0 && "mt-2",
               )}
             >
               <span
@@ -95,9 +115,36 @@ export function Leaderboard({ leagueId, currentUserId, initialMembers }: Props) 
                 {m.weekly_xp.toLocaleString("pt-BR")}
               </span>
             </li>
-          );
-        })
-      )}
+          </div>
+        );
+      })}
     </ol>
+  );
+}
+
+function ZoneDivider({ tone, label }: { tone: "promo" | "demote"; label: string }) {
+  return (
+    <div className="my-2 flex items-center gap-2">
+      <div
+        className={cn(
+          "h-px flex-1",
+          tone === "promo" ? "bg-success/40" : "bg-error/40",
+        )}
+      />
+      <span
+        className={cn(
+          "text-[10px] uppercase tracking-wider",
+          tone === "promo" ? "text-success" : "text-error",
+        )}
+      >
+        {label}
+      </span>
+      <div
+        className={cn(
+          "h-px flex-1",
+          tone === "promo" ? "bg-success/40" : "bg-error/40",
+        )}
+      />
+    </div>
   );
 }

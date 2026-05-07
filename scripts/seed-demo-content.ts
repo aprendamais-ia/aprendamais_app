@@ -388,6 +388,102 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
       "O Open Finance no Brasil tem como principal objetivo:",
     ],
   },
+  {
+    topicSlug: "sistema-financeiro.matematica-financeira",
+    level: 1,
+    position: 2,
+    title: "Matemática financeira",
+    intro:
+      "Os números que aparecem na prova: capitalização, juros nominal vs efetiva, VPL e os dois sistemas de amortização (SAC e Price).",
+    outro:
+      "Boa! Esse bloco assusta na primeira leitura, mas no fundo são quatro fórmulas. Tu já tem todas.",
+    questionStems: [
+      "Um investidor aplica R$ 1.000,00 a uma taxa de 1% ao mês em regime de capitalização SIMPLES, pelo prazo de 12 meses. Qual o montante final?",
+      "Um título oferece taxa nominal de 12% ao ano com capitalização mensal. Qual a taxa efetiva anual aproximada?",
+      "Um projeto exige investimento inicial de R$ 1.000,00 e retornará R$ 600,00 ao fim do ano 1 e R$ 600,00 ao fim do ano 2. A taxa mínima de atratividade do investidor é de 10% ao ano. Qual o Valor Presente Líquido (VPL) aproximado e a decisão correta?",
+      "Sobre os sistemas de amortização SAC e Price aplicados a um financiamento de mesmo valor, prazo e taxa, é correto afirmar que:",
+    ],
+  },
+  {
+    topicSlug: "sistema-financeiro.indicadores-economicos",
+    level: 1,
+    position: 3,
+    title: "Indicadores e regulação",
+    intro:
+      "IPCA, Selic over, PIB, B3 e Basileia. As siglas que abrem dezenas de questões da prova quando tu as domina.",
+    outro:
+      "Cravou. Sabendo essas peças, qualquer questão de macro/regulação fica encaixe.",
+    questionStems: [
+      "O índice oficial usado pelo Banco Central do Brasil para acompanhar o cumprimento da meta de inflação é o:",
+      "A taxa Selic over difere da taxa Selic meta porque:",
+      "O Produto Interno Bruto (PIB) a preços correntes mede:",
+      "Sobre a B3 — Brasil, Bolsa, Balcão, é correto afirmar que ela atua como:",
+      "O acordo de Basileia III estabelece, entre outros, requisitos mínimos de capital aos bancos. O 'capital principal' (Common Equity Tier 1, CET1) é composto principalmente por:",
+    ],
+  },
+  {
+    topicSlug: "sistema-financeiro.politica-economica",
+    level: 1,
+    position: 4,
+    title: "Política econômica e operadores",
+    intro:
+      "Fiscal, monetária e cambial — os três braços da política econômica — mais o papel da Anbima como autorreguladora.",
+    outro:
+      "Boa! Macro do macro. Esses fundamentos ancoram quase metade do módulo 1.",
+    questionStems: [
+      "A Anbima — Associação Brasileira das Entidades dos Mercados Financeiro e de Capitais — atua predominantemente como:",
+      "A política fiscal contracionista, ceteris paribus, tende a produzir, no curto prazo:",
+      "O Banco Central do Brasil realiza um leilão de venda de dólares à vista no mercado de câmbio. Mantidas as demais condições, o efeito esperado dessa intervenção é:",
+    ],
+  },
+  {
+    topicSlug: "relacionamento-cliente.suitability-perfil-investidor",
+    level: 3,
+    position: 2,
+    title: "Cliente em profundidade: ética e ilícitos",
+    intro:
+      "Reserva de emergência, periodicidade de suitability, conflito de interesses e spoofing. Detalhes que distinguem profissional de iniciante.",
+    outro:
+      "Pegada esse bloco, tu fica imune às pegadinhas finas do módulo 3.",
+    questionStems: [
+      "A 'reserva de emergência' é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
+      "A análise de suitability deve ser ATUALIZADA, segundo as normas vigentes:",
+      "Um profissional certificado identifica um conflito de interesses entre uma campanha interna de incentivo e a recomendação adequada ao cliente. Pelo Código de Conduta da Anbima, a conduta esperada é:",
+      "A prática conhecida como 'spoofing', listada como ilícito de mercado na Resolução CVM 62, consiste em:",
+    ],
+  },
+  {
+    topicSlug: "inovacao-mercado.esg",
+    level: 4,
+    position: 1,
+    title: "ESG e Open Finance",
+    intro:
+      "PRI, greenwashing, fundos sustentáveis (CVM 175), Open Finance e IA generativa. O que mudou na prova de 2026.",
+    outro:
+      "Esse é o bloco que separa quem estudou edital antigo de quem estudou o novo. Tu tá no time certo.",
+    questionStems: [
+      "Os Princípios para o Investimento Responsável (PRI), apoiados pela ONU, estabelecem que signatários se comprometem a:",
+      "A prática de 'greenwashing' no contexto de investimentos sustentáveis caracteriza-se por:",
+      "A Resolução CVM 175, em sua disciplina sobre fundos sustentáveis (FIS — Fundos de Investimento Sustentável), exige que:",
+      "Sobre o Open Finance no Brasil, é correto afirmar que:",
+      "Sobre o uso de Inteligência Artificial generativa em assessoria financeira, segundo orientações regulatórias recentes da CVM, é correto afirmar que:",
+    ],
+  },
+  {
+    topicSlug: "inovacao-mercado.defi-blockchain",
+    level: 4,
+    position: 2,
+    title: "Cripto, tokenização e pagamentos",
+    intro:
+      "Tokenização de ativos, stablecoins e o papel do adquirente em arranjos de pagamento. O lado prático da inovação.",
+    outro:
+      "Última fase. Da CPA-10 antiga pra Nova CPA, esse bloco é praticamente novo — e tu acabou de varrê-lo.",
+    questionStems: [
+      "A 'tokenização' de um ativo real (ex: imóvel, recebível) consiste em:",
+      "Sobre as 'stablecoins' lastreadas em moeda fiduciária, é correto afirmar que:",
+      "Em um arranjo de pagamento com cartão de crédito, o papel do 'adquirente' (credenciador) é:",
+    ],
+  },
 ];
 
 async function seedNovaCpaLessons() {

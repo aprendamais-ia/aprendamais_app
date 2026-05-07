@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Heart, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { Mascot } from "@/components/mascot";
 
 type Props = {
   livesRegenAt: string | null;
@@ -36,11 +37,9 @@ export function OutOfLives({ livesRegenAt }: Props) {
         <ArrowLeft className="size-4" /> Voltar
       </Link>
 
-      <section className="mt-16 flex flex-1 flex-col items-center text-center">
-        <div className="flex size-24 items-center justify-center rounded-full bg-error/15">
-          <Heart className="size-12 text-error" />
-        </div>
-        <h1 className="mt-6 font-display text-3xl font-bold">Sem vidas.</h1>
+      <section className="mt-12 flex flex-1 flex-col items-center text-center">
+        <Mascot variant="sad" size={160} />
+        <h1 className="mt-4 font-display text-3xl font-bold">Sem vidas.</h1>
         <p className="mt-3 text-text-muted">
           Errou demais por agora. Volta quando uma vida regenerar.
         </p>

@@ -145,7 +145,16 @@ export function LessonPlayer({
         {totalXp > 0 && <Confetti />}
         <section className="mt-10 flex flex-1 flex-col items-center text-center">
           <div className="animate-pop-in">
-            <Mascot size={160} />
+            <Mascot
+              size={160}
+              variant={
+                allCorrect
+                  ? "happy"
+                  : livesLost >= initialLives && initialLives > 0
+                    ? "sad"
+                    : "idle"
+              }
+            />
           </div>
           <h1 className="mt-4 font-display text-3xl font-bold">
             {allCorrect ? "Cravou tudo!" : "Lição feita."}

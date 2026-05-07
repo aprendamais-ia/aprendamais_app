@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { Flame, Zap, Heart, Trophy } from "lucide-react";
+import { Flame, Zap, Heart, Trophy, ChevronDown, BookOpen } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/logo";
 import { LearningPath, type Phase } from "@/components/learning-path";
@@ -23,6 +23,16 @@ export default async function AppHomePage() {
     .single();
 
   if (!profile?.onboarded_at) redirect("/onboarding");
+
+  let activeTrack: { id: string; name: string } | null = null;
+  if (profile.primary_track_id) {
+    const { data: track } = await supabase
+      .from("tracks")
+      .select("id, name")
+      .eq("id", profile.primary_track_id)
+      .single();
+    activeTrack = track ?? null;
+  }
 
   const phases = await loadPhases(supabase, user.id, profile.primary_track_id);
   const weekDays = computeWeekDays();
@@ -49,10 +59,20 @@ export default async function AppHomePage() {
       </header>
 
       <section className="mt-8 flex flex-1 flex-col">
-        <h1 className="font-display text-2xl font-bold">
+        <Link
+          href="/app/cursos"
+          className="-ml-1 inline-flex w-fit items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium text-text-muted transition-colors hover:bg-surface"
+          aria-label="Trocar curso"
+        >
+          <BookOpen className="size-3.5" />
+          {activeTrack?.name ?? "Escolher curso"}
+          <ChevronDown className="size-3.5" />
+        </Link>
+
+        <h1 className="mt-2 font-display text-2xl font-bold">
           Oi, {profile?.display_name ?? user.email}.
         </h1>
-        <p className="mt-1 text-sm text-text-muted">Tua trilha tá te esperando.</p>
+        <p className="mt-1 text-sm text-text-muted">Sua trilha tá te esperando.</p>
 
         <WeeklyStreak days={weekDays} attemptedDates={attemptedDates} />
 

@@ -21,7 +21,7 @@ export async function completeOnboarding(input: z.infer<typeof Schema>) {
   } = await supabase.auth.getUser();
   if (!user) return { error: "Sem sessão. Entra de novo." };
 
-  const { error } = await supabase
+  const { error: profErr } = await supabase
     .from("profiles")
     .update({
       primary_track_id: parsed.data.trackId,
@@ -31,8 +31,23 @@ export async function completeOnboarding(input: z.infer<typeof Schema>) {
     })
     .eq("id", user.id);
 
-  if (error) {
+  if (profErr) {
     return { error: "Não rolou salvar. Tenta de novo." };
   }
+
+  // Materializa o curso ativo em user_tracks pra UI multi-curso saber
+  // que o user "pegou" esse track (idempotente)
+  const { error: utErr } = await supabase
+    .from("user_tracks")
+    .upsert(
+      { user_id: user.id, track_id: parsed.data.trackId },
+      { onConflict: "user_id,track_id" },
+    );
+  if (utErr) {
+    // Não bloqueia o onboarding — log e segue. O fallback /app/cursos
+    // pode ressincronizar depois.
+    console.error("user_tracks upsert falhou:", utErr.message);
+  }
+
   return { ok: true };
 }

@@ -22,7 +22,7 @@ export function WeeklyStreak({ days, attemptedDates }: Props) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Flame className="size-4 text-streak" />
-          <span className="text-sm font-medium">Tua semana</span>
+          <span className="text-sm font-medium">Sua semana</span>
         </div>
         <span className="text-xs text-text-muted">
           {practicedThisWeek}/7 dias

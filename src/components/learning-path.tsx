@@ -17,7 +17,7 @@ export function LearningPath({ phases }: { phases: Phase[] }) {
       <div className="mt-10 rounded-2xl border border-dashed border-border p-6 text-center">
         <Mascot size={120} className="mx-auto opacity-80" />
         <p className="mt-3 text-sm text-text-muted">
-          Tua trilha tá vindo. Volta em instantes.
+          Sua trilha tá vindo. Volta em instantes.
         </p>
       </div>
     );

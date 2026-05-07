@@ -27,7 +27,7 @@ const DAILY_GOALS = [
 
 const FALAS: Record<Exclude<Step, 4>, string> = {
   1: "Oi! Eu sou o Zé. Pra qual prova a gente vai treinar?",
-  2: "Quanto tu consegue por dia? Sem mentir — a meta tem que caber na rotina.",
+  2: "Quanto você consegue por dia? Sem mentir — a meta tem que caber na rotina.",
   3: "Tem data marcada? Se sim, eu te aviso quando esquentar.",
 };
 
@@ -65,8 +65,8 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
 
       {step === 1 && (
         <section className="mt-4 flex flex-1 flex-col">
-          <h1 className="font-display text-2xl font-bold">Pra qual prova tu vai?</h1>
-          <p className="mt-1 text-sm text-text-muted">Tu pode trocar depois.</p>
+          <h1 className="font-display text-2xl font-bold">Pra qual prova você vai?</h1>
+          <p className="mt-1 text-sm text-text-muted">Pode trocar depois.</p>
 
           <div className="mt-5 flex flex-col gap-3">
             {tracks.map((t) => (
@@ -99,7 +99,7 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
 
       {step === 2 && (
         <section className="mt-4 flex flex-1 flex-col">
-          <h1 className="font-display text-2xl font-bold">Quanto tu consegue por dia?</h1>
+          <h1 className="font-display text-2xl font-bold">Quanto você consegue por dia?</h1>
           <p className="mt-1 text-sm text-text-muted">A gente te lembra na hora certa.</p>
 
           <div className="mt-5 grid grid-cols-2 gap-3">
@@ -208,9 +208,9 @@ function CelebrationStep({ onContinue }: { onContinue: () => void }) {
       <div className="mt-8">
         <Mascot size={200} variant="happy" />
       </div>
-      <h1 className="mt-6 font-display text-3xl font-bold">Tu tá pronto!</h1>
+      <h1 className="mt-6 font-display text-3xl font-bold">Você tá pronto!</h1>
       <p className="mt-2 max-w-xs text-sm text-text-muted">
-        Tua trilha tá montada. Cinco minutos por dia já te levam longe.
+        Sua trilha tá montada. Cinco minutos por dia já levam longe.
       </p>
 
       <button

@@ -128,9 +128,9 @@ const DEMO_LESSON = {
   position: 0,
   title: "Bora começar — fundamentos",
   intro:
-    "Cinco questões pra esquentar, cobrindo Ética, Civil e Penal — três das matérias mais pesadas da OAB. Mandou bem aqui, tu já tem 30% da base.",
+    "Cinco questões pra esquentar, cobrindo Ética, Civil e Penal — três das matérias mais pesadas da OAB. Mandou bem aqui, você já tem 30% da base.",
   outro:
-    "Aquece, hein? Tu acabou de praticar três disciplinas que somam **24 questões** na prova oficial — quase um terço dela. Continua nesse ritmo.",
+    "Aquece, hein? Você acabou de praticar três disciplinas que somam **24 questões** na prova oficial — quase um terço dela. Continua nesse ritmo.",
 };
 
 async function main() {
@@ -258,9 +258,9 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     position: 0,
     title: "Bora começar — fundamentos da Nova CPA",
     intro:
-      "Cinco questões cobrindo os quatro módulos da prova — SFN, produtos, cliente e inovação. Boa pra ver de onde tu começa.",
+      "Cinco questões cobrindo os quatro módulos da prova — SFN, produtos, cliente e inovação. Boa pra ver de onde você começa.",
     outro:
-      "Boa! Tu varreu **as quatro grandes áreas** da Nova CPA num lance só. Próximas fases aprofundam módulo por módulo.",
+      "Boa! Você varreu **as quatro grandes áreas** da Nova CPA num lance só. Próximas fases aprofundam módulo por módulo.",
     questionStems: [
       "Qual das alternativas a seguir descreve corretamente uma atribuição do Conselho Monetário Nacional (CMN)?",
       "Os principais instrumentos clássicos de política monetária utilizados pelo Banco Central do Brasil são:",
@@ -295,7 +295,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "Tesouro Direto, CDB, LCI, ações: como funcionam, como tributam, quem garante.",
     outro:
-      "Dois mundos cobertos. RF + RV aparecem em quase metade da prova — tu tá puxando esse pedaço.",
+      "Dois mundos cobertos. RF + RV aparecem em quase metade da prova — você tá puxando esse pedaço.",
     questionStems: [
       "Um investidor adquire um Tesouro IPCA+ 2035 a uma taxa real contratada de 6% ao ano. Decorrido um ano, decide vender o título no mercado secundário e a taxa de mercado para esse vencimento está em 5% a.a. Em relação à rentabilidade efetiva nesse 1 ano, é correto afirmar que o investidor:",
       "Sobre a Letra de Crédito Imobiliário (LCI) emitida por banco brasileiro a uma pessoa física, é correto afirmar que:",
@@ -312,7 +312,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "COE, fundos abertos (CVM 175) e FIIs. Capital protegido, come-cotas e isenção de FII.",
     outro:
-      "Boa. Fundos é um tópico denso e tu já desbravou. A base maior tá feita.",
+      "Boa. Fundos é um tópico denso e você já desbravou. A base maior tá feita.",
     questionStems: [
       "O Certificado de Operações Estruturadas (COE) com cláusula de 'valor nominal protegido':",
       "Um investidor compra um COE de R$ 50.000,00, prazo de 3 anos, com 'capital nominal protegido', referenciado ao Ibovespa, com participação de 80% na alta. Caso o Ibovespa suba 50% no período, e desconsiderando tributação, o investidor receberá no vencimento:",
@@ -329,7 +329,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "PGBL × VGBL, regime regressivo, PIX, consignado. Produtos do dia a dia do cliente.",
     outro:
-      "Esses são os produtos que aparecem em qualquer atendimento real. Sabendo isso, tu já tá consultor.",
+      "Esses são os produtos que aparecem em qualquer atendimento real. Sabendo isso, você já tá consultor.",
     questionStems: [
       "Sobre as principais categorias de Fundos Imobiliários (FIIs), é correto afirmar que:",
       "Um cliente em fase de acumulação para a aposentadoria possui alta renda tributável, contribui regularmente para o INSS e faz declaração de IR no MODELO COMPLETO. Qual modalidade de previdência é mais indicada do ponto de vista tributário?",
@@ -346,7 +346,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "Perfil de investidor, suitability, código de ética da Anbima. O que rege a relação com o cliente.",
     outro:
-      "Esses 30% da prova são pegadinha pura. Tu pegou os fundamentos.",
+      "Esses 30% da prova são pegadinha pura. Você pegou os fundamentos.",
     questionStems: [
       "A 'fase de acumulação de capital' no ciclo de vida do investidor caracteriza-se tipicamente por:",
       "A análise de suitability tem como objetivo principal:",
@@ -363,7 +363,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "Lavagem de dinheiro, LGPD, insider trading, churning, front running. As cascas de banana da prova.",
     outro:
-      "Esse é o módulo onde mais gente tropeça. Tu já passou.",
+      "Esse é o módulo onde mais gente tropeça. Você já passou.",
     questionStems: [
       "Em relação à Política de Prevenção à Lavagem de Dinheiro e ao Financiamento do Terrorismo (PLDFT), é INCORRETO afirmar que:",
       "A Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018) aplicada ao mercado financeiro:",
@@ -381,7 +381,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "DeFi, smart contracts, DREX, Open Finance. O que tá entrando na prova porque tá entrando no mercado.",
     outro:
-      "Trilha completa. Tu varreu os 4 módulos da Nova CPA. Agora é repetir até automatizar.",
+      "Trilha completa. Você varreu os 4 módulos da Nova CPA. Agora é repetir até automatizar.",
     questionStems: [
       "Sobre os 'smart contracts' no contexto das finanças descentralizadas (DeFi), é correto afirmar que:",
       "O DREX é:",
@@ -396,7 +396,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "Os números que aparecem na prova: capitalização, juros nominal vs efetiva, VPL e os dois sistemas de amortização (SAC e Price).",
     outro:
-      "Boa! Esse bloco assusta na primeira leitura, mas no fundo são quatro fórmulas. Tu já tem todas.",
+      "Boa! Esse bloco assusta na primeira leitura, mas no fundo são quatro fórmulas. Você já tem todas.",
     questionStems: [
       "Um investidor aplica R$ 1.000,00 a uma taxa de 1% ao mês em regime de capitalização SIMPLES, pelo prazo de 12 meses. Qual o montante final?",
       "Um título oferece taxa nominal de 12% ao ano com capitalização mensal. Qual a taxa efetiva anual aproximada?",
@@ -410,7 +410,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     position: 3,
     title: "Indicadores e regulação",
     intro:
-      "IPCA, Selic over, PIB, B3 e Basileia. As siglas que abrem dezenas de questões da prova quando tu as domina.",
+      "IPCA, Selic over, PIB, B3 e Basileia. As siglas que abrem dezenas de questões da prova quando você as domina.",
     outro:
       "Cravou. Sabendo essas peças, qualquer questão de macro/regulação fica encaixe.",
     questionStems: [
@@ -444,7 +444,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "Reserva de emergência, periodicidade de suitability, conflito de interesses e spoofing. Detalhes que distinguem profissional de iniciante.",
     outro:
-      "Pegada esse bloco, tu fica imune às pegadinhas finas do módulo 3.",
+      "Pegada esse bloco, você fica imune às pegadinhas finas do módulo 3.",
     questionStems: [
       "A 'reserva de emergência' é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
       "A análise de suitability deve ser ATUALIZADA, segundo as normas vigentes:",
@@ -460,7 +460,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "PRI, greenwashing, fundos sustentáveis (CVM 175), Open Finance e IA generativa. O que mudou na prova de 2026.",
     outro:
-      "Esse é o bloco que separa quem estudou edital antigo de quem estudou o novo. Tu tá no time certo.",
+      "Esse é o bloco que separa quem estudou edital antigo de quem estudou o novo. Você tá no time certo.",
     questionStems: [
       "Os Princípios para o Investimento Responsável (PRI), apoiados pela ONU, estabelecem que signatários se comprometem a:",
       "A prática de 'greenwashing' no contexto de investimentos sustentáveis caracteriza-se por:",
@@ -477,7 +477,7 @@ const NOVA_CPA_LESSONS: LessonDef[] = [
     intro:
       "Tokenização de ativos, stablecoins e o papel do adquirente em arranjos de pagamento. O lado prático da inovação.",
     outro:
-      "Última fase. Da CPA-10 antiga pra Nova CPA, esse bloco é praticamente novo — e tu acabou de varrê-lo.",
+      "Última fase. Da CPA-10 antiga pra Nova CPA, esse bloco é praticamente novo — e você acabou de varrê-lo.",
     questionStems: [
       "A 'tokenização' de um ativo real (ex: imóvel, recebível) consiste em:",
       "Sobre as 'stablecoins' lastreadas em moeda fiduciária, é correto afirmar que:",

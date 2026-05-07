@@ -56,7 +56,7 @@ export function Leaderboard({ leagueId, currentUserId, initialMembers, canDemote
     return (
       <ol className="mt-6">
         <li className="rounded-2xl bg-surface p-5 text-center text-sm text-text-muted">
-          Tu é o primeiro da liga. Manda lição pra subir XP.
+          Você é o primeiro da liga. Manda lição pra subir XP.
         </li>
       </ol>
     );

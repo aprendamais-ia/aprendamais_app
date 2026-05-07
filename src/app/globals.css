@@ -106,12 +106,89 @@
   100% { transform: translate(var(--cf-x, 0vw), -85vh) rotate(720deg) scale(1); opacity: 0; }
 }
 
+/* ---------- Mascote: vida na interface (animações sutis e em loop) ---------- */
+
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+@keyframes mascot-bob-strong {
+  0%, 100% { transform: translateY(0)    rotate(0deg); }
+  25%      { transform: translateY(-5px) rotate(-2deg); }
+  75%      { transform: translateY(-2px) rotate(2deg); }
+}
+
+@keyframes mascot-droop {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(2px); }
+}
+
+@keyframes mascot-snore {
+  0%, 100% { transform: scaleY(1) translateY(0); }
+  50%      { transform: scaleY(1.04) translateY(-1px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%      { transform: scale(0.5); opacity: 0.4; }
+}
+
+@keyframes tear-drop {
+  0%   { transform: translateY(-4px); opacity: 0; }
+  20%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(40px); opacity: 0; }
+}
+
+@keyframes zzz-float {
+  0%   { transform: translate(0, 0)   scale(0.6); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate(8px, -20px) scale(1.1); opacity: 0; }
+}
+
+@keyframes question-bounce {
+  0%, 100% { transform: translateY(0)    rotate(0deg); }
+  30%      { transform: translateY(-4px) rotate(-6deg); }
+  60%      { transform: translateY(-1px) rotate(4deg); }
+}
+
+@keyframes flag-wave {
+  0%, 100% { transform: skewY(0deg); }
+  50%      { transform: skewY(-3deg); }
+}
+
 @layer utilities {
   .animate-shake-x        { animation: shake-x 380ms ease-in-out; }
   .animate-heart-break    { animation: heart-break-float 700ms ease-out forwards; }
   .animate-pop-in         { animation: pop-in 360ms ease-out forwards; }
   .animate-count-up       { animation: count-up 380ms ease-out forwards; }
   .animate-confetti-rise  { animation: confetti-rise ease-out forwards; }
+
+  .animate-mascot-bob        { animation: mascot-bob 3.2s ease-in-out infinite; }
+  .animate-mascot-bob-strong { animation: mascot-bob-strong 2.4s ease-in-out infinite; }
+  .animate-mascot-droop      { animation: mascot-droop 4.5s ease-in-out infinite; }
+  .animate-mascot-snore      { animation: mascot-snore 3.2s ease-in-out infinite; }
+  .animate-twinkle           { animation: twinkle 1.6s ease-in-out infinite; }
+  .animate-tear-drop         { animation: tear-drop 2.8s ease-in 0.4s infinite; }
+  .animate-zzz-float         { animation: zzz-float 3.2s ease-out infinite; }
+  .animate-question-bounce   { animation: question-bounce 2.6s ease-in-out infinite; }
+  .animate-flag-wave         { animation: flag-wave 2.8s ease-in-out infinite; transform-origin: 50% 100%; }
+}
+
+/* Respeita preferência de redução de movimento — desliga loops do mascote */
+@media (prefers-reduced-motion: reduce) {
+  .animate-mascot-bob,
+  .animate-mascot-bob-strong,
+  .animate-mascot-droop,
+  .animate-mascot-snore,
+  .animate-twinkle,
+  .animate-tear-drop,
+  .animate-zzz-float,
+  .animate-question-bounce,
+  .animate-flag-wave {
+    animation: none !important;
+  }
 }
 
 @layer base {

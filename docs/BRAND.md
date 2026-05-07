@@ -82,7 +82,7 @@ Self-host via `next/font` para LCP < 2s no 4G brasileiro.
 | Acerto | "Mandou bem! +10 XP" | "Parabéns pelo seu sucesso!" |
 | Erro | "Quase. A correta era B porque..." | "Que pena! Não foi dessa vez 😢" |
 | Lição completa | "Lição feita. Sua chance de passar subiu pra 64% ↑" | "Você completou uma lição! Continue assim!" |
-| Push de streak | "Teu streak de 12 dias tá em jogo. 5min resolve." | "Não esqueça de estudar hoje! 💪" |
+| Push de streak | "Seu streak de 12 dias tá em jogo. 5min resolve." | "Não esqueça de estudar hoje! 💪" |
 | Erro técnico | "Algo travou. Já mandamos o erro pro time. Tenta de novo?" | "Ops! Algo deu errado. Por favor, tente novamente mais tarde." |
 | Premium upsell | "Vidas infinitas, simulados ilimitados, sem ads. R$ 19/mês." | "🌟 Desbloqueie todo o potencial dos seus estudos! 🚀" |
 

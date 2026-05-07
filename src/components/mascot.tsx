@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 export type MascotVariant = "idle" | "happy" | "sad" | "thinking" | "sleeping";
 
 type MascotProps = {
@@ -5,6 +7,8 @@ type MascotProps = {
   className?: string;
   ariaLabel?: string;
   variant?: MascotVariant;
+  /** Liga animações em loop (bob, twinkle, lágrima, Z's). Default: true. */
+  animated?: boolean;
 };
 
 const ARIA_BY_VARIANT: Record<MascotVariant, string> = {
@@ -15,11 +19,20 @@ const ARIA_BY_VARIANT: Record<MascotVariant, string> = {
   sleeping: "Zé, o coalinha, dormindo",
 };
 
+const BOB_BY_VARIANT: Record<MascotVariant, string> = {
+  idle: "animate-mascot-bob",
+  happy: "animate-mascot-bob-strong",
+  sad: "animate-mascot-droop",
+  thinking: "animate-mascot-bob",
+  sleeping: "animate-mascot-snore",
+};
+
 export function Mascot({
   size = 160,
   className,
   ariaLabel,
   variant = "idle",
+  animated = true,
 }: MascotProps) {
   return (
     <svg
@@ -34,15 +47,22 @@ export function Mascot({
     >
       <ellipse cx="120" cy="226" rx="58" ry="6" fill="#000" opacity="0.1" />
 
-      <Body />
-      <Ears />
-      <Head />
-      <Cheeks variant={variant} />
-      <Eyes variant={variant} />
-      <Nose />
-      <Mouth variant={variant} />
-      <Flag variant={variant} />
-      <Accent variant={variant} />
+      <g
+        className={cn(
+          "[transform-origin:120px_220px]",
+          animated && BOB_BY_VARIANT[variant],
+        )}
+      >
+        <Body />
+        <Ears />
+        <Head />
+        <Cheeks variant={variant} />
+        <Eyes variant={variant} />
+        <Nose />
+        <Mouth variant={variant} />
+        <Flag variant={variant} animated={animated} />
+        <Accent variant={variant} animated={animated} />
+      </g>
     </svg>
   );
 }
@@ -292,11 +312,10 @@ function Mouth({ variant }: { variant: MascotVariant }) {
   );
 }
 
-function Flag({ variant }: { variant: MascotVariant }) {
-  // Em "sad" e "sleeping" o gorrinho/livro fica menor / sem brilho
+function Flag({ variant, animated }: { variant: MascotVariant; animated: boolean }) {
   const dim = variant === "sad" || variant === "sleeping";
   return (
-    <>
+    <g className={cn(animated && !dim && "animate-flag-wave")}>
       <path d="M 80 64 L 160 64 L 156 78 L 84 78 Z" fill="#1F2937" />
       <rect x="68" y="56" width="104" height="10" rx="2" fill="#009C3B" />
       <rect
@@ -309,11 +328,11 @@ function Flag({ variant }: { variant: MascotVariant }) {
         opacity={dim ? 0.5 : 1}
       />
       <circle cx="120" cy="61" r="2.5" fill="#FFDF00" />
-    </>
+    </g>
   );
 }
 
-function Accent({ variant }: { variant: MascotVariant }) {
+function Accent({ variant, animated }: { variant: MascotVariant; animated: boolean }) {
   if (variant === "idle") {
     return (
       <>
@@ -335,25 +354,25 @@ function Accent({ variant }: { variant: MascotVariant }) {
   if (variant === "happy") {
     return (
       <>
-        <Star cx={36} cy={50} size={6} />
-        <Star cx={210} cy={48} size={7} />
-        <Star cx={28} cy={130} size={5} />
-        <Star cx={216} cy={138} size={6} />
-        <Star cx={200} cy={90} size={4} />
+        <Star cx={36} cy={50} size={6}  delayMs={0}    animated={animated} />
+        <Star cx={210} cy={48} size={7} delayMs={200}  animated={animated} />
+        <Star cx={28} cy={130} size={5} delayMs={500}  animated={animated} />
+        <Star cx={216} cy={138} size={6} delayMs={800} animated={animated} />
+        <Star cx={200} cy={90} size={4}  delayMs={1100} animated={animated} />
       </>
     );
   }
 
   if (variant === "sad") {
     return (
-      <>
+      <g className={cn(animated && "animate-tear-drop")} style={{ transformOrigin: "92px 138px" }}>
         <path
           d="M 92 138 Q 90 150 92 156 Q 94 150 92 138 Z"
           fill="#5BA8E0"
           opacity="0.85"
         />
         <ellipse cx="92" cy="156" rx="3" ry="3.5" fill="#5BA8E0" opacity="0.85" />
-      </>
+      </g>
     );
   }
 
@@ -362,7 +381,11 @@ function Accent({ variant }: { variant: MascotVariant }) {
       <>
         <circle cx="195" cy="60" r="3" fill="#1F2937" opacity="0.55" />
         <circle cx="208" cy="48" r="4.5" fill="#1F2937" opacity="0.7" />
-        <g transform="translate(218 28)">
+        <g
+          transform="translate(218 28)"
+          className={cn(animated && "animate-question-bounce")}
+          style={{ transformOrigin: "0 0" }}
+        >
           <circle r="14" fill="#FFF" stroke="#1F2937" strokeWidth="2.5" />
           <text
             x="0"
@@ -383,9 +406,9 @@ function Accent({ variant }: { variant: MascotVariant }) {
   if (variant === "sleeping") {
     return (
       <>
-        <ZLetter x={186} y={78} size={12} opacity={0.85} />
-        <ZLetter x={205} y={56} size={16} opacity={0.95} />
-        <ZLetter x={228} y={32} size={20} opacity={1} />
+        <ZLetter x={186} y={78} size={12} opacity={0.85} delayMs={0}    animated={animated} />
+        <ZLetter x={205} y={56} size={16} opacity={0.95} delayMs={1100} animated={animated} />
+        <ZLetter x={228} y={32} size={20} opacity={1}    delayMs={2200} animated={animated} />
       </>
     );
   }
@@ -393,14 +416,36 @@ function Accent({ variant }: { variant: MascotVariant }) {
   return null;
 }
 
-function Star({ cx, cy, size }: { cx: number; cy: number; size: number }) {
+function Star({
+  cx,
+  cy,
+  size,
+  delayMs,
+  animated,
+}: {
+  cx: number;
+  cy: number;
+  size: number;
+  delayMs: number;
+  animated: boolean;
+}) {
   const points: string[] = [];
   for (let i = 0; i < 10; i++) {
     const r = i % 2 === 0 ? size : size / 2.4;
     const angle = (Math.PI / 5) * i - Math.PI / 2;
     points.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
   }
-  return <polygon points={points.join(" ")} fill="#FFDF00" />;
+  return (
+    <polygon
+      points={points.join(" ")}
+      fill="#FFDF00"
+      className={cn(animated && "animate-twinkle")}
+      style={{
+        transformOrigin: `${cx}px ${cy}px`,
+        animationDelay: `${delayMs}ms`,
+      }}
+    />
+  );
 }
 
 function ZLetter({
@@ -408,11 +453,15 @@ function ZLetter({
   y,
   size,
   opacity,
+  delayMs,
+  animated,
 }: {
   x: number;
   y: number;
   size: number;
   opacity: number;
+  delayMs: number;
+  animated: boolean;
 }) {
   return (
     <text
@@ -423,6 +472,8 @@ function ZLetter({
       fontWeight="800"
       fill="#1F2937"
       opacity={opacity}
+      className={cn(animated && "animate-zzz-float")}
+      style={{ animationDelay: `${delayMs}ms` }}
     >
       Z
     </text>

@@ -71,7 +71,7 @@ Revisa e ajusta texto voltado ao usuário para garantir alinhamento com o tom de
 | "Parabéns pelo seu sucesso!" | "Mandou bem! +10 XP" |
 | "Que pena! Não foi dessa vez 😢" | "Quase. A correta era B porque..." |
 | "Você completou uma lição!" | "Lição feita. Sua chance de passar subiu pra 64% ↑" |
-| "Não esqueça de estudar hoje!" | "Teu streak de 12 dias tá em jogo. 5min resolve." |
+| "Não esqueça de estudar hoje!" | "Seu streak de 12 dias tá em jogo. 5min resolve." |
 | "Ops! Algo deu errado. Por favor, tente novamente." | "Algo travou. Já mandamos o erro pro time. Tenta de novo?" |
 | "🌟 Desbloqueie todo o potencial! 🚀" | "Vidas infinitas, simulados ilimitados, sem ads. R$ 19/mês." |
 

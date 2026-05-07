@@ -2,8 +2,10 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Check } from "lucide-react";
+import { Check, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Mascot } from "@/components/mascot";
+import { Confetti } from "@/components/confetti";
 import { completeOnboarding } from "./actions";
 
 type Track = {
@@ -14,7 +16,7 @@ type Track = {
   exam_format: { questions?: number; duration_min?: number; status_note?: string } | null;
 };
 
-type Step = 1 | 2 | 3;
+type Step = 1 | 2 | 3 | 4;
 
 const DAILY_GOALS = [
   { minutes: 5, label: "Devagar e sempre", description: "5 min/dia" },
@@ -22,6 +24,12 @@ const DAILY_GOALS = [
   { minutes: 20, label: "Bora pra cima", description: "20 min/dia" },
   { minutes: 30, label: "Modo guerra", description: "30 min/dia" },
 ];
+
+const FALAS: Record<Exclude<Step, 4>, string> = {
+  1: "Oi! Eu sou o Zé. Pra qual prova a gente vai treinar?",
+  2: "Quanto tu consegue por dia? Sem mentir — a meta tem que caber na rotina.",
+  3: "Tem data marcada? Se sim, eu te aviso quando esquentar.",
+};
 
 export function OnboardingForm({ tracks }: { tracks: Track[] }) {
   const router = useRouter();
@@ -45,21 +53,24 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
         setErrorMsg(result.error);
         return;
       }
-      router.push("/app");
-      router.refresh();
+      setStep(4);
     });
   }
 
   return (
-    <div className="mt-8 flex flex-1 flex-col">
-      <Stepper current={step} />
+    <div className="mt-6 flex flex-1 flex-col">
+      {step !== 4 && <Stepper current={step} />}
+
+      {step !== 4 && (
+        <MascotBubble fala={FALAS[step]} step={step} />
+      )}
 
       {step === 1 && (
-        <section className="mt-8 flex flex-1 flex-col">
+        <section className="mt-4 flex flex-1 animate-pop-in flex-col">
           <h1 className="font-display text-2xl font-bold">Pra qual prova tu vai?</h1>
           <p className="mt-1 text-sm text-text-muted">Tu pode trocar depois.</p>
 
-          <div className="mt-6 flex flex-col gap-3">
+          <div className="mt-5 flex flex-col gap-3">
             {tracks.map((t) => (
               <button
                 key={t.id}
@@ -89,11 +100,11 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
       )}
 
       {step === 2 && (
-        <section className="mt-8 flex flex-1 flex-col">
+        <section className="mt-4 flex flex-1 animate-pop-in flex-col">
           <h1 className="font-display text-2xl font-bold">Quanto tu consegue por dia?</h1>
           <p className="mt-1 text-sm text-text-muted">A gente te lembra na hora certa.</p>
 
-          <div className="mt-6 grid grid-cols-2 gap-3">
+          <div className="mt-5 grid grid-cols-2 gap-3">
             {DAILY_GOALS.map((g) => (
               <button
                 key={g.minutes}
@@ -120,13 +131,13 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
       )}
 
       {step === 3 && (
-        <section className="mt-8 flex flex-1 flex-col">
+        <section className="mt-4 flex flex-1 animate-pop-in flex-col">
           <h1 className="font-display text-2xl font-bold">Quando é a prova?</h1>
           <p className="mt-1 text-sm text-text-muted">
             Pula se ainda não sabe. A gente avisa quando faltarem 30 dias.
           </p>
 
-          <label className="mt-6 flex flex-col gap-2">
+          <label className="mt-5 flex flex-col gap-2">
             <span className="text-sm font-medium">Data da prova (opcional)</span>
             <input
               type="date"
@@ -155,6 +166,8 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
           {errorMsg && <p className="mt-3 text-sm text-error">{errorMsg}</p>}
         </section>
       )}
+
+      {step === 4 && <CelebrationStep onContinue={() => router.push("/app")} />}
     </div>
   );
 }
@@ -172,6 +185,50 @@ function Stepper({ current }: { current: Step }) {
         />
       ))}
     </div>
+  );
+}
+
+function MascotBubble({ fala, step }: { fala: string; step: Step }) {
+  return (
+    <div key={step} className="mt-6 flex animate-pop-in items-end gap-3">
+      <Mascot size={88} className="shrink-0" />
+      <div className="relative mb-2 flex-1 rounded-2xl rounded-bl-none border border-border bg-surface p-3 text-sm leading-relaxed">
+        {fala}
+        <span
+          aria-hidden
+          className="absolute -left-1.5 bottom-2 size-3 rotate-45 border-b border-l border-border bg-surface"
+        />
+      </div>
+    </div>
+  );
+}
+
+function CelebrationStep({ onContinue }: { onContinue: () => void }) {
+  return (
+    <section className="relative mt-4 flex flex-1 flex-col items-center text-center">
+      <Confetti />
+      <div className="mt-8 animate-pop-in">
+        <Mascot size={200} />
+      </div>
+      <h1 className="mt-6 animate-count-up font-display text-3xl font-bold">
+        Tu tá pronto!
+      </h1>
+      <p
+        className="mt-2 max-w-xs animate-count-up text-sm text-text-muted"
+        style={{ animationDelay: "120ms", opacity: 0 }}
+      >
+        Tua trilha tá montada. Cinco minutos por dia já te levam longe.
+      </p>
+
+      <button
+        type="button"
+        onClick={onContinue}
+        className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
+      >
+        <Zap className="size-5" />
+        Bora começar
+      </button>
+    </section>
   );
 }
 

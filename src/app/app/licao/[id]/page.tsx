@@ -26,7 +26,17 @@ export default async function LicaoPage({
     .single();
 
   if (profile && profile.lives <= 0) {
-    return <OutOfLives livesRegenAt={profile.lives_regen_at as string | null} />;
+    // Permite continuar a lição se o usuário já tem attempts (mid-lesson).
+    // OutOfLives só bloqueia se for tentativa nova de iniciar com 0 vidas.
+    const { count } = await supabase
+      .from("attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("lesson_id", id);
+
+    if (!count || count === 0) {
+      return <OutOfLives livesRegenAt={profile.lives_regen_at as string | null} />;
+    }
   }
 
   const { data: lesson } = await supabase

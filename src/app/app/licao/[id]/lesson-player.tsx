@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Check, X, Zap, Heart, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Mascot } from "@/components/mascot";
+import { Confetti } from "@/components/confetti";
 import { playCorrect, playWrong } from "@/lib/sounds";
 import { submitAttempt, completeLesson } from "./actions";
 
@@ -140,7 +141,8 @@ export function LessonPlayer({
     const allCorrect = errorAttempts === 0;
 
     return (
-      <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+      <main className="relative mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+        {totalXp > 0 && <Confetti />}
         <section className="mt-10 flex flex-1 flex-col items-center text-center">
           <div className="animate-pop-in">
             <Mascot size={160} />
@@ -192,9 +194,16 @@ export function LessonPlayer({
               router.push("/app");
               router.refresh();
             }}
-            className="mt-auto flex h-14 w-full items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
+            className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
           >
-            Continuar
+            {totalXp > 0 ? (
+              <>
+                <Zap className="size-5" />
+                Receber +{totalXp} XP
+              </>
+            ) : (
+              "Continuar"
+            )}
           </button>
         </section>
       </main>

@@ -4,6 +4,7 @@ import { Flame, Zap, Heart, Trophy } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/logo";
 import { LearningPath, type Phase } from "@/components/learning-path";
+import { WeeklyStreak, computeWeekDays } from "@/components/weekly-streak";
 import { SignOutButton } from "./sign-out-button";
 
 export const metadata = { title: "Início" };
@@ -24,6 +25,8 @@ export default async function AppHomePage() {
   if (!profile?.onboarded_at) redirect("/onboarding");
 
   const phases = await loadPhases(supabase, user.id, profile.primary_track_id);
+  const weekDays = computeWeekDays();
+  const attemptedDates = await loadAttemptedDatesThisWeek(supabase, user.id, weekDays);
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
@@ -50,6 +53,8 @@ export default async function AppHomePage() {
           Oi, {profile?.display_name ?? user.email}.
         </h1>
         <p className="mt-1 text-sm text-text-muted">Tua trilha tá te esperando.</p>
+
+        <WeeklyStreak days={weekDays} attemptedDates={attemptedDates} />
 
         <LearningPath phases={phases} />
 
@@ -94,22 +99,21 @@ async function loadPhases(
     .from("attempts")
     .select("lesson_id, question_id")
     .eq("user_id", userId)
-    .eq("is_correct", true)
     .in("lesson_id", lessonIds);
 
-  const correctByLesson = new Map<string, Set<string>>();
+  const attemptedByLesson = new Map<string, Set<string>>();
   for (const a of attempts ?? []) {
     if (!a.lesson_id) continue;
-    const set = correctByLesson.get(a.lesson_id) ?? new Set<string>();
+    const set = attemptedByLesson.get(a.lesson_id) ?? new Set<string>();
     set.add(a.question_id as string);
-    correctByLesson.set(a.lesson_id, set);
+    attemptedByLesson.set(a.lesson_id, set);
   }
 
   let foundActive = false;
   return lessons.map((lesson) => {
     const total = (lesson.question_ids as string[]).length;
-    const correctSet = correctByLesson.get(lesson.id as string) ?? new Set();
-    const completed = total > 0 && correctSet.size >= total;
+    const attemptedSet = attemptedByLesson.get(lesson.id as string) ?? new Set();
+    const completed = total > 0 && attemptedSet.size >= total;
     let state: Phase["state"];
     if (completed) {
       state = "completed";
@@ -121,4 +125,31 @@ async function loadPhases(
     }
     return { id: lesson.id as string, title: lesson.title as string, state };
   });
+}
+
+async function loadAttemptedDatesThisWeek(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  weekDays: ReturnType<typeof computeWeekDays>,
+): Promise<string[]> {
+  const startDate = weekDays[0].date; // segunda da semana atual em BRT
+  // Buffer de 1 dia pra cobrir fuso na borda
+  const startISO = new Date(`${startDate}T00:00:00-03:00`).toISOString();
+
+  const { data: attempts } = await supabase
+    .from("attempts")
+    .select("created_at")
+    .eq("user_id", userId)
+    .gte("created_at", startISO);
+
+  if (!attempts?.length) return [];
+
+  const fmt = (d: Date) =>
+    d.toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" });
+
+  const set = new Set<string>();
+  for (const a of attempts) {
+    if (a.created_at) set.add(fmt(new Date(a.created_at as string)));
+  }
+  return Array.from(set);
 }

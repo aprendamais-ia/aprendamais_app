@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition, useMemo } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Check, X, Zap, ArrowLeft } from "lucide-react";
+import { Check, X, Zap, Heart, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Mascot } from "@/components/mascot";
 import { playCorrect, playWrong } from "@/lib/sounds";
 import { submitAttempt, completeLesson } from "./actions";
 
@@ -22,6 +23,7 @@ type Props = {
   intro: string | null;
   outro: string | null;
   questions: ClientQuestion[];
+  initialLives: number;
 };
 
 type Feedback = {
@@ -32,7 +34,14 @@ type Feedback = {
   xpAwarded: number;
 };
 
-export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props) {
+export function LessonPlayer({
+  lessonId,
+  title,
+  intro,
+  outro,
+  questions,
+  initialLives,
+}: Props) {
   const router = useRouter();
   const [phase, setPhase] = useState<"intro" | "question" | "complete">("intro");
   const [idx, setIdx] = useState(0);
@@ -40,16 +49,15 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [pending, startTransition] = useTransition();
   const [errorAttempts, setErrorAttempts] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [xpFromQuestions, setXpFromQuestions] = useState(0);
   const [bonusXp, setBonusXp] = useState(0);
   const [startedAt, setStartedAt] = useState(() => Date.now());
+  const [livesNow, setLivesNow] = useState(initialLives);
+  const [heartBreakKey, setHeartBreakKey] = useState(0);
 
   const total = questions.length;
   const current = questions[idx];
-
-  const totalXp = useMemo(() => {
-    // visual only — fonte de verdade está no DB
-    return 0; // calculamos localmente conforme submit responde
-  }, []);
 
   function handleStart() {
     setPhase("question");
@@ -73,9 +81,13 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
       setFeedback(res);
       if (res.isCorrect) {
         playCorrect();
+        setCorrectCount((n) => n + 1);
+        setXpFromQuestions((n) => n + res.xpAwarded);
       } else {
         playWrong();
         setErrorAttempts((n) => n + 1);
+        setLivesNow((n) => Math.max(0, n - 1));
+        setHeartBreakKey((k) => k + 1); // re-trigger animation
       }
     });
   }
@@ -87,7 +99,6 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
     if (idx + 1 < total) {
       setIdx(idx + 1);
     } else {
-      // fim da lição
       const allCorrect = errorAttempts === 0;
       startTransition(async () => {
         const res = await completeLesson({ lessonId, allCorrect });
@@ -124,26 +135,56 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
 
   // ---- Conclusão ----
   if (phase === "complete") {
+    const livesLost = Math.max(0, initialLives - livesNow);
+    const totalXp = xpFromQuestions + bonusXp;
     const allCorrect = errorAttempts === 0;
+
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
-        <section className="mt-16 flex flex-1 flex-col items-center text-center">
-          <div className="flex size-20 items-center justify-center rounded-full bg-brand-green/15">
-            <Check className="size-10 text-brand-green" />
+        <section className="mt-10 flex flex-1 flex-col items-center text-center">
+          <div className="animate-pop-in">
+            <Mascot size={160} />
           </div>
-          <h1 className="mt-6 font-display text-3xl font-bold">Lição feita.</h1>
-          <p className="mt-2 text-text-muted">
-            {allCorrect ? "Sem erros. Mandou bem demais." : `${errorAttempts} erro(s). Da próxima vai.`}
+          <h1 className="mt-4 font-display text-3xl font-bold">
+            {allCorrect ? "Cravou tudo!" : "Lição feita."}
+          </h1>
+          <p className="mt-2 text-sm text-text-muted">
+            {allCorrect
+              ? "Sem erros. Mandou bem demais."
+              : `${errorAttempts} tropeço${errorAttempts > 1 ? "s" : ""} — bora de novo um dia desses.`}
           </p>
 
+          <div className="mt-8 grid w-full grid-cols-3 gap-2">
+            <StatCard
+              label="Acertos"
+              value={`${correctCount}/${total}`}
+              tone="success"
+              delay={0}
+            />
+            <StatCard
+              label="XP ganho"
+              value={`+${totalXp}`}
+              tone="yellow"
+              icon={<Zap className="size-4" />}
+              delay={120}
+            />
+            <StatCard
+              label="Vidas"
+              value={`-${livesLost}`}
+              tone={livesLost === 0 ? "muted" : "error"}
+              icon={<Heart className="size-4" />}
+              delay={240}
+            />
+          </div>
+
           {bonusXp > 0 && (
-            <div className="mt-6 flex items-center gap-2 rounded-full bg-brand-yellow/20 px-4 py-2 text-brand-yellow">
+            <div className="mt-4 flex animate-pop-in items-center gap-2 rounded-full bg-brand-yellow/20 px-4 py-2 text-sm text-brand-yellow">
               <Zap className="size-4" />
-              <span className="font-medium">+{bonusXp} XP de bônus</span>
+              <span className="font-medium">+{bonusXp} bônus de fase</span>
             </div>
           )}
 
-          {outro && <p className="mt-8 text-sm text-text-muted">{outro}</p>}
+          {outro && <p className="mt-6 text-sm text-text-muted">{outro}</p>}
 
           <button
             type="button"
@@ -163,7 +204,12 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
   // ---- Questão ativa ----
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-6">
-      <ProgressBar current={idx + 1} total={total} />
+      <PlayerHeader
+        current={idx + 1}
+        total={total}
+        lives={livesNow}
+        heartBreakKey={heartBreakKey}
+      />
 
       <section className="mt-8 flex flex-1 flex-col">
         <span className="text-xs font-medium text-text-muted">
@@ -218,8 +264,19 @@ export function LessonPlayer({ lessonId, title, intro, outro, questions }: Props
   );
 }
 
-function ProgressBar({ current, total }: { current: number; total: number }) {
+function PlayerHeader({
+  current,
+  total,
+  lives,
+  heartBreakKey,
+}: {
+  current: number;
+  total: number;
+  lives: number;
+  heartBreakKey: number;
+}) {
   const pct = Math.round((current / total) * 100);
+  const lostHeartCount = heartBreakKey; // each break increments this
   return (
     <div className="flex items-center gap-3">
       <Link href="/app" className="text-text-muted">
@@ -230,6 +287,61 @@ function ProgressBar({ current, total }: { current: number; total: number }) {
           className="h-full bg-brand-green transition-all duration-300"
           style={{ width: `${pct}%` }}
         />
+      </div>
+      <div
+        key={lostHeartCount}
+        className={cn(
+          "relative flex items-center gap-1 text-sm font-semibold tabular-nums",
+          lostHeartCount > 0 && "animate-shake-x",
+        )}
+        aria-label={`${lives} vidas restantes`}
+      >
+        <Heart className="size-5 text-error" fill="currentColor" />
+        <span>{lives}</span>
+        {lostHeartCount > 0 && (
+          <span
+            key={`break-${lostHeartCount}`}
+            className="pointer-events-none absolute -left-1 -top-2 animate-heart-break text-error"
+            aria-hidden
+          >
+            <Heart className="size-5" fill="currentColor" />
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function StatCard({
+  label,
+  value,
+  tone,
+  icon,
+  delay,
+}: {
+  label: string;
+  value: string;
+  tone: "success" | "yellow" | "error" | "muted";
+  icon?: React.ReactNode;
+  delay: number;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex animate-count-up flex-col items-center justify-center rounded-2xl border p-3",
+        tone === "success" && "border-success/40 bg-success/10 text-success",
+        tone === "yellow" && "border-brand-yellow/40 bg-brand-yellow/15 text-brand-yellow",
+        tone === "error" && "border-error/40 bg-error/10 text-error",
+        tone === "muted" && "border-border bg-surface text-text-muted",
+      )}
+      style={{ animationDelay: `${delay}ms`, opacity: 0 }}
+    >
+      <div className="flex items-center gap-1 font-display text-lg font-bold">
+        {icon}
+        {value}
+      </div>
+      <div className="mt-0.5 text-[10px] font-medium uppercase tracking-wide opacity-80">
+        {label}
       </div>
     </div>
   );

@@ -68,6 +68,7 @@ export default async function LicaoPage({
       intro={lesson.intro}
       outro={lesson.outro}
       questions={ordered}
+      initialLives={profile?.lives ?? 5}
     />
   );
 }

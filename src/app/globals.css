@@ -75,6 +75,38 @@
   50%, 100% { opacity: 0; }
 }
 
+@keyframes shake-x {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-4px); }
+  40%      { transform: translateX(4px); }
+  60%      { transform: translateX(-3px); }
+  80%      { transform: translateX(2px); }
+}
+
+@keyframes heart-break-float {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1);    opacity: 1; }
+  60%  { transform: translate(-6px, -28px) rotate(-15deg) scale(1.15); opacity: 0.9; }
+  100% { transform: translate(-12px, -56px) rotate(-25deg) scale(0.6); opacity: 0; }
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0);   opacity: 0; }
+  60%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes count-up {
+  0%   { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+
+@layer utilities {
+  .animate-shake-x        { animation: shake-x 380ms ease-in-out; }
+  .animate-heart-break    { animation: heart-break-float 700ms ease-out forwards; }
+  .animate-pop-in         { animation: pop-in 360ms ease-out forwards; }
+  .animate-count-up       { animation: count-up 380ms ease-out forwards; }
+}
+
 @layer base {
   * {
     @apply border-border;

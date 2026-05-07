@@ -232,90 +232,235 @@ async function main() {
   }
 
   await seedJsonTracks();
-  await seedNovaCpaDemoLesson();
+  await seedNovaCpaLessons();
 
   console.log("\n✓ seed demo concluído");
 }
 
-const NOVA_CPA_DEMO_LESSON = {
-  trackSlug: "nova-cpa",
-  topicSlug: "sistema-financeiro.orgaos-reguladores",
-  level: 1,
-  position: 0,
-  title: "Bora começar — fundamentos da Nova CPA",
-  intro:
-    "Cinco questões cobrindo os quatro módulos da prova — SFN, produtos, cliente e inovação. Boa pra ver de onde tu começa.",
-  outro:
-    "Boa! Tu varreu **as quatro grandes áreas** da Nova CPA num lance só. Próximas lições aprofundam módulo por módulo.",
-  questionStems: [
-    "Qual das alternativas a seguir descreve corretamente uma atribuição do Conselho Monetário Nacional (CMN)?",
-    "Os principais instrumentos clássicos de política monetária utilizados pelo Banco Central do Brasil são:",
-    "O Tesouro Selic (LFT) é um título público federal que se caracteriza por:",
-    "A reserva de emergência é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
-    "A sigla ESG, aplicada a investimentos, refere-se a critérios:",
-  ],
+type LessonDef = {
+  topicSlug: string;
+  level: number;
+  position: number;
+  title: string;
+  intro: string;
+  outro: string;
+  questionStems: string[];
 };
 
-async function seedNovaCpaDemoLesson() {
-  const cfg = NOVA_CPA_DEMO_LESSON;
+const NOVA_CPA_TRACK_SLUG = "nova-cpa";
 
+// Trilha completa da Nova CPA: 8 fases distribuindo os 40 questões.
+// Cada questão aparece em exatamente uma fase. Ordenação por (level, position).
+const NOVA_CPA_LESSONS: LessonDef[] = [
+  {
+    topicSlug: "sistema-financeiro.orgaos-reguladores",
+    level: 1,
+    position: 0,
+    title: "Bora começar — fundamentos da Nova CPA",
+    intro:
+      "Cinco questões cobrindo os quatro módulos da prova — SFN, produtos, cliente e inovação. Boa pra ver de onde tu começa.",
+    outro:
+      "Boa! Tu varreu **as quatro grandes áreas** da Nova CPA num lance só. Próximas fases aprofundam módulo por módulo.",
+    questionStems: [
+      "Qual das alternativas a seguir descreve corretamente uma atribuição do Conselho Monetário Nacional (CMN)?",
+      "Os principais instrumentos clássicos de política monetária utilizados pelo Banco Central do Brasil são:",
+      "O Tesouro Selic (LFT) é um título público federal que se caracteriza por:",
+      "A reserva de emergência é um pilar do planejamento financeiro pessoal. Qual a recomendação clássica em termos de montante e tipo de aplicação?",
+      "A sigla ESG, aplicada a investimentos, refere-se a critérios:",
+    ],
+  },
+  {
+    topicSlug: "sistema-financeiro.orgaos-reguladores",
+    level: 1,
+    position: 1,
+    title: "Sistema Financeiro Nacional",
+    intro:
+      "Quem manda em quem: CMN, BC, CVM, FGC, Copom. As bases do SFN num só lugar.",
+    outro:
+      "Cravou. Esse é o módulo que abre quase todas as questões da prova — sabendo isso, o resto encaixa.",
+    questionStems: [
+      "Uma corretora de valores deseja distribuir um Fundo de Investimento em Direitos Creditórios (FIDC) e, simultaneamente, oferecer planos de previdência aberta (VGBL) aos seus clientes. Quanto à supervisão, a empresa estará submetida:",
+      "O Fundo Garantidor de Créditos (FGC) garante o ressarcimento de até R$ 250.000,00 por CPF e por instituição (limite global de R$ 1 milhão a cada 4 anos) em qual conjunto de produtos?",
+      "O Comitê de Política Monetária (Copom) decide elevar a meta da taxa Selic em 100 bps. Em um cenário de regime de metas funcionando, qual o efeito esperado, no horizonte relevante de transmissão da política monetária?",
+      "Sobre a Taxa DI (CDI), é correto afirmar que:",
+      "Um investidor aplica R$ 10.000,00 em um título prefixado pelo prazo de 2 anos a uma taxa nominal de 10% ao ano (capitalização composta). Sabendo que a inflação acumulada nos dois anos foi de 12%, qual a taxa real aproximada do investimento, segundo a fórmula de Fisher?",
+      "Segundo a Resolução CVM nº 30, considera-se INVESTIDOR PROFISSIONAL a pessoa natural que:",
+    ],
+  },
+  {
+    topicSlug: "produtos-mercado.renda-fixa-publica",
+    level: 2,
+    position: 0,
+    title: "Renda Fixa e Renda Variável",
+    intro:
+      "Tesouro Direto, CDB, LCI, ações: como funcionam, como tributam, quem garante.",
+    outro:
+      "Dois mundos cobertos. RF + RV aparecem em quase metade da prova — tu tá puxando esse pedaço.",
+    questionStems: [
+      "Um investidor adquire um Tesouro IPCA+ 2035 a uma taxa real contratada de 6% ao ano. Decorrido um ano, decide vender o título no mercado secundário e a taxa de mercado para esse vencimento está em 5% a.a. Em relação à rentabilidade efetiva nesse 1 ano, é correto afirmar que o investidor:",
+      "Sobre a Letra de Crédito Imobiliário (LCI) emitida por banco brasileiro a uma pessoa física, é correto afirmar que:",
+      "Um investidor pessoa física resgata, após 200 dias de aplicação, R$ 5.000,00 brutos de rendimentos em um CDB. Qual a alíquota de IR aplicável e o imposto retido na fonte?",
+      "Em relação à tributação de proventos pagos por empresas brasileiras a acionistas pessoas físicas (legislação vigente), é correto afirmar que:",
+      "Um investidor pessoa física vende, em determinado mês, R$ 18.000,00 em ações no mercado à vista (operação normal, não day trade), apurando ganho líquido de R$ 2.000,00. Qual o tratamento tributário aplicável?",
+    ],
+  },
+  {
+    topicSlug: "produtos-mercado.coe",
+    level: 2,
+    position: 1,
+    title: "Estruturados, Fundos e FIIs",
+    intro:
+      "COE, fundos abertos (CVM 175) e FIIs. Capital protegido, come-cotas e isenção de FII.",
+    outro:
+      "Boa. Fundos é um tópico denso e tu já desbravou. A base maior tá feita.",
+    questionStems: [
+      "O Certificado de Operações Estruturadas (COE) com cláusula de 'valor nominal protegido':",
+      "Um investidor compra um COE de R$ 50.000,00, prazo de 3 anos, com 'capital nominal protegido', referenciado ao Ibovespa, com participação de 80% na alta. Caso o Ibovespa suba 50% no período, e desconsiderando tributação, o investidor receberá no vencimento:",
+      "Em um fundo de investimento regulado pela Resolução CVM nº 175, o profissional responsável pela tomada das decisões de investimento da carteira é o(a):",
+      "O 'come-cotas', mecanismo tributário aplicável a fundos abertos de renda fixa de longo prazo, consiste em:",
+      "Para que os rendimentos mensais distribuídos por um Fundo de Investimento Imobiliário (FII) sejam ISENTOS de IR para a pessoa física, são exigidos cumulativamente quais requisitos?",
+    ],
+  },
+  {
+    topicSlug: "produtos-mercado.previdencia",
+    level: 2,
+    position: 2,
+    title: "Previdência, Crédito e Bancos",
+    intro:
+      "PGBL × VGBL, regime regressivo, PIX, consignado. Produtos do dia a dia do cliente.",
+    outro:
+      "Esses são os produtos que aparecem em qualquer atendimento real. Sabendo isso, tu já tá consultor.",
+    questionStems: [
+      "Sobre as principais categorias de Fundos Imobiliários (FIIs), é correto afirmar que:",
+      "Um cliente em fase de acumulação para a aposentadoria possui alta renda tributável, contribui regularmente para o INSS e faz declaração de IR no MODELO COMPLETO. Qual modalidade de previdência é mais indicada do ponto de vista tributário?",
+      "No regime de tributação regressivo definitivo aplicável a planos de previdência (PGBL/VGBL), a alíquota MÍNIMA de IR aplicável a recursos resgatados é:",
+      "Sobre o Pix, sistema de pagamentos instantâneos do Banco Central do Brasil, é correto afirmar que:",
+      "Comparando duas modalidades de crédito ao consumidor — (i) crédito pessoal sem garantia e (ii) crédito consignado em folha — e mantidas as demais condições constantes, espera-se que:",
+    ],
+  },
+  {
+    topicSlug: "relacionamento-cliente.suitability-perfil-investidor",
+    level: 3,
+    position: 0,
+    title: "Cliente, Suitability e Ética",
+    intro:
+      "Perfil de investidor, suitability, código de ética da Anbima. O que rege a relação com o cliente.",
+    outro:
+      "Esses 30% da prova são pegadinha pura. Tu pegou os fundamentos.",
+    questionStems: [
+      "A 'fase de acumulação de capital' no ciclo de vida do investidor caracteriza-se tipicamente por:",
+      "A análise de suitability tem como objetivo principal:",
+      "Um cliente classificado como 'conservador' no API insiste em aplicar parte significativa do patrimônio em ações de alta volatilidade. Diante disso, o profissional certificado deve:",
+      "O Código de Conduta Ética da ANBIMA estabelece princípios que devem orientar pessoas candidatas e profissionais certificados. Entre os 'nove princípios éticos' está:",
+      "Um gerente de relacionamento recebe uma campanha interna que paga comissão extra por aplicações em determinado fundo. Diante disso, a conduta ética e regulatoriamente adequada é:",
+    ],
+  },
+  {
+    topicSlug: "relacionamento-cliente.pldft-kyc-lgpd",
+    level: 3,
+    position: 1,
+    title: "PLDFT, LGPD e Crimes de Mercado",
+    intro:
+      "Lavagem de dinheiro, LGPD, insider trading, churning, front running. As cascas de banana da prova.",
+    outro:
+      "Esse é o módulo onde mais gente tropeça. Tu já passou.",
+    questionStems: [
+      "Em relação à Política de Prevenção à Lavagem de Dinheiro e ao Financiamento do Terrorismo (PLDFT), é INCORRETO afirmar que:",
+      "A Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018) aplicada ao mercado financeiro:",
+      "Um profissional certificado identifica que um cliente realizou diversos depósitos em espécie fracionados, em curto intervalo, sem justificativa econômica aparente. Qual a conduta adequada?",
+      "A prática conhecida como 'insider trading', tipificada como crime contra o mercado de capitais, consiste em:",
+      "A prática conhecida como 'churning', listada entre os ilícitos de mercado pela Resolução CVM nº 62, consiste em:",
+      "A prática de 'front running', tipificada como ilícito de mercado, caracteriza-se por:",
+    ],
+  },
+  {
+    topicSlug: "inovacao-mercado.defi-blockchain",
+    level: 4,
+    position: 0,
+    title: "Inovação no Mercado",
+    intro:
+      "DeFi, smart contracts, DREX, Open Finance. O que tá entrando na prova porque tá entrando no mercado.",
+    outro:
+      "Trilha completa. Tu varreu os 4 módulos da Nova CPA. Agora é repetir até automatizar.",
+    questionStems: [
+      "Sobre os 'smart contracts' no contexto das finanças descentralizadas (DeFi), é correto afirmar que:",
+      "O DREX é:",
+      "O Open Finance no Brasil tem como principal objetivo:",
+    ],
+  },
+];
+
+async function seedNovaCpaLessons() {
   const { data: track } = await supabase
-    .from("tracks").select("id").eq("slug", cfg.trackSlug).single();
+    .from("tracks").select("id").eq("slug", NOVA_CPA_TRACK_SLUG).single();
   if (!track) {
-    console.error(`\n✖ track '${cfg.trackSlug}' não encontrada — pulando lição demo`);
+    console.error(`\n✖ track '${NOVA_CPA_TRACK_SLUG}' não encontrada — pulando lições`);
     return;
   }
 
-  const { data: topic } = await supabase
-    .from("topics").select("id").eq("track_id", track.id).eq("slug", cfg.topicSlug).single();
-  if (!topic) {
-    console.error(`\n✖ topic '${cfg.topicSlug}' não encontrado — pulando lição demo`);
-    return;
-  }
-
+  // Pre-carrega questões por stem (1 query)
+  const allStems = NOVA_CPA_LESSONS.flatMap((l) => l.questionStems);
   const { data: questions } = await supabase
-    .from("questions").select("id, stem").in("stem", cfg.questionStems);
-  const byStem = new Map((questions ?? []).map((q) => [q.stem, q.id as string]));
-  const orderedIds = cfg.questionStems
-    .map((s) => byStem.get(s))
-    .filter((id): id is string => Boolean(id));
+    .from("questions").select("id, stem").in("stem", allStems);
+  const byStem = new Map((questions ?? []).map((q) => [q.stem as string, q.id as string]));
 
-  if (orderedIds.length !== cfg.questionStems.length) {
-    const missing = cfg.questionStems.filter((s) => !byStem.has(s));
-    console.error(`\n✖ ${missing.length} questões da lição demo nova-cpa não foram encontradas — pulando`);
-    missing.forEach((s) => console.error(`    ↳ ${s.slice(0, 80)}…`));
-    return;
+  // Pre-carrega tópicos do track (1 query)
+  const topicSlugs = Array.from(new Set(NOVA_CPA_LESSONS.map((l) => l.topicSlug)));
+  const { data: topics } = await supabase
+    .from("topics").select("id, slug").eq("track_id", track.id).in("slug", topicSlugs);
+  const topicIdBySlug = new Map((topics ?? []).map((t) => [t.slug as string, t.id as string]));
+
+  let created = 0;
+  let updated = 0;
+  for (const lesson of NOVA_CPA_LESSONS) {
+    const topicId = topicIdBySlug.get(lesson.topicSlug);
+    if (!topicId) {
+      console.error(`  ✖ topic '${lesson.topicSlug}' não encontrado — pulando '${lesson.title}'`);
+      continue;
+    }
+
+    const orderedIds = lesson.questionStems
+      .map((s) => byStem.get(s))
+      .filter((id): id is string => Boolean(id));
+
+    if (orderedIds.length !== lesson.questionStems.length) {
+      const missing = lesson.questionStems.filter((s) => !byStem.has(s));
+      console.error(`  ✖ '${lesson.title}': ${missing.length} questões ausentes — pulando`);
+      missing.forEach((s) => console.error(`      ↳ ${s.slice(0, 70)}…`));
+      continue;
+    }
+
+    const { data: existing } = await supabase
+      .from("lessons").select("id").eq("title", lesson.title).maybeSingle();
+
+    if (existing) {
+      const { error } = await supabase.from("lessons").update({
+        topic_id: topicId,
+        level: lesson.level,
+        position: lesson.position,
+        intro: lesson.intro,
+        outro: lesson.outro,
+        question_ids: orderedIds,
+        published: true,
+      }).eq("id", existing.id);
+      if (error) throw error;
+      updated++;
+    } else {
+      const { error } = await supabase.from("lessons").insert({
+        topic_id: topicId,
+        level: lesson.level,
+        position: lesson.position,
+        title: lesson.title,
+        intro: lesson.intro,
+        outro: lesson.outro,
+        question_ids: orderedIds,
+        published: true,
+      });
+      if (error) throw error;
+      created++;
+    }
   }
-
-  const { data: existing } = await supabase
-    .from("lessons").select("id").eq("title", cfg.title).maybeSingle();
-
-  if (existing) {
-    const { error } = await supabase.from("lessons").update({
-      topic_id: topic.id,
-      level: cfg.level,
-      position: cfg.position,
-      intro: cfg.intro,
-      outro: cfg.outro,
-      question_ids: orderedIds,
-      published: true,
-    }).eq("id", existing.id);
-    if (error) throw error;
-    console.log(`\n✓ lição demo nova-cpa atualizada: ${existing.id}`);
-  } else {
-    const { data: row, error } = await supabase.from("lessons").insert({
-      topic_id: topic.id,
-      level: cfg.level,
-      position: cfg.position,
-      title: cfg.title,
-      intro: cfg.intro,
-      outro: cfg.outro,
-      question_ids: orderedIds,
-      published: true,
-    }).select("id").single();
-    if (error || !row) throw error;
-    console.log(`\n✓ lição demo nova-cpa criada: ${row.id}`);
-  }
+  console.log(`\n✓ trilha nova-cpa: ${created} fases criadas, ${updated} atualizadas`);
 }
 
 async function seedJsonTracks() {

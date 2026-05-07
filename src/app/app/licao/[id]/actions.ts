@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { xpForCorrect, LESSON_COMPLETE_BONUS } from "@/modules/learning/scoring";
@@ -68,6 +69,7 @@ export async function completeLesson(input: z.infer<typeof CompleteSchema>) {
   if (!parsed.success) return { error: "input_invalido" } as const;
 
   if (!parsed.data.allCorrect) {
+    revalidatePath("/app");
     return { ok: true as const, bonusXp: 0 };
   }
 
@@ -90,5 +92,6 @@ export async function completeLesson(input: z.infer<typeof CompleteSchema>) {
     xp_total: (profile?.xp_total ?? 0) + LESSON_COMPLETE_BONUS,
   }).eq("id", user.id);
 
+  revalidatePath("/app");
   return { ok: true as const, bonusXp: LESSON_COMPLETE_BONUS };
 }

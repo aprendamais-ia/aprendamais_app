@@ -158,6 +158,40 @@
   50%      { transform: skewY(-3deg); }
 }
 
+/* ---------- Liga: celebração de mudança de tier/divisão ---------- */
+
+@keyframes badge-burst {
+  0%   { transform: scale(0.4) rotate(-30deg); opacity: 0; }
+  60%  { transform: scale(1.25) rotate(8deg);  opacity: 1; }
+  100% { transform: scale(1)    rotate(0deg);  opacity: 1; }
+}
+
+@keyframes badge-fall {
+  0%   { transform: translateY(0) scale(1) rotate(0deg);    opacity: 1; }
+  100% { transform: translateY(48px) scale(0.6) rotate(-20deg); opacity: 0; }
+}
+
+@keyframes ring-spin {
+  0%   { transform: rotate(0deg)   scale(1); }
+  100% { transform: rotate(360deg) scale(1.05); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 0.9;  transform: scale(1.15); }
+}
+
+@keyframes spark-out {
+  0%   { transform: translate(0, 0) scale(0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate(var(--sx, 0), var(--sy, 0)) scale(1); opacity: 0; }
+}
+
+@keyframes label-rise {
+  0%   { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
 @layer utilities {
   .animate-shake-x        { animation: shake-x 380ms ease-in-out; }
   .animate-heart-break    { animation: heart-break-float 700ms ease-out forwards; }
@@ -174,6 +208,13 @@
   .animate-zzz-float         { animation: zzz-float 3.2s ease-out infinite; }
   .animate-question-bounce   { animation: question-bounce 2.6s ease-in-out infinite; }
   .animate-flag-wave         { animation: flag-wave 2.8s ease-in-out infinite; transform-origin: 50% 100%; }
+
+  .animate-badge-burst    { animation: badge-burst 700ms cubic-bezier(0.2, 1, 0.4, 1) forwards; }
+  .animate-badge-fall     { animation: badge-fall 600ms ease-in forwards; }
+  .animate-ring-spin      { animation: ring-spin 3.2s linear infinite; }
+  .animate-glow-pulse     { animation: glow-pulse 1.4s ease-in-out infinite; }
+  .animate-spark-out      { animation: spark-out 900ms ease-out forwards; }
+  .animate-label-rise     { animation: label-rise 500ms ease-out 200ms forwards; opacity: 0; }
 }
 
 /* Respeita preferência de redução de movimento — desliga loops do mascote */

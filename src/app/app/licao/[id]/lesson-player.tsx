@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Check, X, Zap, Heart, ArrowLeft } from "lucide-react";
@@ -298,12 +298,16 @@ function CompleteScreen({
   //   - Falha   = ficou sem vidas e/ou ganhou 0 XP
   const isFailure = totalXp === 0 || (livesLost >= initialLives && initialLives > 0);
 
+  // Toca exatamente UMA vez no mount. useRef evita disparo duplo do
+  // StrictMode em dev e qualquer re-execução por re-render.
+  // Não faz cleanup pra parar o som — o stopAllAssets() de dentro do
+  // playAsset já garante que cheer/fail nunca tocam simultaneamente.
+  const playedRef = useRef(false);
   useEffect(() => {
-    if (isFailure) {
-      playFail();
-    } else {
-      playCheer();
-    }
+    if (playedRef.current) return;
+    playedRef.current = true;
+    if (isFailure) playFail();
+    else playCheer();
   }, [isFailure]);
 
   return (

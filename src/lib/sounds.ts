@@ -68,17 +68,27 @@ export function playCorrect() {
 }
 
 // ---- Erro ------------------------------------------------------------------
-// Triangle (mais suave que square) com glide descendente curto. Volume baixo
-// pra não machucar fones. Bem mais leve que o square 220→110 anterior.
+// Triangle no agudo (timbre limpo, descendente) + square no sub pra dar peso
+// e ficar audível em fone/celular sem virar buzzer 8-bit. Volume comparável
+// ao playCorrect agora (estava 0.12 — quase inaudível em mobile).
 export function playWrong() {
   tone({
-    freq: 280,
+    freq: 320,
     startOffset: 0,
-    duration: 0.18,
+    duration: 0.26,
     type: "triangle",
-    peakGain: 0.12,
-    glideTo: 160,
-    attack: 0.006,
+    peakGain: 0.28,
+    glideTo: 150,
+    attack: 0.005,
+  });
+  tone({
+    freq: 160,
+    startOffset: 0.01,
+    duration: 0.24,
+    type: "square",
+    peakGain: 0.08,
+    glideTo: 80,
+    attack: 0.005,
   });
 }
 
@@ -107,11 +117,28 @@ function loadAsset(key: AssetKey): HTMLAudioElement | null {
   return a;
 }
 
+function stopAllAssets() {
+  for (const k of Object.keys(audioCache) as AssetKey[]) {
+    const a = audioCache[k];
+    if (!a) continue;
+    try {
+      a.pause();
+      a.currentTime = 0;
+    } catch {
+      // no-op
+    }
+  }
+}
+
 function playAsset(key: AssetKey) {
+  // Crítico: pausa qualquer outro asset ainda tocando — evita que cheer
+  // (~5s) ainda esteja rolando quando dispara o fail (ou vice-versa).
+  // Bug observado: usuário ouvia cheer + fail simultaneamente quando
+  // navegava rápido entre celebrações de telas diferentes.
+  stopAllAssets();
   const a = loadAsset(key);
   if (!a) return;
   try {
-    a.pause();
     a.currentTime = 0;
     void a.play().catch(() => {
       // Autoplay bloqueado: ignora silenciosamente. Próxima chamada
@@ -130,4 +157,9 @@ export function playCheer() {
 /** Som de fail — fim de lição com mau resultado. */
 export function playFail() {
   playAsset("fail");
+}
+
+/** Para todos os áudios MP3 em cache. Útil em unmount/navegação. */
+export function stopCelebrationSounds() {
+  stopAllAssets();
 }

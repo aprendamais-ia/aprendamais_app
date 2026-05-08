@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { Flame, Zap, Heart, Trophy, ChevronDown, BookOpen } from "lucide-react";
+import { Flame, Zap, Heart, ChevronDown, BookOpen } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/logo";
 import { LearningPath, type Phase } from "@/components/learning-path";
@@ -39,7 +39,7 @@ export default async function AppHomePage() {
   const attemptedDates = await loadAttemptedDatesThisWeek(supabase, user.id, weekDays);
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+    <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-8 pb-28">
       <header className="flex items-center justify-between">
         <Wordmark />
         <div className="flex items-center gap-3 text-sm">
@@ -77,19 +77,6 @@ export default async function AppHomePage() {
         <WeeklyStreak days={weekDays} attemptedDates={attemptedDates} />
 
         <LearningPath phases={phases} />
-
-        <Link
-          href="/app/liga"
-          className="mt-10 flex items-center justify-between rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-text-muted"
-        >
-          <div className="flex items-center gap-3">
-            <Trophy className="size-5 text-brand-yellow" />
-            <div>
-              <div className="font-display text-sm font-semibold">Liga</div>
-              <div className="text-xs text-text-muted">Bate seus amigos no ranking</div>
-            </div>
-          </div>
-        </Link>
       </section>
 
       <SignOutButton />

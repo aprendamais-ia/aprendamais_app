@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Check, Plus, Loader2 } from "lucide-react";
+import { ArrowRight, Plus, Loader2, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { setActiveTrack } from "./actions";
 
@@ -27,7 +27,12 @@ export function CourseCard({ track, progress, state }: Props) {
   const [pending, startTransition] = useTransition();
 
   function handleClick() {
-    if (state === "active" || pending) return;
+    if (pending) return;
+    // Curso já ativo: só leva pra trilha (não precisa setar nada).
+    if (state === "active") {
+      router.push("/app");
+      return;
+    }
     startTransition(async () => {
       const res = await setActiveTrack(track.id);
       if ("ok" in res && res.ok) {
@@ -45,11 +50,11 @@ export function CourseCard({ track, progress, state }: Props) {
   return (
     <button
       type="button"
-      disabled={state === "active" || pending}
+      disabled={pending}
       onClick={handleClick}
       className={cn(
         "flex flex-col gap-2 rounded-2xl border p-4 text-left transition-colors",
-        state === "active" && "border-brand-green bg-brand-green/10 cursor-default",
+        state === "active" && "border-brand-green bg-brand-green/10 hover:bg-brand-green/15",
         state === "joined" && "border-border bg-surface hover:border-text-muted",
         state === "available" && "border-dashed border-border bg-surface hover:border-text-muted",
         pending && "opacity-70",
@@ -93,9 +98,9 @@ function Badge({ state, pending }: { state: "active" | "joined" | "available"; p
   }
   if (state === "active") {
     return (
-      <span className="flex shrink-0 items-center gap-1 rounded-full bg-brand-green/20 px-2 py-0.5 text-xs font-medium text-brand-green">
-        <Check className="size-3.5" />
-        Ativo
+      <span className="flex shrink-0 items-center gap-1 rounded-full bg-brand-green px-2.5 py-0.5 text-xs font-medium text-brand-green-fg">
+        <Play className="size-3.5 fill-current" />
+        Continuar
       </span>
     );
   }

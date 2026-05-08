@@ -20,7 +20,7 @@ export default async function LigaPage() {
 
   if (!profile?.primary_track_id) {
     return (
-      <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+      <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-8 pb-28">
         <Link href="/app" className="flex items-center gap-1 text-sm text-text-muted">
           <ArrowLeft className="size-4" /> Voltar
         </Link>
@@ -86,7 +86,7 @@ export default async function LigaPage() {
       };
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+    <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-8 pb-28">
       <Link href="/app" className="flex items-center gap-1 text-sm text-text-muted">
         <ArrowLeft className="size-4" /> Voltar
       </Link>

@@ -48,7 +48,7 @@ export default async function CursosPage() {
   const otherCourses = allTracks.filter((t) => !joinedSet.has(t.id));
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+    <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-8 pb-28">
       <Link href="/app" className="flex items-center gap-1 text-sm text-text-muted">
         <ArrowLeft className="size-4" /> Voltar
       </Link>

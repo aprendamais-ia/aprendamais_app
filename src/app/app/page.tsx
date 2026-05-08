@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/logo";
 import { LearningPath, type Phase } from "@/components/learning-path";
 import { WeeklyStreak, computeWeekDays } from "@/components/weekly-streak";
+import { ApprovalGauge } from "@/components/approval-gauge";
 import { SignOutButton } from "./sign-out-button";
 
 export const metadata = { title: "Início" };
@@ -37,6 +38,7 @@ export default async function AppHomePage() {
   const phases = await loadPhases(supabase, user.id, profile.primary_track_id);
   const weekDays = computeWeekDays();
   const attemptedDates = await loadAttemptedDatesThisWeek(supabase, user.id, weekDays);
+  const approval = await loadApproval(supabase, user.id, profile.primary_track_id);
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-8 pb-28">
@@ -73,6 +75,16 @@ export default async function AppHomePage() {
           Oi, {profile?.display_name ?? user.email}.
         </h1>
         <p className="mt-1 text-sm text-text-muted">Sua trilha tá te esperando.</p>
+
+        {approval && activeTrack && (
+          <ApprovalGauge
+            className="mt-6"
+            probability={approval.probability}
+            trackName={activeTrack.name}
+            topTopicName={approval.topTopicName}
+            topTopicUplift={approval.topTopicUplift}
+          />
+        )}
 
         <WeeklyStreak days={weekDays} attemptedDates={attemptedDates} />
 
@@ -132,6 +144,36 @@ async function loadPhases(
     }
     return { id: lesson.id as string, title: lesson.title as string, state };
   });
+}
+
+async function loadApproval(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  trackId: string | null,
+): Promise<{
+  probability: number;
+  topTopicName: string | null;
+  topTopicUplift: number | null;
+} | null> {
+  if (!trackId) return null;
+
+  const { data } = await supabase.rpc("calc_approval_probability", {
+    p_user_id: userId,
+    p_track_id: trackId,
+  });
+
+  // RPC retorna table — supabase-js devolve array
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return null;
+
+  return {
+    probability: Number(row.probability ?? 0.5),
+    topTopicName: (row.top_topic_name as string | null) ?? null,
+    topTopicUplift:
+      row.top_topic_uplift !== null && row.top_topic_uplift !== undefined
+        ? Number(row.top_topic_uplift)
+        : null,
+  };
 }
 
 async function loadAttemptedDatesThisWeek(

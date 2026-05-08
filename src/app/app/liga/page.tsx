@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Trophy } from "lucide-react";
+import { ArrowLeft, BookOpen, Trophy, ArrowUp, ArrowDown } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Leaderboard } from "./leaderboard";
 import { LeagueCountdown } from "./countdown";
+import { LeagueBadge, type LeagueTier, type Division } from "@/components/league-badge";
 
 export const metadata = { title: "Liga" };
 
@@ -14,7 +15,7 @@ export default async function LigaPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, primary_track_id")
+    .select("display_name, primary_track_id, current_league_tier, current_league_division")
     .eq("id", user.id)
     .single();
 
@@ -91,13 +92,29 @@ export default async function LigaPage() {
         <ArrowLeft className="size-4" /> Voltar
       </Link>
 
-      <header className="mt-8">
+      <header className="mt-8 flex flex-col items-center gap-3 text-center">
         <span className="text-xs font-medium text-text-muted">Liga semanal</span>
-        <h1 className="mt-1 font-display text-3xl font-bold">{track?.name ?? "Curso"}</h1>
-        <p className="mt-1 text-sm text-text-muted">
-          Todo mundo do curso compete junto. <LeagueCountdown inline />
+        <LeagueBadge
+          tier={(profile.current_league_tier ?? "bronze") as LeagueTier}
+          division={((profile.current_league_division ?? 1) as Division)}
+          size="lg"
+        />
+        <p className="text-sm text-text-muted">
+          {track?.name ?? "Curso"} · <LeagueCountdown inline />
         </p>
       </header>
+
+      <div className="mt-6 flex items-center justify-center gap-4 rounded-2xl border border-border bg-surface px-4 py-3 text-xs text-text-muted">
+        <span className="flex items-center gap-1">
+          <ArrowUp className="size-3.5 text-success" />
+          Top 10 sobem
+        </span>
+        <span className="h-3 w-px bg-border" />
+        <span className="flex items-center gap-1">
+          <ArrowDown className="size-3.5 text-error" />
+          Bottom 5 descem
+        </span>
+      </div>
 
       <Leaderboard
         currentUserId={user.id}

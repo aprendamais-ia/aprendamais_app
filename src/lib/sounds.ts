@@ -151,6 +151,22 @@ export function playTapCTA() {
   });
 }
 
+// ---- Tap de navegação — sintetizado, MUITO baixinho ----------------------
+// Sine 660 → 880Hz (pequeno glide ascendente = positivo), 0.045s, gain 0.06.
+// Discreto a ponto de não cansar com uso repetido. Usar em links de
+// navegação (BottomNav, voltar, trocar curso). Metade do volume de playTapCTA.
+export function playNavTap() {
+  tone({
+    freq: 660,
+    startOffset: 0,
+    duration: 0.045,
+    type: "sine",
+    peakGain: 0.06,
+    glideTo: 880,
+    attack: 0.001,
+  });
+}
+
 // ---- Assets MP3 ----------------------------------------------------------
 // URLs ficam no Supabase Storage (bucket `content`). Quando estiver `null`,
 // playAsset() é no-op silencioso — útil pra ir mergeando código antes do

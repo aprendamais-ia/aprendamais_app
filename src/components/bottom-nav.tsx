@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, BookOpen, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { playNavTap } from "@/lib/sounds";
 
 type Item = {
   href: string;
@@ -54,6 +55,9 @@ export function BottomNav() {
               key={href}
               href={href}
               aria-current={active ? "page" : undefined}
+              onClick={() => {
+                if (!active) playNavTap();
+              }}
               className={cn(
                 "flex flex-1 flex-col items-center gap-0.5 py-2.5 text-xs font-medium transition-colors",
                 active ? "text-brand-green" : "text-text-muted hover:text-text",

@@ -6,6 +6,17 @@
 // de áudio. Os <audio> elements também precisam de gesture pra tocar — mas a
 // regra é mais relaxada e já passou no momento em que esses sons rodam (após
 // click do user em uma resposta ou em "Bora começar").
+//
+// Mute global: tone() e playAsset() consultam useAudioStore.getState().muted
+// e fazem no-op silencioso quando true. BackgroundMusic gerencia o próprio
+// pause/resume via subscribe ao mesmo store.
+
+import { useAudioStore } from "@/lib/stores/audio";
+
+function isMuted(): boolean {
+  if (typeof window === "undefined") return false;
+  return useAudioStore.getState().muted;
+}
 
 let ctx: AudioContext | null = null;
 
@@ -32,6 +43,7 @@ type ToneOpts = {
 };
 
 function tone(opts: ToneOpts) {
+  if (isMuted()) return;
   const c = getCtx();
   if (!c) return;
   const { freq, startOffset, duration, type, peakGain, glideTo, attack = 0.008 } = opts;
@@ -250,6 +262,7 @@ function stopAllAssets() {
 }
 
 function playAsset(key: AssetKey) {
+  if (isMuted()) return;
   // Crítico: pausa qualquer outro asset ainda tocando — evita que cheer
   // (~5s) ainda esteja rolando quando dispara o fail (ou vice-versa).
   // Bug observado: usuário ouvia cheer + fail simultaneamente quando

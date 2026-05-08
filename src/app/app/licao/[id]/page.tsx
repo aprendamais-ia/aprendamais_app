@@ -21,7 +21,7 @@ export default async function LicaoPage({
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("lives, lives_regen_at")
+    .select("lives, lives_regen_at, streak_days")
     .eq("id", user.id)
     .single();
 
@@ -79,6 +79,7 @@ export default async function LicaoPage({
       outro={lesson.outro}
       questions={ordered}
       initialLives={profile?.lives ?? 5}
+      initialStreakDays={profile?.streak_days ?? 0}
     />
   );
 }

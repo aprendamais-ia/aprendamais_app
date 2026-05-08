@@ -7,7 +7,17 @@ import { Check, X, Zap, Heart, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Mascot } from "@/components/mascot";
 import { Confetti } from "@/components/confetti";
-import { playCorrect, playWrong, playCheer, playFail } from "@/lib/sounds";
+import {
+  playCorrect,
+  playWrong,
+  playCheer,
+  playFail,
+  playCombo,
+  playLifeLost,
+  playTapCTA,
+  playStreakTick,
+  playStreakMilestone,
+} from "@/lib/sounds";
 import { submitAttempt, completeLesson } from "./actions";
 
 type ClientChoice = { key: string; text: string };
@@ -25,6 +35,7 @@ type Props = {
   outro: string | null;
   questions: ClientQuestion[];
   initialLives: number;
+  initialStreakDays: number;
 };
 
 type Feedback = {
@@ -42,6 +53,7 @@ export function LessonPlayer({
   outro,
   questions,
   initialLives,
+  initialStreakDays,
 }: Props) {
   const router = useRouter();
   const [phase, setPhase] = useState<"intro" | "question" | "complete">("intro");
@@ -51,16 +63,19 @@ export function LessonPlayer({
   const [pending, startTransition] = useTransition();
   const [errorAttempts, setErrorAttempts] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
+  const [comboStreak, setComboStreak] = useState(0);
   const [xpFromQuestions, setXpFromQuestions] = useState(0);
   const [bonusXp, setBonusXp] = useState(0);
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [livesNow, setLivesNow] = useState(initialLives);
   const [heartBreakKey, setHeartBreakKey] = useState(0);
+  const [finalStreakDays, setFinalStreakDays] = useState(initialStreakDays);
 
   const total = questions.length;
   const current = questions[idx];
 
   function handleStart() {
+    playTapCTA();
     setPhase("question");
     setStartedAt(Date.now());
   }
@@ -81,19 +96,35 @@ export function LessonPlayer({
       }
       setFeedback(res);
       if (res.isCorrect) {
-        playCorrect();
         setCorrectCount((n) => n + 1);
         setXpFromQuestions((n) => n + res.xpAwarded);
+        const nextCombo = comboStreak + 1;
+        setComboStreak(nextCombo);
+        // Combo a cada 5 acertos seguidos. playCombo substitui o playCorrect
+        // pra não sobrepor sons.
+        if (nextCombo > 0 && nextCombo % 5 === 0) {
+          playCombo();
+        } else {
+          playCorrect();
+        }
       } else {
-        playWrong();
         setErrorAttempts((n) => n + 1);
-        setLivesNow((n) => Math.max(0, n - 1));
+        setComboStreak(0);
+        const nextLives = Math.max(0, livesNow - 1);
+        setLivesNow(nextLives);
         setHeartBreakKey((k) => k + 1); // re-trigger animation
+        // Vidas zeradas: drama. Senão, som de erro padrão.
+        if (nextLives === 0 && livesNow > 0) {
+          playLifeLost();
+        } else {
+          playWrong();
+        }
       }
     });
   }
 
   function handleNext() {
+    playTapCTA();
     setChosen(null);
     setFeedback(null);
     setStartedAt(Date.now());
@@ -105,6 +136,7 @@ export function LessonPlayer({
         const res = await completeLesson({ lessonId, allCorrect });
         if ("ok" in res && res.ok) {
           setBonusXp(res.bonusXp ?? 0);
+          setFinalStreakDays(res.streakDays ?? initialStreakDays);
         }
         setPhase("complete");
       });
@@ -151,6 +183,8 @@ export function LessonPlayer({
         initialLives={initialLives}
         bonusXp={bonusXp}
         outro={outro}
+        initialStreakDays={initialStreakDays}
+        finalStreakDays={finalStreakDays}
         onContinue={() => {
           router.push("/app");
           router.refresh();
@@ -280,6 +314,8 @@ function CompleteScreen({
   initialLives,
   bonusXp,
   outro,
+  initialStreakDays,
+  finalStreakDays,
   onContinue,
 }: {
   allCorrect: boolean;
@@ -291,24 +327,39 @@ function CompleteScreen({
   initialLives: number;
   bonusXp: number;
   outro: string | null;
+  initialStreakDays: number;
+  finalStreakDays: number;
   onContinue: () => void;
 }) {
   // Sucesso vs falha pra som de fim de lição:
   //   - Sucesso = ganhou XP (acertou pelo menos uma questão da lição)
   //   - Falha   = ficou sem vidas e/ou ganhou 0 XP
   const isFailure = totalXp === 0 || (livesLost >= initialLives && initialLives > 0);
+  const streakIncremented = finalStreakDays > initialStreakDays;
+  const isMilestone = streakIncremented && [7, 30, 100].includes(finalStreakDays);
 
   // Toca exatamente UMA vez no mount. useRef evita disparo duplo do
   // StrictMode em dev e qualquer re-execução por re-render.
   // Não faz cleanup pra parar o som — o stopAllAssets() de dentro do
   // playAsset já garante que cheer/fail nunca tocam simultaneamente.
+  //
+  // Ordem: cheer/fail primeiro. Se streak ticou, encadeia tick/milestone
+  // depois de ~700ms pra não atropelar o cheer.
   const playedRef = useRef(false);
   useEffect(() => {
     if (playedRef.current) return;
     playedRef.current = true;
     if (isFailure) playFail();
     else playCheer();
-  }, [isFailure]);
+
+    if (streakIncremented) {
+      const t = setTimeout(() => {
+        if (isMilestone) playStreakMilestone();
+        else playStreakTick();
+      }, 700);
+      return () => clearTimeout(t);
+    }
+  }, [isFailure, streakIncremented, isMilestone]);
 
   return (
     <main className="relative mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">

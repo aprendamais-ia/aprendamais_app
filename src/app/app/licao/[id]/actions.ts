@@ -68,30 +68,37 @@ export async function completeLesson(input: z.infer<typeof CompleteSchema>) {
   const parsed = CompleteSchema.safeParse(input);
   if (!parsed.success) return { error: "input_invalido" } as const;
 
-  if (!parsed.data.allCorrect) {
-    revalidatePath("/app");
-    return { ok: true as const, bonusXp: 0 };
-  }
-
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { error: "sem_sessao" } as const;
 
-  // Bônus de "lição completa sem erros": registra um attempt sintético em xp_awarded
-  // somente para subir XP. Usa a primeira questão da lição como anchor.
-  const { data: lesson } = await supabase
-    .from("lessons").select("question_ids").eq("id", parsed.data.lessonId).single();
-  const anchorQuestionId = lesson?.question_ids?.[0];
-  if (!anchorQuestionId) return { ok: true as const, bonusXp: 0 };
+  let bonusXp = 0;
 
-  // Atualiza profile direto (não passa por trigger; é XP fora do log de attempts)
+  if (parsed.data.allCorrect) {
+    // Bônus de "lição completa sem erros": registra direto no profile.
+    const { data: lesson } = await supabase
+      .from("lessons").select("question_ids").eq("id", parsed.data.lessonId).single();
+    const anchorQuestionId = lesson?.question_ids?.[0];
+    if (anchorQuestionId) {
+      const { data: profileXp } = await supabase
+        .from("profiles").select("xp_total").eq("id", user.id).single();
+      await supabase.from("profiles").update({
+        xp_total: (profileXp?.xp_total ?? 0) + LESSON_COMPLETE_BONUS,
+      }).eq("id", user.id);
+      bonusXp = LESSON_COMPLETE_BONUS;
+    }
+  }
+
+  // Sempre lê streak_days no fim — o trigger handle_attempt_insert pode ter
+  // bumpado durante a lição (primeiro attempt do dia). Cliente compara contra
+  // initialStreakDays pra decidir se toca playStreakTick/Milestone.
   const { data: profile } = await supabase
-    .from("profiles").select("xp_total").eq("id", user.id).single();
-
-  await supabase.from("profiles").update({
-    xp_total: (profile?.xp_total ?? 0) + LESSON_COMPLETE_BONUS,
-  }).eq("id", user.id);
+    .from("profiles").select("streak_days").eq("id", user.id).single();
 
   revalidatePath("/app");
-  return { ok: true as const, bonusXp: LESSON_COMPLETE_BONUS };
+  return {
+    ok: true as const,
+    bonusXp,
+    streakDays: profile?.streak_days ?? 0,
+  };
 }

@@ -6,6 +6,8 @@ import { Wordmark } from "@/components/logo";
 import { LearningPath, type Phase } from "@/components/learning-path";
 import { WeeklyStreak, computeWeekDays } from "@/components/weekly-streak";
 import { ApprovalGauge } from "@/components/approval-gauge";
+import { LifeRegenChime } from "./life-regen-chime";
+import { AchievementChime, type AchievementUnlock } from "./achievement-chime";
 import { SignOutButton } from "./sign-out-button";
 
 export const metadata = { title: "Início" };
@@ -15,6 +17,15 @@ export default async function AppHomePage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/entrar");
 
+  // Lê lives antes de claim_lives pra detectar regeneração e disparar
+  // playLifeRegen no client.
+  const { data: livesBeforeRow } = await supabase
+    .from("profiles")
+    .select("lives")
+    .eq("id", user.id)
+    .single();
+  const livesBefore = livesBeforeRow?.lives ?? 5;
+
   await supabase.rpc("claim_lives");
 
   const { data: profile } = await supabase
@@ -22,6 +33,8 @@ export default async function AppHomePage() {
     .select("display_name, xp_total, lives, streak_days, onboarded_at, primary_track_id")
     .eq("id", user.id)
     .single();
+
+  const livesAdded = Math.max(0, (profile?.lives ?? livesBefore) - livesBefore);
 
   if (!profile?.onboarded_at) redirect("/onboarding");
 
@@ -40,8 +53,23 @@ export default async function AppHomePage() {
   const attemptedDates = await loadAttemptedDatesThisWeek(supabase, user.id, weekDays);
   const approval = await loadApproval(supabase, user.id, profile.primary_track_id);
 
+  const { data: newAchievements } = await supabase.rpc("claim_new_achievements");
+  const achievementUnlocks: AchievementUnlock[] = ((newAchievements ?? []) as Array<{
+    code: string;
+    name: string;
+    description: string;
+    icon: string;
+  }>).map((a) => ({
+    code: a.code,
+    name: a.name,
+    description: a.description,
+    icon: a.icon,
+  }));
+
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-8 pb-28">
+      <LifeRegenChime livesAdded={livesAdded} />
+      <AchievementChime unlocks={achievementUnlocks} />
       <header className="flex items-center justify-between">
         <Wordmark />
         <div className="flex items-center gap-3 text-sm">

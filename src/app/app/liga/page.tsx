@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Leaderboard } from "./leaderboard";
 import { LeagueCountdown } from "./countdown";
 import { LeagueBadge, type LeagueTier, type Division } from "@/components/league-badge";
+import { LeagueChangeChime } from "./league-change-chime";
 
 export const metadata = { title: "Liga" };
 
@@ -91,6 +92,11 @@ export default async function LigaPage() {
       <Link href="/app" className="flex items-center gap-1 text-sm text-text-muted">
         <ArrowLeft className="size-4" /> Voltar
       </Link>
+
+      <LeagueChangeChime
+        tier={(profile.current_league_tier ?? "bronze") as LeagueTier}
+        division={((profile.current_league_division ?? 1) as Division)}
+      />
 
       <header className="mt-8 flex flex-col items-center gap-3 text-center">
         <span className="text-xs font-medium text-text-muted">Liga semanal</span>

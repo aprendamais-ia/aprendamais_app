@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Check, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Mascot } from "@/components/mascot";
 import { Confetti } from "@/components/confetti";
+import { playCheer } from "@/lib/sounds";
 import { completeOnboarding } from "./actions";
 
 type Track = {
@@ -202,6 +203,10 @@ function MascotBubble({ fala }: { fala: string }) {
 }
 
 function CelebrationStep({ onContinue }: { onContinue: () => void }) {
+  useEffect(() => {
+    playCheer();
+  }, []);
+
   return (
     <section className="relative mt-4 flex flex-1 flex-col items-center text-center">
       <Confetti />

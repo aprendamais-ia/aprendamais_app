@@ -25,19 +25,19 @@ function nextMondayBrtMs(now: Date): number {
   return nextMonBrt.getTime() + 3 * 60 * 60 * 1000;
 }
 
-function format(ms: number): string {
-  if (ms <= 0) return "Fechando agora";
+function format(ms: number, prefix = "Fecha em "): string {
+  if (ms <= 0) return "fechando agora";
   const totalSec = Math.floor(ms / 1000);
   const days = Math.floor(totalSec / 86400);
   const hours = Math.floor((totalSec % 86400) / 3600);
   const minutes = Math.floor((totalSec % 3600) / 60);
-  if (days >= 1) return `Fecha em ${days}d ${hours}h`;
-  if (hours >= 1) return `Fecha em ${hours}h ${minutes}min`;
+  if (days >= 1) return `${prefix}${days}d ${hours}h`;
+  if (hours >= 1) return `${prefix}${hours}h ${minutes}min`;
   const seconds = totalSec % 60;
-  return `Fecha em ${minutes}min ${String(seconds).padStart(2, "0")}s`;
+  return `${prefix}${minutes}min ${String(seconds).padStart(2, "0")}s`;
 }
 
-export function LeagueCountdown() {
+export function LeagueCountdown({ inline = false }: { inline?: boolean }) {
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -47,10 +47,13 @@ export function LeagueCountdown() {
   }, []);
 
   if (!now) {
-    // Evita hydration mismatch — mostra placeholder estável na primeira render
+    if (inline) return <span>Reset toda segunda 00:00.</span>;
     return <p className="mt-1 text-sm text-text-muted">Reset toda segunda 00:00</p>;
   }
 
   const remaining = nextMondayBrtMs(now) - now.getTime();
-  return <p className="mt-1 text-sm text-text-muted">{format(remaining)}</p>;
+  const text = format(remaining, inline ? "Fecha em " : "Fecha em ");
+
+  if (inline) return <span>{text}.</span>;
+  return <p className="mt-1 text-sm text-text-muted">{text}</p>;
 }

@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Check, X, Zap, Heart, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Mascot } from "@/components/mascot";
 import { Confetti } from "@/components/confetti";
-import { playCorrect, playWrong } from "@/lib/sounds";
+import { playCorrect, playWrong, playCheer, playFail } from "@/lib/sounds";
 import { submitAttempt, completeLesson } from "./actions";
 
 type ClientChoice = { key: string; text: string };
@@ -141,81 +141,21 @@ export function LessonPlayer({
     const allCorrect = errorAttempts === 0;
 
     return (
-      <main className="relative mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
-        {totalXp > 0 && <Confetti />}
-        <section className="mt-10 flex flex-1 flex-col items-center text-center">
-          <div className="animate-pop-in">
-            <Mascot
-              size={160}
-              variant={
-                allCorrect
-                  ? "happy"
-                  : livesLost >= initialLives && initialLives > 0
-                    ? "sad"
-                    : "idle"
-              }
-            />
-          </div>
-          <h1 className="mt-4 font-display text-3xl font-bold">
-            {allCorrect ? "Cravou tudo!" : "Lição feita."}
-          </h1>
-          <p className="mt-2 text-sm text-text-muted">
-            {allCorrect
-              ? "Sem erros. Mandou bem demais."
-              : `${errorAttempts} tropeço${errorAttempts > 1 ? "s" : ""} — bora de novo um dia desses.`}
-          </p>
-
-          <div className="mt-8 grid w-full grid-cols-3 gap-2">
-            <StatCard
-              label="Acertos"
-              value={`${correctCount}/${total}`}
-              tone="success"
-              delay={0}
-            />
-            <StatCard
-              label="XP ganho"
-              value={`+${totalXp}`}
-              tone="yellow"
-              icon={<Zap className="size-4" />}
-              delay={120}
-            />
-            <StatCard
-              label="Vidas"
-              value={`-${livesLost}`}
-              tone={livesLost === 0 ? "muted" : "error"}
-              icon={<Heart className="size-4" />}
-              delay={240}
-            />
-          </div>
-
-          {bonusXp > 0 && (
-            <div className="mt-4 flex animate-pop-in items-center gap-2 rounded-full bg-brand-yellow/20 px-4 py-2 text-sm text-brand-yellow">
-              <Zap className="size-4" />
-              <span className="font-medium">+{bonusXp} bônus de fase</span>
-            </div>
-          )}
-
-          {outro && <p className="mt-6 text-sm text-text-muted">{outro}</p>}
-
-          <button
-            type="button"
-            onClick={() => {
-              router.push("/app");
-              router.refresh();
-            }}
-            className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
-          >
-            {totalXp > 0 ? (
-              <>
-                <Zap className="size-5" />
-                Receber +{totalXp} XP
-              </>
-            ) : (
-              "Continuar"
-            )}
-          </button>
-        </section>
-      </main>
+      <CompleteScreen
+        allCorrect={allCorrect}
+        totalXp={totalXp}
+        errorAttempts={errorAttempts}
+        correctCount={correctCount}
+        total={total}
+        livesLost={livesLost}
+        initialLives={initialLives}
+        bonusXp={bonusXp}
+        outro={outro}
+        onContinue={() => {
+          router.push("/app");
+          router.refresh();
+        }}
+      />
     );
   }
 
@@ -327,6 +267,118 @@ function PlayerHeader({
         )}
       </div>
     </div>
+  );
+}
+
+function CompleteScreen({
+  allCorrect,
+  totalXp,
+  errorAttempts,
+  correctCount,
+  total,
+  livesLost,
+  initialLives,
+  bonusXp,
+  outro,
+  onContinue,
+}: {
+  allCorrect: boolean;
+  totalXp: number;
+  errorAttempts: number;
+  correctCount: number;
+  total: number;
+  livesLost: number;
+  initialLives: number;
+  bonusXp: number;
+  outro: string | null;
+  onContinue: () => void;
+}) {
+  // Sucesso vs falha pra som de fim de lição:
+  //   - Sucesso = ganhou XP (acertou pelo menos uma questão da lição)
+  //   - Falha   = ficou sem vidas e/ou ganhou 0 XP
+  const isFailure = totalXp === 0 || (livesLost >= initialLives && initialLives > 0);
+
+  useEffect(() => {
+    if (isFailure) {
+      playFail();
+    } else {
+      playCheer();
+    }
+  }, [isFailure]);
+
+  return (
+    <main className="relative mx-auto flex min-h-dvh max-w-md flex-col px-6 py-8">
+      {totalXp > 0 && <Confetti />}
+      <section className="mt-10 flex flex-1 flex-col items-center text-center">
+        <div className="animate-pop-in">
+          <Mascot
+            size={160}
+            variant={
+              allCorrect
+                ? "happy"
+                : livesLost >= initialLives && initialLives > 0
+                  ? "sad"
+                  : "idle"
+            }
+          />
+        </div>
+        <h1 className="mt-4 font-display text-3xl font-bold">
+          {allCorrect ? "Cravou tudo!" : "Lição feita."}
+        </h1>
+        <p className="mt-2 text-sm text-text-muted">
+          {allCorrect
+            ? "Sem erros. Mandou bem demais."
+            : `${errorAttempts} tropeço${errorAttempts > 1 ? "s" : ""} — bora de novo um dia desses.`}
+        </p>
+
+        <div className="mt-8 grid w-full grid-cols-3 gap-2">
+          <StatCard
+            label="Acertos"
+            value={`${correctCount}/${total}`}
+            tone="success"
+            delay={0}
+          />
+          <StatCard
+            label="XP ganho"
+            value={`+${totalXp}`}
+            tone="yellow"
+            icon={<Zap className="size-4" />}
+            delay={120}
+          />
+          <StatCard
+            label="Vidas"
+            value={`-${livesLost}`}
+            tone={livesLost === 0 ? "muted" : "error"}
+            icon={<Heart className="size-4" />}
+            delay={240}
+          />
+        </div>
+
+        {bonusXp > 0 && (
+          <div className="mt-4 flex animate-pop-in items-center gap-2 rounded-full bg-brand-yellow/20 px-4 py-2 text-sm text-brand-yellow">
+            <Zap className="size-4" />
+            <span className="font-medium">+{bonusXp} bônus de fase</span>
+          </div>
+        )}
+
+        {outro && <p className="mt-6 text-sm text-text-muted">{outro}</p>}
+
+        <button
+          type="button"
+          onClick={onContinue}
+          className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
+        >
+          {totalXp > 0 ? (
+            <>
+              <Zap className="size-5" />
+              Receber +{totalXp} XP
+            </>
+          ) : (
+            "Continuar"
+          )}
+        </button>
+      </section>
+    </main>
   );
 }
 

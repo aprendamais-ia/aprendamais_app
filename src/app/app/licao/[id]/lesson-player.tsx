@@ -402,8 +402,14 @@ function CompleteScreen({
           />
           <StatCard
             label="Vidas"
-            value={`-${livesLost}`}
-            tone={livesLost === 0 ? "muted" : "error"}
+            value={
+              <AnimatedHeartCount
+                from={initialLives}
+                to={initialLives - livesLost}
+                startDelayMs={540}
+              />
+            }
+            tone={livesLost === 0 ? "success" : initialLives - livesLost === 0 ? "error" : "yellow"}
             icon={<Heart className="size-4" />}
             delay={240}
           />
@@ -437,6 +443,48 @@ function CompleteScreen({
   );
 }
 
+// Conta vidas decrementando de `from` até `to`, uma por vez. Se from===to,
+// mostra estático. Cada decremento dispara um pulse rápido no número pra
+// dar peso visual ao "perdeu uma vida".
+function AnimatedHeartCount({
+  from,
+  to,
+  startDelayMs = 0,
+}: {
+  from: number;
+  to: number;
+  startDelayMs?: number;
+}) {
+  const [value, setValue] = useState(from);
+  const [pulseKey, setPulseKey] = useState(0);
+
+  useEffect(() => {
+    if (from === to) {
+      setValue(to);
+      return;
+    }
+    setValue(from);
+    const direction = to > from ? 1 : -1;
+    const steps = Math.abs(to - from);
+    const stepMs = 320;
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    for (let i = 1; i <= steps; i++) {
+      const t = setTimeout(() => {
+        setValue(from + i * direction);
+        setPulseKey((k) => k + 1);
+      }, startDelayMs + i * stepMs);
+      timeouts.push(t);
+    }
+    return () => timeouts.forEach(clearTimeout);
+  }, [from, to, startDelayMs]);
+
+  return (
+    <span key={pulseKey} className={pulseKey > 0 ? "inline-block animate-shake-x" : "inline-block"}>
+      {value}
+    </span>
+  );
+}
+
 function StatCard({
   label,
   value,
@@ -445,7 +493,7 @@ function StatCard({
   delay,
 }: {
   label: string;
-  value: string;
+  value: React.ReactNode;
   tone: "success" | "yellow" | "error" | "muted";
   icon?: React.ReactNode;
   delay: number;

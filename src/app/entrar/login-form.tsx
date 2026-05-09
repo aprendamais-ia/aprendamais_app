@@ -101,7 +101,7 @@ export function LoginForm() {
           type="submit"
           disabled={code.length !== CODE_LENGTH || status === "verifying"}
           className={cn(
-            "mt-2 flex h-14 items-center justify-center rounded-2xl font-display text-lg font-semibold shadow-sm btn-squash",
+            "btn-3d [--btn-rim:#005a23] mt-2 flex h-14 items-center justify-center rounded-2xl font-display text-lg font-semibold",
             "bg-brand-green text-brand-green-fg disabled:opacity-60",
           )}
         >
@@ -141,7 +141,7 @@ export function LoginForm() {
         type="button"
         onClick={signInWithGoogle}
         disabled={status === "sending"}
-        className="btn-squash flex h-14 items-center justify-center gap-3 rounded-2xl border border-input bg-surface-elevated font-display text-base font-semibold transition-colors hover:border-text-muted disabled:opacity-60"
+        className="btn-3d flex h-14 items-center justify-center gap-3 rounded-2xl border border-input bg-surface-elevated font-display text-base font-semibold transition-colors hover:border-text-muted disabled:opacity-60"
       >
         <GoogleLogo />
         Continuar com Google
@@ -172,7 +172,7 @@ export function LoginForm() {
           type="submit"
           disabled={status === "sending"}
           className={cn(
-            "mt-2 flex h-14 items-center justify-center rounded-2xl font-display text-lg font-semibold shadow-sm btn-squash",
+            "btn-3d [--btn-rim:#005a23] mt-2 flex h-14 items-center justify-center rounded-2xl font-display text-lg font-semibold",
             "bg-brand-green text-brand-green-fg disabled:opacity-60",
           )}
         >

@@ -76,7 +76,7 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
                 type="button"
                 onClick={() => setTrackId(t.id)}
                 className={cn(
-                  "btn-squash flex items-center justify-between rounded-2xl border p-4 text-left transition-colors",
+                  "btn-3d flex items-center justify-between rounded-2xl border p-4 text-left transition-colors",
                   trackId === t.id
                     ? "border-brand-green bg-brand-green/10"
                     : "border-border bg-surface hover:border-text-muted",
@@ -110,7 +110,7 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
                 type="button"
                 onClick={() => setDailyGoalMin(g.minutes)}
                 className={cn(
-                  "btn-squash flex flex-col items-start rounded-2xl border p-4 text-left transition-colors",
+                  "btn-3d flex flex-col items-start rounded-2xl border p-4 text-left transition-colors",
                   dailyGoalMin === g.minutes
                     ? "border-brand-green bg-brand-green/10"
                     : "border-border bg-surface hover:border-text-muted",
@@ -154,7 +154,7 @@ export function OnboardingForm({ tracks }: { tracks: Track[] }) {
               onClick={handleSubmit}
               disabled={pending}
               className={cn(
-                "flex h-14 flex-1 items-center justify-center rounded-2xl font-display text-lg font-semibold shadow-sm btn-squash",
+                "btn-3d [--btn-rim:#005a23] flex h-14 flex-1 items-center justify-center rounded-2xl font-display text-lg font-semibold",
                 "bg-brand-green text-brand-green-fg disabled:opacity-60",
               )}
             >
@@ -221,7 +221,7 @@ function CelebrationStep({ onContinue }: { onContinue: () => void }) {
       <button
         type="button"
         onClick={onContinue}
-        className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm btn-squash"
+        className="btn-3d [--btn-rim:#005a23] mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg"
       >
         <Zap className="size-5" />
         Bora começar
@@ -245,7 +245,7 @@ function NextButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "mt-auto flex h-14 items-center justify-center rounded-2xl font-display text-lg font-semibold shadow-sm btn-squash",
+        "btn-3d [--btn-rim:#005a23] mt-auto flex h-14 items-center justify-center rounded-2xl font-display text-lg font-semibold",
         "bg-brand-green text-brand-green-fg disabled:opacity-40",
         className,
       )}
@@ -260,7 +260,7 @@ function BackButton({ onClick }: { onClick: () => void }) {
     <button
       type="button"
       onClick={onClick}
-      className="btn-squash flex h-14 items-center justify-center rounded-2xl border border-border bg-surface px-6 font-medium text-text"
+      className="btn-3d flex h-14 items-center justify-center rounded-2xl border border-border bg-surface px-6 font-medium text-text"
     >
       Voltar
     </button>

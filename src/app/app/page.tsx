@@ -91,7 +91,7 @@ export default async function AppHomePage() {
       <section className="mt-8 flex flex-1 flex-col">
         <Link
           href="/app/cursos"
-          className="btn-squash -ml-1 inline-flex w-fit items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium text-text-muted transition-colors hover:bg-surface"
+          className="-ml-1 inline-flex w-fit items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium text-text-muted transition-colors hover:bg-surface"
           aria-label="Trocar curso"
         >
           <BookOpen className="size-3.5" />

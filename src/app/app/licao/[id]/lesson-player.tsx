@@ -222,7 +222,7 @@ export function LessonPlayer({
                 disabled={!!chosen}
                 onClick={() => handleChoose(c.key)}
                 className={cn(
-                  "btn-squash flex items-start gap-3 rounded-2xl border p-4 text-left transition-colors",
+                  "btn-3d flex items-start gap-3 rounded-2xl border p-4 text-left transition-colors",
                   !chosen && "border-border bg-surface hover:border-text-muted",
                   chosen && !feedback && isChosen && "border-brand-green bg-brand-green/10",
                   feedback && isCorrectAnswer && "border-success bg-success/10",
@@ -427,7 +427,7 @@ function CompleteScreen({
         <button
           type="button"
           onClick={onContinue}
-          className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm btn-squash"
+          className="btn-3d [--btn-rim:#005a23] mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg"
         >
           {totalXp > 0 ? (
             <>
@@ -562,8 +562,10 @@ function ExplanationDrawer({
         onClick={onNext}
         disabled={pending}
         className={cn(
-          "mt-4 flex h-12 w-full items-center justify-center rounded-2xl font-display font-semibold shadow-sm",
-          feedback.isCorrect ? "bg-success text-white" : "bg-error text-white",
+          "btn-3d mt-4 flex h-12 w-full items-center justify-center rounded-2xl font-display font-semibold",
+          feedback.isCorrect
+            ? "bg-success text-white [--btn-rim:#15803d]"
+            : "bg-error text-white [--btn-rim:#991b1b]",
           "disabled:opacity-60",
         )}
       >

@@ -59,7 +59,7 @@ export function BottomNav() {
                 if (!active) playNavTap();
               }}
               className={cn(
-                "btn-squash flex flex-1 flex-col items-center gap-0.5 py-2.5 text-xs font-medium",
+                "flex flex-1 flex-col items-center gap-0.5 py-2.5 text-xs font-medium transition-colors",
                 active ? "text-brand-green" : "text-text-muted hover:text-text",
               )}
             >

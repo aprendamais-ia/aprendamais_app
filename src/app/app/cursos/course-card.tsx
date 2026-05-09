@@ -53,7 +53,7 @@ export function CourseCard({ track, progress, state }: Props) {
       disabled={pending}
       onClick={handleClick}
       className={cn(
-        "flex flex-col gap-2 rounded-2xl border p-4 text-left transition-colors",
+        "btn-squash flex flex-col gap-2 rounded-2xl border p-4 text-left transition-colors",
         state === "active" && "border-brand-green bg-brand-green/10 hover:bg-brand-green/15",
         state === "joined" && "border-border bg-surface hover:border-text-muted",
         state === "available" && "border-dashed border-border bg-surface hover:border-text-muted",

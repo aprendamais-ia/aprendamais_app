@@ -59,7 +59,7 @@ export function OutOfLives({ livesRegenAt }: Props) {
 
       <Link
         href="/app"
-        className="mt-8 flex h-14 items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
+        className="btn-squash mt-8 flex h-14 items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm"
       >
         Voltar pro início
       </Link>

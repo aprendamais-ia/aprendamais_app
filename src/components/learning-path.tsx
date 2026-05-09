@@ -77,7 +77,7 @@ export function LearningPath({ phases }: { phases: Phase[] }) {
               {isLocked ? (
                 <div className="cursor-not-allowed">{node}</div>
               ) : (
-                <Link href={`/app/licao/${phase.id}`} className="block active:scale-95">
+                <Link href={`/app/licao/${phase.id}`} className="btn-squash block">
                   {node}
                 </Link>
               )}

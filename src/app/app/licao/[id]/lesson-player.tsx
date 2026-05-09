@@ -157,7 +157,7 @@ export function LessonPlayer({
           <button
             type="button"
             onClick={handleStart}
-            className="mt-auto flex h-14 items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
+            className="mt-auto flex h-14 items-center justify-center rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm btn-squash"
           >
             Começar
           </button>
@@ -222,7 +222,7 @@ export function LessonPlayer({
                 disabled={!!chosen}
                 onClick={() => handleChoose(c.key)}
                 className={cn(
-                  "flex items-start gap-3 rounded-2xl border p-4 text-left transition-colors",
+                  "btn-squash flex items-start gap-3 rounded-2xl border p-4 text-left transition-colors",
                   !chosen && "border-border bg-surface hover:border-text-muted",
                   chosen && !feedback && isChosen && "border-brand-green bg-brand-green/10",
                   feedback && isCorrectAnswer && "border-success bg-success/10",
@@ -409,7 +409,7 @@ function CompleteScreen({
                 startDelayMs={540}
               />
             }
-            tone={livesLost === 0 ? "success" : initialLives - livesLost === 0 ? "error" : "yellow"}
+            tone="error"
             icon={<Heart className="size-4" />}
             delay={240}
           />
@@ -427,7 +427,7 @@ function CompleteScreen({
         <button
           type="button"
           onClick={onContinue}
-          className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm transition-transform active:scale-[0.98]"
+          className="mt-auto flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-green font-display text-lg font-semibold text-brand-green-fg shadow-sm btn-squash"
         >
           {totalXp > 0 ? (
             <>

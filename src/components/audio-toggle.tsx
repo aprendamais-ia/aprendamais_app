@@ -25,7 +25,7 @@ export function AudioToggle() {
       aria-label={label}
       title={label}
       className={cn(
-        "btn-squash fixed bottom-20 right-4 z-30 flex size-10 items-center justify-center rounded-full",
+        "btn-3d fixed bottom-20 right-4 z-30 flex size-10 items-center justify-center rounded-full",
         "border border-border bg-surface-elevated shadow-md",
         "hover:bg-surface",
         muted ? "text-text-muted" : "text-brand-green",

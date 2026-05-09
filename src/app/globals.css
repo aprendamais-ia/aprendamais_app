@@ -216,18 +216,23 @@
   .animate-spark-out      { animation: spark-out 900ms ease-out forwards; }
   .animate-label-rise     { animation: label-rise 500ms ease-out 200ms forwards; opacity: 0; }
 
-  /* Squash & stretch: cubic-bezier com overshoot dá o "stretch" na release.
-     Press → scaleX(1.06) scaleY(0.88) (squash, mais largo e baixo).
-     Release → volta a scale(1), passando por ~1.02 / 0.97 antes de assentar
-     graças ao overshoot do bezier — é o stretch.
-     Aplicar em qualquer <button>/<a> com display block/inline-block. */
-  .btn-squash {
-    transition: transform 200ms cubic-bezier(0.34, 1.7, 0.5, 1);
-    transform-origin: center;
-    will-change: transform;
+  /* Botão 3D estilo Duolingo: aro de profundidade no bottom (box-shadow sem
+     blur). Ao pressionar, o botão translada pra baixo e o aro some — dá a
+     ilusão de afundar na base.
+     Override do --btn-rim per-botão (ex: tom mais escuro pro bg verde):
+       <button class="btn-3d [--btn-rim:#005a23]" ...>
+     Default usa rgba(0,0,0,0.18) — funciona pra surface/border-only. */
+  .btn-3d {
+    box-shadow: 0 4px 0 0 var(--btn-rim, rgba(0, 0, 0, 0.18));
+    transition: transform 80ms ease-out, box-shadow 80ms ease-out;
   }
-  .btn-squash:active {
-    transform: scaleX(1.06) scaleY(0.88);
+  .btn-3d:not(:disabled):active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 var(--btn-rim, rgba(0, 0, 0, 0.18));
+  }
+  .btn-3d:disabled {
+    box-shadow: 0 2px 0 0 var(--btn-rim, rgba(0, 0, 0, 0.1));
+    transform: translateY(2px);
   }
 }
 
